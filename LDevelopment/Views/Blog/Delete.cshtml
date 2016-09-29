@@ -1,0 +1,57 @@
+﻿@model LDevelopment.ViewModels.PostViewModel
+
+@{
+    ViewBag.Title = Resources.Delete;
+}
+
+<h2>@Resources.Delete</h2>
+
+<h3>@Resources.DeleteConfirm</h3>
+<div>
+    <h4>@Resources.Entity</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Title)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Title)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Text)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Text)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ReleaseDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ReleaseDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.IsReleased)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IsReleased)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="@Resources.Delete" class="btn btn-default" /> |
+            @Html.ActionLink(Resources.Back, "Index")
+        </div>
+    }
+</div>

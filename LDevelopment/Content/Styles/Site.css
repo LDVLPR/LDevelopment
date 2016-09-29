@@ -1,0 +1,116 @@
+﻿body {
+  padding-top: 50px;
+  padding-bottom: 20px;
+  font-family: 'Roboto', sans-serif;
+  /* Override the default bootstrap behavior where horizontal description lists 
+       will truncate terms that are too long to fit in the left column 
+    */
+  /* Set width on the form input elements since they're 100% wide by default */ }
+  body img {
+    max-width: 100%; }
+  body header {
+    color: #212427; }
+  body h1 {
+    font-size: 40px;
+    line-height: 48px; }
+  body h2 {
+    font-size: 32px;
+    line-height: 30px; }
+  body h3 {
+    font-size: 20px;
+    line-height: 26px; }
+  body h4 {
+    font-size: 32px;
+    line-height: 30px; }
+  body p {
+    color: #212427;
+    font-size: 18px;
+    line-height: 28px; }
+    body p text-2 {
+      color: #949596;
+      font-size: 16px;
+      line-height: 26px; }
+  body .navbar {
+    background-color: #ffffff; }
+    body .navbar .logo img {
+      padding: 10px 30px 10px 15px; }
+    body .navbar a {
+      font-weight: bold; }
+  body .home {
+    background: url("/Content/Images/banner_01.jpg") center; }
+  body .banner, body .section-1, body .section-2, body .blog, body .about, body .contact {
+    height: 200px;
+    color: #ffffff; }
+    body .banner .container, body .section-1 .container, body .section-2 .container, body .blog .container, body .about .container, body .contact .container {
+      padding: 60px 0; }
+  body .section-1 {
+    background: url("/Content/Images/section_01.jpg") center; }
+  body .section-2 {
+    background: url("/Content/Images/section_02.jpg") center; }
+  body .blog {
+    background: url("/Content/Images/blog_header.jpg") center; }
+  body .about {
+    background: url("/Content/Images/about_header.jpg") center; }
+  body .contact {
+    background: url("/Content/Images/contact_header.jpg") center; }
+  body .newsletter {
+    background: #0a365d;
+    /* For browsers that do not support gradients */
+    background: linear-gradient(to right, #0a365d, #0f6cc3);
+    /* Standard syntax */
+    background: -webkit-linear-gradient(left, #0a365d, #0f6cc3);
+    /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(right, #0a365d, #0f6cc3);
+    /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(right, #0a365d, #0f6cc3);
+    /* For Firefox 3.6 to 15 */ }
+    body .newsletter h2, body .newsletter p {
+      color: #ffffff; }
+  body .body-content {
+    padding: 15px; }
+    body .body-content .jumbotron {
+      background-color: inherit;
+      padding: 240px 80px; }
+      body .body-content .jumbotron h1 {
+        color: #ffffff; }
+      body .body-content .jumbotron h2 {
+        color: #ffffff; }
+      body .body-content .jumbotron a {
+        border: 0;
+        border-radius: 25px;
+        color: #0f6cc3;
+        background-color: #ffffff;
+        padding: 10px 30px; }
+    body .body-content .search {
+      text-align: center; }
+      body .body-content .search input {
+        display: inline-block; }
+    body .body-content .tags .tag, body .body-content .tags .tag-small {
+      border: 1px solid;
+      padding: 2px 8px;
+      margin: 4px 4px 4px 0;
+      font-size: 13pt;
+      display: inline-block; }
+      body .body-content .tags .tag:before, body .body-content .tags .tag-small:before {
+        content: "# "; }
+    body .body-content .tags .tag-small {
+      font-size: 10pt; }
+  body footer {
+    background-color: #212427;
+    color: #ffffff;
+    /*bottom: 0;
+        position: fixed;
+        width: 100%;*/ }
+    body footer .container {
+      padding: 10px 15px; }
+      body footer .container .copyright {
+        float: left; }
+      body footer .container .social-buttons {
+        float: right; }
+  body .dl-horizontal dt {
+    white-space: normal; }
+  body input,
+  body select,
+  body textarea {
+    max-width: 280px; }
+

@@ -1,0 +1,85 @@
+﻿@model LDevelopment.ViewModels.HomeViewModel
+@{
+    ViewBag.Title = Resources.Home;
+}
+
+<section class="home">
+    <div class="container body-content">
+        <div class="jumbotron">
+            <h1>CODE THE FUTURE</h1>
+            <h2 class="lead">Web Development ∙ Platforma .NET ∙ Patterns & Practices</h2>
+            @Html.ActionLink(Resources.Read, "Index", "Blog", null, new { @class = "btn btn-primary btn-lg text-uppercase" })
+        </div>
+    </div>
+</section>
+
+<section class="aboutme">
+    <div class="container body-content">
+        <div class="row">
+            <div class="col-md-12 text-center">
+                <h2 class="text-uppercase">@Resources.About</h2>
+                <p>LDeveloper to Łukasz Dudziak.</p>
+                <p>LDevelopment to...</p>
+                @Html.ActionLink(Resources.About, "About", null, new { @class = "btn btn-primary btn-lg text-uppercase" })
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="section-1"></section>
+
+<section class="last">
+    <div class="container body-content">
+        <div class="row">
+            <div class="col-md-12 text-center">
+                <h2 class="text-uppercase">@Resources.Last</h2>
+            </div>
+            @foreach (var item in Model.LastPosts)
+            {
+                <div class="col-md-4 text-justify">
+                    <img class="img-responsive" src="@item.ImageUrl" alt="@item.Title"/>
+                    <h2>@item.Title</h2>
+                    <p>@Html.Raw(item.Text)</p>
+                    @Html.ActionLink(Resources.Read, "Details", "Blog", new {id = item.Id}, new {@class = "btn btn-default text-uppercase" })
+                </div>
+            }
+        </div>
+    </div>
+</section>
+
+<section class="section-2"></section>
+
+<section class="popular">
+    <div class="container body-content">
+        <div class="row">
+            <div class="col-md-12 text-center">
+                <h2 class="text-uppercase">@Resources.Popular</h2>
+            </div>
+            @foreach (var item in Model.PopularPosts)
+            {
+                <div class="col-md-4 text-justify">
+                    <img class="img-responsive" src="@item.ImageUrl" alt="@item.Title"/>
+                    <h2>@item.Title</h2>
+                    <p>@Html.Raw(item.Text)</p>
+                    @Html.ActionLink(Resources.Read, "Details", "Blog", new {id = item.Id}, new {@class = "btn btn-default text-uppercase" })
+                </div>
+            }
+        </div>
+    </div>
+</section>
+
+<section class="newsletter">
+    <div class="container body-content">
+        <div class="row">
+            <div class="col-md-12 text-center">
+                <h2 class="text-uppercase">@Resources.Newsletter</h2>
+                <p>
+                    Zapisz się do newslettera
+                </p>
+                <p>
+                    <a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301866">@Resources.SignIn</a>
+                </p>
+            </div>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,8 @@
+App_Data
+*.user
+*.suo
+config
+bin
+Debug
+Release
+packages
