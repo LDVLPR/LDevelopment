@@ -6,12 +6,12 @@ using Microsoft.WindowsAzure.Storage.Blob;
 
 namespace LDevelopment.Helpers
 {
-    public class BlobUtility
+    public class AzureBlobHelper
     {
         private readonly CloudStorageAccount _storageAccount;
         private readonly string _containerName;
 
-        public BlobUtility()
+        public AzureBlobHelper()
         {
             _storageAccount = CloudStorageAccount.Parse(ConfigurationManager.AppSettings["BlobConnection"]);
             _containerName = ConfigurationManager.AppSettings["BlobContainer"];

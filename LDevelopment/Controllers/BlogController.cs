@@ -468,7 +468,7 @@ namespace LDevelopment.Controllers
 
         private static string UploadPhoto(HttpPostedFileBase image)
         {
-            var utility = new BlobUtility();
+            var utility = new AzureBlobHelper();
             var result = utility.UploadBlob(image.FileName, image.InputStream);
 
             return result != null ? result.Uri.ToString() : string.Empty;
