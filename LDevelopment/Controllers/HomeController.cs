@@ -37,6 +37,11 @@ namespace LDevelopment.Controllers
             return View();
         }
 
+        public ActionResult Error()
+        {
+            return View();
+        }
+
         private static PostViewModel GetPostViewModel(PostModel postModel)
         {
             return new PostViewModel

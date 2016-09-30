@@ -3,7 +3,6 @@ using System.Configuration;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
-using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using LDevelopment.Helpers;
@@ -62,20 +61,10 @@ namespace LDevelopment.Controllers
 
         public ActionResult Details(int? id)
         {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-
             var post = db.Posts
                 .Include(x => x.PostTags)
                 .Include(x => x.Comments)
                 .SingleOrDefault(x => x.Id == id.Value);
-
-            if (post == null)
-            {
-                return HttpNotFound();
-            }
 
             var readMore = ConfigurationManager.AppSettings["ReadMore"];
 
@@ -198,19 +187,9 @@ namespace LDevelopment.Controllers
         // GET: Blog/Edit/5
         public ActionResult Edit(int? id)
         {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-
             var post = db.Posts
                 .Include(x => x.PostTags)
                 .SingleOrDefault(x => x.Id == id);
-
-            if (post == null)
-            {
-                return HttpNotFound();
-            }
 
             var tags = db.Tags
                 .Select(tag => new SelectListItem
@@ -244,11 +223,6 @@ namespace LDevelopment.Controllers
                 var postModel = db.Posts
                     .Include(x => x.PostTags)
                     .SingleOrDefault(x => x.Id == postViewModel.Id);
-
-                if (postModel == null)
-                {
-                    return HttpNotFound();
-                }
 
                 postModel.Title = postViewModel.Title;
                 postModel.Text = postViewModel.Text;
@@ -312,17 +286,7 @@ namespace LDevelopment.Controllers
         // GET: Blog/Delete/5
         public ActionResult Delete(int? id)
         {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-
             var post = db.Posts.SingleOrDefault(x => x.Id == id);
-
-            if (post == null)
-            {
-                return HttpNotFound();
-            }
 
             var postViewModel = new PostViewModel
             {
@@ -354,17 +318,7 @@ namespace LDevelopment.Controllers
         [Authorize]
         public ActionResult Comment(int? id)
         {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-
             var post = db.Posts.Find(id);
-
-            if (post == null)
-            {
-                return HttpNotFound();
-            }
 
             var comment = new CommentViewModel
             {

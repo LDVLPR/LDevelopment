@@ -44,9 +44,11 @@ namespace LDevelopment.Models
             modelBuilder.Entity<PostModel>().ToTable("Posts").HasMany(x => x.PostTags).WithMany(x => x.TagPosts).Map(x => x.ToTable("PostTags"));
             modelBuilder.Entity<TagModel>().ToTable("Tags");
             modelBuilder.Entity<CommentModel>().ToTable("Comments");
+            modelBuilder.Entity<LogModel>().ToTable("Logs");
         }
 
         public DbSet<PostModel> Posts { get; set; }
         public DbSet<TagModel> Tags { get; set; }
+        public DbSet<LogModel> Logs { get; set; }
     }
 }

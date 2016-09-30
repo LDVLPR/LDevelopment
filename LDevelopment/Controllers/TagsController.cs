@@ -1,10 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Data.Entity;
+﻿using System.Data.Entity;
 using System.Linq;
-using System.Net;
-using System.Web;
 using System.Web.Mvc;
 using LDevelopment.Models;
 
@@ -21,17 +16,8 @@ namespace LDevelopment.Controllers
         // GET: Tags/Details/5
         public ActionResult Details(int? id)
         {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-
             var tagModel = db.Tags.Find(id);
 
-            if (tagModel == null)
-            {
-                return HttpNotFound();
-            }
             return View(tagModel);
         }
 
@@ -62,17 +48,8 @@ namespace LDevelopment.Controllers
         // GET: Tags/Edit/5
         public ActionResult Edit(int? id)
         {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-
             var tagModel = db.Tags.Find(id);
 
-            if (tagModel == null)
-            {
-                return HttpNotFound();
-            }
             return View(tagModel);
         }
 
@@ -96,17 +73,7 @@ namespace LDevelopment.Controllers
         // GET: Tags/Delete/5
         public ActionResult Delete(int? id)
         {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-
             var tagModel = db.Tags.Find(id);
-
-            if (tagModel == null)
-            {
-                return HttpNotFound();
-            }
 
             return View(tagModel);
         }

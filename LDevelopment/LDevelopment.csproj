@@ -239,7 +239,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Helpers\BlobUtility.cs" />
+    <Compile Include="Helpers\AzureBlobHelper.cs" />
     <Compile Include="Migrations\201609141933300_InitialCreate.cs" />
     <Compile Include="Migrations\201609141933300_InitialCreate.Designer.cs">
       <DependentUpon>201609141933300_InitialCreate.cs</DependentUpon>
@@ -252,8 +252,13 @@
     <Compile Include="Migrations\201609281748344_ModelPropertiesAttributes.Designer.cs">
       <DependentUpon>201609281748344_ModelPropertiesAttributes.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201609301627409_ExceptionHandler.cs" />
+    <Compile Include="Migrations\201609301627409_ExceptionHandler.Designer.cs">
+      <DependentUpon>201609301627409_ExceptionHandler.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\CommentModel.cs" />
+    <Compile Include="Models\LogModel.cs" />
     <Compile Include="Models\PostModel.cs" />
     <Compile Include="Models\TagModel.cs" />
     <Compile Include="ViewModels\AccountViewModels.cs" />
@@ -494,7 +499,9 @@
     <Content Include="Scripts\tinymce\tinymce.js" />
     <Content Include="Scripts\tinymce\tinymce.min.js" />
     <Content Include="Scripts\_references.js" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
@@ -558,6 +565,7 @@
     <Content Include="Scripts\tinymce\skins\lightgray\fonts\tinymce-small.eot" />
     <Content Include="Scripts\tinymce\skins\lightgray\fonts\readme.md" />
     <Content Include="Scripts\tinymce\langs\readme.md" />
+    <Content Include="Views\Home\Error.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -584,6 +592,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201609281748344_ModelPropertiesAttributes.resx">
       <DependentUpon>201609281748344_ModelPropertiesAttributes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201609301627409_ExceptionHandler.resx">
+      <DependentUpon>201609301627409_ExceptionHandler.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

@@ -21,17 +21,7 @@ namespace LDevelopment.Controllers
         // GET: Users/Details/5
         public ActionResult Details(string id)
         {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-
             var applicationUser = db.Users.Find(id);
-
-            if (applicationUser == null)
-            {
-                return HttpNotFound();
-            }
 
             return View(applicationUser);
         }
@@ -63,17 +53,7 @@ namespace LDevelopment.Controllers
         // GET: Users/Edit/5
         public ActionResult Edit(string id)
         {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-
             var applicationUser = db.Users.Find(id);
-
-            if (applicationUser == null)
-            {
-                return HttpNotFound();
-            }
 
             return View(applicationUser);
         }
@@ -99,17 +79,7 @@ namespace LDevelopment.Controllers
         // GET: Users/Delete/5
         public ActionResult Delete(string id)
         {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-
             var applicationUser = db.Users.Find(id);
-
-            if (applicationUser == null)
-            {
-                return HttpNotFound();
-            }
 
             return View(applicationUser);
         }
