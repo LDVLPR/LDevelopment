@@ -66,6 +66,13 @@ namespace LDevelopment.Controllers
                 .Include(x => x.Comments)
                 .SingleOrDefault(x => x.Id == id.Value);
 
+            var tags = new MultiSelectList(post.PostTags.Select(x => new SelectListItem
+            {
+                Value = x.Id.ToString(),
+                Text = x.Title
+            })
+            .ToList());
+
             var readMore = ConfigurationManager.AppSettings["ReadMore"];
 
             var postViewModel = new PostViewModel
@@ -74,6 +81,7 @@ namespace LDevelopment.Controllers
                 Title = post.Title,
                 Text = post.Text.Replace(readMore, ""),
                 ReleaseDate = post.ReleaseDate,
+                Tags = tags,
                 ImageUrl = post.Image,
                 Comments = post.Comments.Select(c => new CommentViewModel
                 {

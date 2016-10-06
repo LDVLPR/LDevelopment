@@ -44,15 +44,13 @@
             </div>
         </div>
     </div>
-    <div>
+    <div class="site">
         @RenderBody()
 
         <footer>
             <div class="container">
                 <div class="copyright">
-                    <a class="logo" href='@Url.Action("Index", "Home")'>
-                        <img class="img-responsive" src='@Url.Content("~/Content/Images/logo.png")' alt="LDevelopment"/>
-                    </a>
+                    <img class="img-responsive" src='@Url.Content("~/Content/Images/logo.png")' alt="LDevelopment"/>
                     <p>&copy; @DateTime.Now.Year - LDevelopment</p>
                 </div>
                 <div class="social-buttons">

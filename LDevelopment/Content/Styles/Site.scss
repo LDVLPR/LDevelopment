@@ -9,47 +9,6 @@ body {
     padding-bottom: 20px;
     font-family: 'Roboto', sans-serif;
 
-    img {
-        max-width: 100%;
-    }
-
-    header {
-        color: $color-black;
-        //kerning:
-    }
-
-    h1 {
-        font-size: 40px;
-        line-height: 48px;
-    }
-
-    h2 {
-        font-size: 32px;
-        line-height: 30px;
-    }
-
-    h3 {
-        font-size: 20px;
-        line-height: 26px;
-    }
-
-    h4 {
-        font-size: 32px;
-        line-height: 30px;
-    }
-
-    p {
-        color: $color-black;
-        font-size: 18px;
-        line-height: 28px;
-
-        text-2 {
-            color: $color-gray;
-            font-size: 16px;
-            line-height: 26px;
-        }
-    }
-
     .navbar {
         background-color: $color-white;
 
@@ -59,144 +18,296 @@ body {
 
         a {
             font-weight: bold;
-            //color: $color-black !important;
+            color: $color-black !important;
+
+            &:hover {
+                color: $color-blue !important;
+            }
+        }
+
+        button {
+            background-color: $color-gray;
         }
     }
 
-    .home {
-        background: url("/Content/Images/banner_01.jpg") center;
-    }
+    .site {
 
-    .banner {
-        height: 200px;
-        color: $color-white;
-
-        .container {
-            padding: 60px 0;
+        input, select  {
+            max-width: 280px;
         }
-    }
 
-    .section-1 {
-        @extend .banner;
-        background: url("/Content/Images/section_01.jpg") center; 
-    }
+        img {
+            max-width: 100%;
+        }
 
-    .section-2 {
-        @extend .banner;
-        background: url("/Content/Images/section_02.jpg") center;
-    }
+        header {
+            color: $color-black;
+            //kerning:
+        }
 
-    .blog {
-        @extend .banner;
-        background: url("/Content/Images/blog_header.jpg") center;
-    }
+        h1 {
+            font-size: 40px;
+            line-height: 48px;
+        }
 
-    .about {
-        @extend .banner;
-        background: url("/Content/Images/about_header.jpg") center;
-    }
+        h2 {
+            font-size: 32px;
+            line-height: 30px;
+        }
 
-    .contact {
-        @extend .banner;
-        background: url("/Content/Images/contact_header.jpg") center;
-    }
+        h3 {
+            font-size: 20px;
+            line-height: 26px;
+        }
 
-    .newsletter {
-          background: $color-dark; /* For browsers that do not support gradients */
-          background: linear-gradient(to right, $color-dark , $color-blue); /* Standard syntax */
-          background: -webkit-linear-gradient(left, $color-dark , $color-blue); /* For Safari 5.1 to 6.0 */
-          background: -o-linear-gradient(right, $color-dark, $color-blue); /* For Opera 11.1 to 12.0 */
-          background: -moz-linear-gradient(right, $color-dark, $color-blue); /* For Firefox 3.6 to 15 */
-          
-          h2, p {
-              color: $color-white;
-          }
-    }
+        h4 {
+            font-size: 32px;
+            line-height: 30px;
+        }
 
-    .body-content {
-        padding: 15px;
+        p {
+            color: $color-black;
+            font-size: 18px;
+            line-height: 28px;
 
-        .jumbotron {
-            background-color: inherit;
-            padding: 240px 80px;
-
-            h1 {
-                color: $color-white;
+            text-2 {
+                color: $color-gray;
+                font-size: 16px;
+                line-height: 26px;
             }
-            
-            h2 {
-                color: $color-white;
-            }
+        }
+
+        .main {
 
             a {
-                border: 0;
+                border: 1px solid $color-blue;
                 border-radius: 25px;
                 color: $color-blue;
                 background-color: $color-white;
                 padding: 10px 30px;
+
+                &:hover {
+                    color: $color-white;
+                    background-color: $color-blue;
+                }
             }
         }
 
-        .search {
-            text-align: center;
+        .home {
+            background: url("/Content/Images/banner_01.jpg") center no-repeat;
 
-            input {
-                display: inline-block;
+            .row {
+                
+                h1, h2 {
+                    color: #fff;
+                }
+
+                a {
+                    color: $color-blue;
+                    background-color: $color-white;
+                }
             }
         }
 
-        .tags {
+        @media only screen and (max-width: 767px) {
 
-		    .tag {
-			    border: 1px solid;
-			    padding: 2px 8px;
-			    margin: 4px 4px 4px 0;
-			    font-size: 13pt;
-			    display: inline-block;
+            .home {
+                .container {
+                    padding: 120px 80px;
 
-			    &:before {
-				    content: "# ";
-			    }
-		    }
+                    h1 {
+                        font-size: 47px;
+                    }
 
-		    .tag-small {
-			    @extend .tag;
-			    font-size: 10pt;
-		    }
-	    }
-    }
-
-    footer {
-        background-color: $color-black;
-        color: $color-white;
-        /*bottom: 0;
-        position: fixed;
-        width: 100%;*/
-
-        .container {
-            padding: 10px 15px;
-
-            .copyright {
-                float: left;
+                    h2 {
+                        font-size: 16px;
+                    }
+                }
             }
 
-            .social-buttons {
-                float: right;
+            .banner {
+                height: 120px;
+                color: $color-white;
+
+                .container {
+                    padding: 20px 0;
+                }
             }
         }
-    }
 
-    /* Override the default bootstrap behavior where horizontal description lists 
-       will truncate terms that are too long to fit in the left column 
-    */
-    .dl-horizontal dt {
-        white-space: normal;
-    }
+        @media screen and (min-width: 768px) and (max-width: 991px) {
 
-    /* Set width on the form input elements since they're 100% wide by default */
-    input,
-    select,
-    textarea {
-        max-width: 280px;
+            .home {
+
+                .container {
+                    padding: 160px 80px;
+
+                    h1 {
+                        font-size: 63px;
+                    }
+
+                    h2 {
+                        font-size: 18px;
+                    }
+                }
+            }
+
+            .banner {
+                height: 160px;
+                color: $color-white;
+
+                .container {
+                    padding: 40px 0;
+                }
+            }
+        }
+
+        @media screen and (min-width: 992px) {
+
+            .home {
+
+                .container {
+                    padding: 240px 80px;
+
+                    h1 {
+                        font-size: 63px;
+                    }
+
+                    h2 {
+                        font-size: 21px;
+                    }
+                }
+            }
+
+            .banner {
+                height: 280px;
+                color: $color-white;
+
+                .container {
+                    padding: 100px 0;
+                }
+            }
+        }
+
+        .last, .popular {
+            .short {
+                margin: 30px 0;
+            }
+        }
+
+        .section-1 {
+            @extend .banner;
+            background: url("/Content/Images/section_01.jpg") center no-repeat;
+            background-size: cover;
+        }
+
+        .section-2 {
+            @extend .banner;
+            background: url("/Content/Images/section_02.jpg") center no-repeat;
+            background-size: cover;
+        }
+
+        .blog {
+            @extend .banner;
+            background: url("/Content/Images/blog_header.jpg") center no-repeat;
+            background-size: cover;
+        }
+
+        .about {
+            @extend .banner;
+            background: url("/Content/Images/about_header.jpg") center no-repeat;
+            background-size: cover;
+        }
+
+        .contact {
+            @extend .banner;
+            background: url("/Content/Images/contact_header.jpg") center no-repeat;
+            background-size: cover;
+        }
+
+        .post {
+
+            .new-comment {
+                width: 100%;
+            }
+        }
+
+        .newsletter {
+              background: $color-dark; /* For browsers that do not support gradients */
+              background: linear-gradient(to right, $color-dark , $color-blue); /* Standard syntax */
+              background: -webkit-linear-gradient(left, $color-dark , $color-blue); /* For Safari 5.1 to 6.0 */
+              background: -o-linear-gradient(right, $color-dark, $color-blue); /* For Opera 11.1 to 12.0 */
+              background: -moz-linear-gradient(right, $color-dark, $color-blue); /* For Firefox 3.6 to 15 */
+          
+              h2, p {
+                  color: $color-white;
+              }
+
+              a {
+                  border: 1px solid $color-white;
+              }
+        }
+
+        .body-content {
+            padding: 15px;
+
+            .search {
+                text-align: center;
+
+                input {
+                    display: inline-block;
+                }
+            }
+
+            .tags {
+
+		        .tag {
+			        border: 1px solid;
+			        padding: 2px 8px;
+			        margin: 4px 4px 4px 0;
+			        font-size: 13pt;
+			        display: inline-block;
+
+			        &:before {
+				        content: "# ";
+			        }
+		        }
+
+		        .tag-small {
+			        @extend .tag;
+			        font-size: 10pt;
+		        }
+	        }
+        }
+
+        footer {
+            background-color: $color-black;
+            color: $color-white;
+            /*bottom: 0;
+            position: fixed;
+            width: 100%;*/
+
+            .container {
+                padding: 10px 15px;
+
+                .copyright {
+                    float: left;
+
+                    img {
+                        padding: 10px 30px 10px 15px;
+                    }
+
+                    p {
+                        padding: 0 15px;
+                        font-size: 15px;
+                        color: $color-white;
+                    }
+                }
+
+                .social-buttons {
+                    float: right;
+                }
+            }
+        }
     }
 }
