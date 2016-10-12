@@ -26,6 +26,9 @@ namespace LDevelopment
             bundles.Add(new ScriptBundle("~/bundles/analytics")
                 .Include("~/Scripts/ldev/analytics.js"));
 
+            bundles.Add(new ScriptBundle("~/bundles/insights")
+                .Include("~/Scripts/ldev/insights.js"));
+
             /* STYLES */
 
             bundles.Add(new StyleBundle("~/Content/Styles/css")
