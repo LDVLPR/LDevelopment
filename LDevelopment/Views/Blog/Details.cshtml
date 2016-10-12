@@ -41,9 +41,7 @@
             {
                 <div>
                     <div class="col-md-6">
-                        <h3>@Resources.LogIn</h3>
-                        <hr />
-                        @Html.ActionLink(Resources.LogInToAddComment, "Login", new { controller = "Account", returnUrl = HttpContext.Current.Request.RawUrl }, new { @class = "new-comment" })
+                        @Html.Partial("~/Views/Account/_LocalLoginPartial.cshtml", new LoginViewModel())
                     </div>
                     <div class="col-md-6">
                         @Html.Partial("~/Views/Account/_ExternalLoginsListPartial.cshtml", new ExternalLoginListViewModel { ReturnUrl = ViewBag.ReturnUrl })

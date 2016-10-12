@@ -273,6 +273,7 @@
     <Compile Include="ViewModels\SearchViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\Fonts\fontawesome-webfont.svg" />
     <Content Include="Content\Styles\bootstrap-multiselect.css" />
     <Content Include="Content\Styles\bootstrap-theme.css" />
     <Content Include="Content\Styles\bootstrap-theme.min.css" />
@@ -287,6 +288,8 @@
     <Content Include="Content\Images\post_pic.jpg" />
     <Content Include="Content\Images\section_01.jpg" />
     <Content Include="Content\Images\section_02.jpg" />
+    <Content Include="Content\Styles\font-awesome.css" />
+    <Content Include="Content\Styles\font-awesome.min.css" />
     <Content Include="Content\Styles\PagedList.css" />
     <Content Include="Content\Styles\Site.css">
       <DependentUpon>Site.scss</DependentUpon>
@@ -315,6 +318,11 @@
     <None Include="compilerconfig.json.defaults">
       <DependentUpon>compilerconfig.json</DependentUpon>
     </None>
+    <Content Include="Content\Fonts\fontawesome-webfont.eot" />
+    <Content Include="Content\Fonts\fontawesome-webfont.ttf" />
+    <Content Include="Content\Fonts\fontawesome-webfont.woff" />
+    <Content Include="Content\Fonts\fontawesome-webfont.woff2" />
+    <Content Include="Content\Fonts\fontawesome.otf" />
     <None Include="Properties\PublishProfiles\LDevelopment - Web Deploy.pubxml" />
     <None Include="Properties\PublishProfiles\LDevelopment.pubxml" />
     <Content Include="Scripts\bootstrap-multiselect.js" />
@@ -566,6 +574,7 @@
     <Content Include="Scripts\tinymce\skins\lightgray\fonts\readme.md" />
     <Content Include="Scripts\tinymce\langs\readme.md" />
     <Content Include="Views\Home\Error.cshtml" />
+    <Content Include="Views\Account\_LocalLoginPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

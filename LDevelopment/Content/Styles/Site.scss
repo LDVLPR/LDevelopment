@@ -306,6 +306,12 @@ body {
 
                 .social-buttons {
                     float: right;
+
+                    a {
+                        color: inherit;
+                        font-size: 32px;
+                        padding: 10px 15px;
+                    }
                 }
             }
         }

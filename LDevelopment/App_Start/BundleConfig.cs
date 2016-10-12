@@ -26,7 +26,7 @@ namespace LDevelopment
             /* STYLES */
 
             bundles.Add(new StyleBundle("~/Content/Styles/css")
-                .Include("~/Content/Styles/bootstrap.css", "~/Content/Styles/site.css"));
+                .Include("~/Content/Styles/bootstrap.css", "~/Content/Styles/site.css", "~/Content/Styles/font-awesome.css"));
 
             bundles.Add(new StyleBundle("~/Content/Styles/multiselect")
                 .Include("~/Content/Styles/bootstrap-multiselect.css"));

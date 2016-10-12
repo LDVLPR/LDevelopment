@@ -159,4 +159,8 @@
           color: #ffffff; }
       body .site footer .container .social-buttons {
         float: right; }
+        body .site footer .container .social-buttons a {
+          color: inherit;
+          font-size: 32px;
+          padding: 10px 15px; }
 
