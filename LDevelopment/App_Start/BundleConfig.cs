@@ -23,6 +23,9 @@ namespace LDevelopment
             bundles.Add(new ScriptBundle("~/bundles/editor")
                 .Include("~/Scripts/bootstrap-multiselect.js", "~/Scripts/ldev/editor.js"));
 
+            bundles.Add(new ScriptBundle("~/bundles/analytics")
+                .Include("~/Scripts/ldev/analytics.js"));
+
             /* STYLES */
 
             bundles.Add(new StyleBundle("~/Content/Styles/css")
