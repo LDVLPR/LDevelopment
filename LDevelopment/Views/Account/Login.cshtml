@@ -4,18 +4,15 @@
 }
 
 <div class="login">
-    <div class="container body-content">
-        <h2>@ViewBag.Title</h2>
-        <div class="row">
-            <div class="col-md-6">
-                <section>
-                    @Html.Partial("_LocalLoginPartial", new LoginViewModel())
-                </section>
+    <div class="container body-content text-center">
+        <h2 class="text-uppercase">@ViewBag.Title</h2>
+        <div class="col-md-12">
+            <div class="row">
+                @Html.Partial("_ExternalLoginsListPartial", new ExternalLoginListViewModel { ReturnUrl = ViewBag.ReturnUrl })
             </div>
-            <div class="col-md-6">
-                <section>
-                    @Html.Partial("_ExternalLoginsListPartial", new ExternalLoginListViewModel { ReturnUrl = ViewBag.ReturnUrl })
-                </section>
+            <h3 class="text-lowercase">@Resources.Or</h3>
+            <div class="row">
+                @Html.Partial("_LocalLoginPartial", new LoginViewModel())
             </div>
         </div>
     </div>

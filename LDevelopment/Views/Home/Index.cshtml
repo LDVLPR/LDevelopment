@@ -9,7 +9,7 @@
             <div class="row">
                 <div class="col-md-12">
                     <h1>CODE THE FUTURE</h1>
-                    <h2>Web Development ∙ Platforma .NET ∙ Patterns & Practices</h2>
+                    <h2>.NET Framework ∙ Web Development ∙ Patterns & Practices</h2>
                     @Html.ActionLink(Resources.Read, "Index", "Blog", null, new { @class = "btn btn-primary btn-lg text-uppercase" })
                 </div>
             </div>
@@ -21,8 +21,10 @@
             <div class="row">
                 <div class="col-md-12 text-center">
                     <h2 class="text-uppercase">@Resources.About</h2>
-                    <p>LDeveloper to Łukasz Dudziak.</p>
-                    <p>LDevelopment to...</p>
+                    <p>
+                        Nazywam się <strong>Łukasz Dudziak</strong>. Jestem programistą - pasjonatem, a także właścicielem przedsiębiorstwa
+                        rozwijanego pod nazwą <strong>LDevelopment</strong>, którego ta strona jest wizytówką.
+                    </p>
                     @Html.ActionLink(Resources.About, "About", null, new { @class = "btn btn-primary btn-lg text-uppercase" })
                 </div>
             </div>
@@ -43,7 +45,7 @@
                         <img class="img-responsive" src="@item.ImageUrl" alt="@item.Title" />
                         <h2>@item.Title</h2>
                         <p>@Html.Raw(item.Text)</p>
-                        @Html.ActionLink(Resources.Read, "Details", "Blog", new { id = item.Id }, new { @class = "btn btn-default text-uppercase" })
+                        <div class="more">@Html.ActionLink(Resources.Read, "Details", "Blog", new { id = item.Id }, new { @class = "btn btn-default text-uppercase" })</div>
                     </div>
                 }
             </div>
@@ -64,7 +66,7 @@
                         <img class="img-responsive" src="@item.ImageUrl" alt="@item.Title" />
                         <h2>@item.Title</h2>
                         <p>@Html.Raw(item.Text)</p>
-                        @Html.ActionLink(Resources.Read, "Details", "Blog", new { id = item.Id }, new { @class = "btn btn-default text-uppercase" })
+                        <div class="more">@Html.ActionLink(Resources.Read, "Details", "Blog", new { id = item.Id }, new { @class = "btn btn-default text-uppercase" })</div>
                     </div>
                 }
             </div>
@@ -77,10 +79,10 @@
                 <div class="col-md-12 text-center">
                     <h2 class="text-uppercase">@Resources.Newsletter</h2>
                     <p>
-                        Zapisz się do newslettera
+                        Zapisz się do newslettera, aby być na bieżąco ze wszystkimi wpisami na blogu
                     </p>
                     <p>
-                        <a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301866">@Resources.SignIn</a>
+                        <a class="btn btn-default text-uppercase" href="http://go.microsoft.com/fwlink/?LinkId=301866">@Resources.SignIn</a>
                     </p>
                 </div>
             </div>

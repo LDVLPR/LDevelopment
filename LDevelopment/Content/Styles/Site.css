@@ -1,6 +1,5 @@
 ﻿body {
   padding-top: 50px;
-  padding-bottom: 20px;
   font-family: 'Roboto', sans-serif; }
   body .navbar {
     background-color: #ffffff; }
@@ -39,15 +38,19 @@
       color: #949596;
       font-size: 16px;
       line-height: 26px; }
-  body .site .main a {
-    border: 1px solid #0f6cc3;
-    border-radius: 25px;
-    color: #0f6cc3;
-    background-color: #ffffff;
-    padding: 10px 30px; }
-    body .site .main a:hover {
-      color: #ffffff;
-      background-color: #0f6cc3; }
+  body .site .main .row {
+    margin: 20px 0; }
+    body .site .main .row a {
+      border: 1px solid #0f6cc3;
+      border-radius: 25px;
+      color: #0f6cc3;
+      background-color: #ffffff;
+      padding: 10px 30px; }
+      body .site .main .row a:hover {
+        color: #ffffff;
+        background-color: #0f6cc3; }
+    body .site .main .row p {
+      margin: 20px 0; }
   body .site .home {
     background: url("/Content/Images/banner_01.jpg") center no-repeat; }
     body .site .home .row h1, body .site .home .row h2 {
@@ -78,7 +81,9 @@
       height: 160px;
       color: #ffffff; }
       body .site .banner .container, body .site .section-1 .container, body .site .section-2 .container, body .site .blog .container, body .site .about .container, body .site .contact .container {
-        padding: 40px 0; } }
+        padding: 40px 0; }
+    body .site .content {
+      min-height: 280px; } }
   @media screen and (min-width: 992px) {
     body .site .home .container {
       padding: 240px 80px; }
@@ -90,9 +95,13 @@
       height: 280px;
       color: #ffffff; }
       body .site .banner .container, body .site .section-1 .container, body .site .section-2 .container, body .site .blog .container, body .site .about .container, body .site .contact .container {
-        padding: 100px 0; } }
+        padding: 100px 0; }
+    body .site .content {
+      min-height: 280px; } }
   body .site .last .short, body .site .popular .short {
     margin: 30px 0; }
+    body .site .last .short .more, body .site .popular .short .more {
+      text-align: center; }
   body .site .section-1 {
     background: url("/Content/Images/section_01.jpg") center no-repeat;
     background-size: cover; }
@@ -125,6 +134,13 @@
       color: #ffffff; }
     body .site .newsletter a {
       border: 1px solid #ffffff; }
+  body .site .login .social-buttons button {
+    width: 270px;
+    margin: 5px; }
+    body .site .login .social-buttons button i {
+      font-size: 24px; }
+  body .site .login .form-group .form-control {
+    display: inline-block; }
   body .site .body-content {
     padding: 15px; }
     body .site .body-content .search {
@@ -155,12 +171,14 @@
           padding: 10px 30px 10px 15px; }
         body .site footer .container .copyright p {
           padding: 0 15px;
-          font-size: 15px;
+          font-size: 12px;
           color: #ffffff; }
       body .site footer .container .social-buttons {
         float: right; }
         body .site footer .container .social-buttons a {
           color: inherit;
           font-size: 32px;
-          padding: 10px 15px; }
+          padding: 10px 5px; }
+          body .site footer .container .social-buttons a:hover {
+            color: #949596; }
 

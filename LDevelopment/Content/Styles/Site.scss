@@ -6,7 +6,6 @@ $color-black: #212427;
 
 body {
     padding-top: 50px;
-    padding-bottom: 20px;
     font-family: 'Roboto', sans-serif;
 
     .navbar {
@@ -79,16 +78,24 @@ body {
 
         .main {
 
-            a {
-                border: 1px solid $color-blue;
-                border-radius: 25px;
-                color: $color-blue;
-                background-color: $color-white;
-                padding: 10px 30px;
+            .row {
+                margin: 20px 0;
 
-                &:hover {
-                    color: $color-white;
-                    background-color: $color-blue;
+                a {
+                    border: 1px solid $color-blue;
+                    border-radius: 25px;
+                    color: $color-blue;
+                    background-color: $color-white;
+                    padding: 10px 30px;
+
+                    &:hover {
+                        color: $color-white;
+                        background-color: $color-blue;
+                    }
+                }
+
+                p {
+                    margin: 20px 0;
                 }
             }
         }
@@ -160,6 +167,10 @@ body {
                     padding: 40px 0;
                 }
             }
+
+            .content {
+                min-height: 280px;
+            }
         }
 
         @media screen and (min-width: 992px) {
@@ -187,11 +198,20 @@ body {
                     padding: 100px 0;
                 }
             }
+
+            .content {
+                min-height: 280px;
+            }
         }
 
         .last, .popular {
+
             .short {
                 margin: 30px 0;
+
+                .more {
+                    text-align: center;
+                }
             }
         }
 
@@ -248,6 +268,32 @@ body {
               }
         }
 
+        .login {
+
+            .social-buttons {
+
+                button {
+                    width: 270px;
+                    margin: 5px;
+
+                    span {
+
+                    }
+
+                    i {
+                        font-size: 24px;
+                    }
+                }
+            }
+
+            .form-group {
+
+                .form-control {
+                    display: inline-block;
+                }
+            }
+        }
+
         .body-content {
             padding: 15px;
 
@@ -299,7 +345,7 @@ body {
 
                     p {
                         padding: 0 15px;
-                        font-size: 15px;
+                        font-size: 12px;
                         color: $color-white;
                     }
                 }
@@ -310,7 +356,11 @@ body {
                     a {
                         color: inherit;
                         font-size: 32px;
-                        padding: 10px 15px;
+                        padding: 10px 5px;
+
+                        &:hover {
+                            color: $color-gray;
+                        }
                     }
                 }
             }

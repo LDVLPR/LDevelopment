@@ -13,8 +13,8 @@
         @using (Html.BeginForm())
         {
             <div class="search">
-                @Html.TextBox("SearchString", Model.Search.SearchString, new { @class = "form-control" })
-                <input type="submit" class="btn btn-default" value="Search" />
+                @Html.TextBox("SearchString", Model.Search.SearchString, new { @class = "form-control", @placeholder = Resources.SearchPlaceholder })
+                <input type="submit" class="btn btn-default" value="@Resources.Search" />
             </div>
         }
     </div>

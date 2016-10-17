@@ -244,7 +244,7 @@
     <value>Potwierdź swoje konto</value>
   </data>
   <data name="LogInService" xml:space="preserve">
-    <value>Zaloguj się za pomocą</value>
+    <value>Zaloguj się przez</value>
   </data>
   <data name="PasswordForgot" xml:space="preserve">
     <value>Zapomniałeś hasła?</value>
@@ -275,5 +275,17 @@
   </data>
   <data name="SignIn" xml:space="preserve">
     <value>Zapisz się</value>
+  </data>
+  <data name="AccountNotCreated" xml:space="preserve">
+    <value>Nie masz jeszcze konta?</value>
+  </data>
+  <data name="Or" xml:space="preserve">
+    <value>Lub</value>
+  </data>
+  <data name="Search" xml:space="preserve">
+    <value>Szukaj</value>
+  </data>
+  <data name="SearchPlaceholder" xml:space="preserve">
+    <value>Wpisz szukane hasło</value>
   </data>
 </root>

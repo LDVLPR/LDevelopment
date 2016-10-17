@@ -39,11 +39,14 @@
             }
             else
             {
-                <div>
-                    <div class="col-md-6">
+                <div class="login text-center">
+                    <div class="col-md-5">
                         @Html.Partial("~/Views/Account/_LocalLoginPartial.cshtml", new LoginViewModel())
                     </div>
-                    <div class="col-md-6">
+                    <div class="col-md-2">
+                        <h3 class="text-lowercase">@Resources.Or</h3>
+                    </div>
+                    <div class="col-md-5">
                         @Html.Partial("~/Views/Account/_ExternalLoginsListPartial.cshtml", new ExternalLoginListViewModel { ReturnUrl = ViewBag.ReturnUrl })
                     </div>
                 </div>
@@ -51,10 +54,10 @@
 
             @if (Model.Comments.Any())
             {
-                <div id="comments">
+                <div class="comments">
                     @foreach (var comment in Model.Comments)
                     {
-                        <div class="thumbnail">
+                        <div class="">
                             <span class="glyphicon glyphicon-time"></span> @Html.DisplayFor(model => comment.ReleaseDate)
                             <span class="glyphicon glyphicon glyphicon-user"></span> <a href="mailto:@Html.DisplayFor(model => comment.AuthorMail)">@Html.DisplayFor(model => comment.AuthorName)</a>
                             <div>@Html.DisplayFor(model => comment.Text)</div>

@@ -1,60 +1,60 @@
 ﻿<!DOCTYPE html>
 <html>
-<head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - LDevelopment</title>
-    <meta name="description" content="LDevelopment Łukasz Dudziak - Web Development ∙ Platforma .NET ∙ Patterns & Practices ∙ Strony internetowe i programistyczne projekty biznesowe na zamówienie"/>
-    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>@ViewBag.Title - LDevelopment</title>
+        <meta name="description" content="LDevelopment Łukasz Dudziak | .NET Framework ∙ Web Development ∙ Patterns & Practices ∙ Strony internetowe i programistyczne projekty biznesowe na zamówienie"/>
+        <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto">
 
-    @Styles.Render("~/Content/Styles/css")
-    @Scripts.Render("~/bundles/modernizr")
-</head>
-<body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a class="logo" href='@Url.Action("Index", "Home")'>
-                    <img class="img-responsive" src='@Url.Content("~/Content/Images/logo.png")' alt="LDevelopment"/>
-                </a>
-            </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav text-uppercase">
-                    <li>@Html.ActionLink(Resources.Blog, "Index", "Blog")</li>
-                    <li>@Html.ActionLink(Resources.About, "About", "Home")</li>
-                    <li>@Html.ActionLink(Resources.Contact, "Contact", "Home")</li>
-                </ul>
-                @Html.Partial("_LoginPartial")
+        @Styles.Render("~/Content/Styles/css")
+        @Scripts.Render("~/bundles/modernizr")
+    </head>
+    <body>
+        <div class="navbar navbar-inverse navbar-fixed-top">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="logo" href='@Url.Action("Index", "Home")'>
+                        <img class="img-responsive" src='@Url.Content("~/Content/Images/logo.png")' alt="LDevelopment"/>
+                    </a>
+                </div>
+                <div class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav text-uppercase">
+                        <li>@Html.ActionLink(Resources.Blog, "Index", "Blog")</li>
+                        <li>@Html.ActionLink(Resources.About, "About", "Home")</li>
+                        <li>@Html.ActionLink(Resources.Contact, "Contact", "Home")</li>
+                    </ul>
+                    @Html.Partial("_LoginPartial")
+                </div>
             </div>
         </div>
-    </div>
-    <div class="site">
-        @RenderBody()
+        <div class="site">
+            @RenderBody()
 
-        <footer>
-            <div class="container">
-                <div class="copyright">
-                    <img class="img-responsive" src='@Url.Content("~/Content/Images/logo.png")' alt="LDevelopment"/>
-                    <p>&copy; @DateTime.Now.Year - LDevelopment</p>
+            <footer>
+                <div class="container">
+                    <div class="copyright">
+                        <img class="img-responsive" src='@Url.Content("~/Content/Images/logo.png")' alt="LDevelopment"/>
+                        <p>&copy; @DateTime.Now.Year - LDevelopment</p>
+                    </div>
+                    <div class="social-buttons">
+                        <a href="https://www.facebook.com/ldev.eu/" target="_blank"><i class="fa fa-facebook-square" aria-hidden="true"></i></a>
+                        <a href="https://www.linkedin.com/in/lukaszdudziak1990/" target="_blank"><i class="fa fa-linkedin-square" aria-hidden="true"></i></a>
+                        <a href="https://github.com/LDVLPR/" target="_blank"><i class="fa fa-github-square" aria-hidden="true"></i></a>
+                    </div>
                 </div>
-                <div class="social-buttons">
-                    <a href="https://www.facebook.com/ldev.eu/" target="_blank"><i class="fa fa-facebook-square" aria-hidden="true"></i></a>
-                    <a href="https://www.linkedin.com/in/lukaszdudziak1990/" target="_blank"><i class="fa fa-linkedin-square" aria-hidden="true"></i></a>
-                    <a href="https://github.com/LDVLPR/" target="_blank"><i class="fa fa-github-square" aria-hidden="true"></i></a>
-                </div>
-            </div>
-        </footer>
-    </div>
+            </footer>
+        </div>
 
-    @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/bootstrap")
-    @Scripts.Render("~/bundles/analytics")
-    @Scripts.Render("~/bundles/insights")
-    @RenderSection("scripts", required: false)
-</body>
+        @Scripts.Render("~/bundles/jquery")
+        @Scripts.Render("~/bundles/bootstrap")
+        @Scripts.Render("~/bundles/analytics")
+        @Scripts.Render("~/bundles/insights")
+        @RenderSection("scripts", required: false)
+    </body>
 </html>
