@@ -250,6 +250,15 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Tu mnie znajdziesz.
+        /// </summary>
+        public static string FindMe {
+            get {
+                return ResourceManager.GetString("FindMe", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Witaj.
         /// </summary>
         public static string Hello {
@@ -448,7 +457,7 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Czytaj więcej....
+        ///   Looks up a localized string similar to Czytaj więcej.
         /// </summary>
         public static string ReadMore {
             get {

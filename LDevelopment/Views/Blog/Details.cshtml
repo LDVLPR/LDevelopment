@@ -18,21 +18,26 @@
                     @Html.ActionLink(tag.Text, "Tag", new { tag = tag.Value }, new { @class = "tag-small" })
                 }
             </div>
-            <h2 class="text-uppercase">@Html.DisplayFor(model => model.Title)</h2>
-            <div>
-                <span class="glyphicon glyphicon-time"></span> @Html.DisplayFor(model => model.ReleaseDate)
-                <span class="glyphicon glyphicon-comment"></span> @Resources.Comments:@Html.DisplayFor(model => model.Comments.Count)
+            <h1 class="text-uppercase">@Html.DisplayFor(model => model.Title)</h1>
+            <div class="entity-header">
+                <span class="glyphicon glyphicon-time"></span>
+                <span class="release-date">@Html.DisplayFor(model => model.ReleaseDate)</span>
+                <span class="glyphicon glyphicon-comment"></span>
+                <span class="comments-info">@Resources.Comments: @Html.DisplayFor(model => model.Comments.Count)</span>
             </div>
             <div>
                 @Html.Raw(HttpUtility.HtmlDecode(Html.DisplayFor(model => model.Text).ToString()))
             </div>
+
+            <hr />
+            <h2 class="text-uppercase">@Resources.Comments</h2>
 
             @if (Request.IsAuthenticated)
             {
                 <div>
                     @Ajax.ActionLink(Resources.CommentAdd, "Comment", new { id = Model.Id },
                         new AjaxOptions { UpdateTargetId = "new-comment", OnSuccess = "hideButton()" },
-                        new { @class = "btn btn-default new-comment-button" })
+                        new { @class = "link btn text-uppercase new-comment-button" })
 
                     <div id="new-comment"></div>
                 </div>
@@ -57,10 +62,10 @@
                 <div class="comments">
                     @foreach (var comment in Model.Comments)
                     {
-                        <div class="">
+                        <div class="comment">
                             <span class="glyphicon glyphicon-time"></span> @Html.DisplayFor(model => comment.ReleaseDate)
                             <span class="glyphicon glyphicon glyphicon-user"></span> <a href="mailto:@Html.DisplayFor(model => comment.AuthorMail)">@Html.DisplayFor(model => comment.AuthorName)</a>
-                            <div>@Html.DisplayFor(model => comment.Text)</div>
+                            <p>@Html.DisplayFor(model => comment.Text)</p>
                         </div>
                     }
                 </div>

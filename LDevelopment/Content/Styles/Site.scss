@@ -31,7 +31,7 @@ body {
 
     .site {
 
-        input, select  {
+        input, select {
             max-width: 280px;
         }
 
@@ -52,11 +52,13 @@ body {
         h2 {
             font-size: 32px;
             line-height: 30px;
+            margin: 20px 0;
         }
 
         h3 {
             font-size: 20px;
             line-height: 26px;
+            margin: 10px 0;
         }
 
         h4 {
@@ -69,51 +71,15 @@ body {
             font-size: 18px;
             line-height: 28px;
 
-            text-2 {
+            .text-2 {
                 color: $color-gray;
                 font-size: 16px;
                 line-height: 26px;
             }
         }
 
-        .main {
-
-            .row {
-                margin: 20px 0;
-
-                a {
-                    border: 1px solid $color-blue;
-                    border-radius: 25px;
-                    color: $color-blue;
-                    background-color: $color-white;
-                    padding: 10px 30px;
-
-                    &:hover {
-                        color: $color-white;
-                        background-color: $color-blue;
-                    }
-                }
-
-                p {
-                    margin: 20px 0;
-                }
-            }
-        }
-
-        .home {
-            background: url("/Content/Images/banner_01.jpg") center no-repeat;
-
-            .row {
-                
-                h1, h2 {
-                    color: #fff;
-                }
-
-                a {
-                    color: $color-blue;
-                    background-color: $color-white;
-                }
-            }
+        .body-content {
+            padding: 15px;
         }
 
         @media only screen and (max-width: 767px) {
@@ -204,33 +170,115 @@ body {
             }
         }
 
-        .last, .popular {
+        .link {
+            border: 1px solid $color-blue;
+            border-radius: 25px;
+            color: $color-blue;
+            background-color: $color-white;
+            padding: 10px 30px;
+            margin: 10px 0;
 
-            .short {
-                margin: 30px 0;
-
-                .more {
-                    text-align: center;
-                }
+            &:hover {
+                color: $color-white;
+                background-color: $color-blue;
             }
         }
 
-        .section-1 {
-            @extend .banner;
-            background: url("/Content/Images/section_01.jpg") center no-repeat;
-            background-size: cover;
+        .gradient {
+            background: $color-dark; /* For browsers that do not support gradients */
+            background: linear-gradient(to right, $color-dark, $color-blue); /* Standard syntax */
+            background: -webkit-linear-gradient(left, $color-dark, $color-blue); /* For Safari 5.1 to 6.0 */
+            background: -o-linear-gradient(right, $color-dark, $color-blue); /* For Opera 11.1 to 12.0 */
+            background: -moz-linear-gradient(right, $color-dark, $color-blue); /* For Firefox 3.6 to 15 */
         }
 
-        .section-2 {
-            @extend .banner;
-            background: url("/Content/Images/section_02.jpg") center no-repeat;
-            background-size: cover;
+        .main {
+
+            .row {
+                margin: 20px 0;
+
+                p {
+                    margin: 10px 0;
+                }
+
+                a {
+                    border: 1px solid $color-white;
+                }
+            }
+
+            .home {
+                background: url("/Content/Images/banner_01.jpg") center no-repeat;
+
+                .row {
+
+                    h1, h2 {
+                        color: #fff;
+                    }
+                }
+            }
+
+            .about-me, .last, .popular {
+
+                a {
+                    border: 1px solid $color-blue;
+                }
+            }
+
+            .last, .popular {
+
+                .short {
+                    margin: 30px 0;
+
+                    .more {
+                        text-align: center;
+                    }
+                }
+            }
+
+            .section-1 {
+                @extend .banner;
+                background: url("/Content/Images/section_01.jpg") center no-repeat;
+                background-size: cover;
+            }
+
+            .section-2 {
+                @extend .banner;
+                background: url("/Content/Images/section_02.jpg") center no-repeat;
+                background-size: cover;
+            }
+
+            .newsletter {
+                @extend .gradient;
+
+                h2, p {
+                    color: $color-white;
+                }
+
+                a {
+                    border: 1px solid $color-white;
+                }
+            }
         }
 
         .blog {
             @extend .banner;
             background: url("/Content/Images/blog_header.jpg") center no-repeat;
             background-size: cover;
+
+            .search {
+                text-align: center;
+
+                input {
+                    display: inline-block;
+                    border-radius: 25px;
+                    border: 0;
+                }
+
+                .link {
+                    padding: 8px 30px;
+                    margin: 0 0 0 10px;
+                }
+            }
         }
 
         .about {
@@ -239,10 +287,35 @@ body {
             background-size: cover;
         }
 
+        .find-me {
+            @extend .gradient;
+
+            h2 {
+                color: $color-white;
+            }
+
+            a {
+                font-size: 64px;
+                padding: 10px 20px;
+
+                &:hover {
+                    color: $color-white;
+                }
+            }
+        }
+
         .contact {
             @extend .banner;
             background: url("/Content/Images/contact_header.jpg") center no-repeat;
             background-size: cover;
+        }
+
+        .posts {
+
+            .entity-title a {
+                color: $color-black;
+                text-decoration: none;
+            }
         }
 
         .post {
@@ -250,22 +323,52 @@ body {
             .new-comment {
                 width: 100%;
             }
+
+            .comments {
+                
+                .comment {
+                    padding: 10px 0 0;
+                }
+            }
         }
 
-        .newsletter {
-              background: $color-dark; /* For browsers that do not support gradients */
-              background: linear-gradient(to right, $color-dark , $color-blue); /* Standard syntax */
-              background: -webkit-linear-gradient(left, $color-dark , $color-blue); /* For Safari 5.1 to 6.0 */
-              background: -o-linear-gradient(right, $color-dark, $color-blue); /* For Opera 11.1 to 12.0 */
-              background: -moz-linear-gradient(right, $color-dark, $color-blue); /* For Firefox 3.6 to 15 */
-          
-              h2, p {
-                  color: $color-white;
-              }
+        .posts, .post {
 
-              a {
-                  border: 1px solid $color-white;
-              }
+            .tags {
+
+                .tag {
+                    border: 1px solid $color-gray;
+                    border-radius: 25px;
+                    padding: 2px 10px;
+                    margin: 4px 4px 4px 0;
+                    font-size: 13pt;
+                    display: inline-block;
+                    text-decoration: none;
+
+                    &:before {
+                        content: "# ";
+                    }
+                }
+
+                .tag-small {
+                    @extend .tag;
+                    font-size: 10pt;
+                }
+            }
+
+            .entity-header {
+                padding: 0 0 10px 0;
+
+                span, a {
+                    color: $color-gray;
+                    font-size: 16px;
+                    margin: 0 3px 0 0;
+                }
+
+                .glyphicon-comment {
+                    margin: 0 3px 0 10px;
+                }
+            }
         }
 
         .login {
@@ -277,7 +380,6 @@ body {
                     margin: 5px;
 
                     span {
-
                     }
 
                     i {
@@ -294,44 +396,9 @@ body {
             }
         }
 
-        .body-content {
-            padding: 15px;
-
-            .search {
-                text-align: center;
-
-                input {
-                    display: inline-block;
-                }
-            }
-
-            .tags {
-
-		        .tag {
-			        border: 1px solid;
-			        padding: 2px 8px;
-			        margin: 4px 4px 4px 0;
-			        font-size: 13pt;
-			        display: inline-block;
-
-			        &:before {
-				        content: "# ";
-			        }
-		        }
-
-		        .tag-small {
-			        @extend .tag;
-			        font-size: 10pt;
-		        }
-	        }
-        }
-
         footer {
             background-color: $color-black;
             color: $color-white;
-            /*bottom: 0;
-            position: fixed;
-            width: 100%;*/
 
             .container {
                 padding: 10px 15px;

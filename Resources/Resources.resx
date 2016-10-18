@@ -235,7 +235,7 @@
     <value>Nieudana próba logowania</value>
   </data>
   <data name="ReadMore" xml:space="preserve">
-    <value>Czytaj więcej...</value>
+    <value>Czytaj więcej</value>
   </data>
   <data name="AccountConfirmContent" xml:space="preserve">
     <value>Potwierdź swoje konto klikając &lt;a href=\"{{callbackUrl}}\"&gt;tutaj&lt;/a&gt;"</value>
@@ -287,5 +287,8 @@
   </data>
   <data name="SearchPlaceholder" xml:space="preserve">
     <value>Wpisz szukane hasło</value>
+  </data>
+  <data name="FindMe" xml:space="preserve">
+    <value>Tu mnie znajdziesz</value>
   </data>
 </root>

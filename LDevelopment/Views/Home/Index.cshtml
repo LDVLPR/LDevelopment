@@ -10,13 +10,13 @@
                 <div class="col-md-12">
                     <h1>CODE THE FUTURE</h1>
                     <h2>.NET Framework ∙ Web Development ∙ Patterns & Practices</h2>
-                    @Html.ActionLink(Resources.Read, "Index", "Blog", null, new { @class = "btn btn-primary btn-lg text-uppercase" })
+                    @Html.ActionLink(Resources.Read, "Index", "Blog", null, new { @class = "link btn btn-lg text-uppercase" })
                 </div>
             </div>
         </div>
     </section>
 
-    <section class="aboutme">
+    <section class="about-me">
         <div class="container body-content">
             <div class="row">
                 <div class="col-md-12 text-center">
@@ -25,7 +25,7 @@
                         Nazywam się <strong>Łukasz Dudziak</strong>. Jestem programistą - pasjonatem, a także właścicielem przedsiębiorstwa
                         rozwijanego pod nazwą <strong>LDevelopment</strong>, którego ta strona jest wizytówką.
                     </p>
-                    @Html.ActionLink(Resources.About, "About", null, new { @class = "btn btn-primary btn-lg text-uppercase" })
+                    @Html.ActionLink(Resources.About, "About", null, new { @class = "link btn btn-lg text-uppercase" })
                 </div>
             </div>
         </div>
@@ -43,9 +43,9 @@
             {
                     <div class="short col-md-4 text-justify">
                         <img class="img-responsive" src="@item.ImageUrl" alt="@item.Title" />
-                        <h2>@item.Title</h2>
+                        <h3 class="text-uppercase">@item.Title</h3>
                         <p>@Html.Raw(item.Text)</p>
-                        <div class="more">@Html.ActionLink(Resources.Read, "Details", "Blog", new { id = item.Id }, new { @class = "btn btn-default text-uppercase" })</div>
+                        <div class="more">@Html.ActionLink(Resources.Read, "Details", "Blog", new { id = item.Id }, new { @class = "link btn btn-lg text-uppercase" })</div>
                     </div>
                 }
             </div>
@@ -64,9 +64,9 @@
             {
                     <div class="short col-md-4 text-justify">
                         <img class="img-responsive" src="@item.ImageUrl" alt="@item.Title" />
-                        <h2>@item.Title</h2>
+                        <h3 class="text-uppercase">@item.Title</h3>
                         <p>@Html.Raw(item.Text)</p>
-                        <div class="more">@Html.ActionLink(Resources.Read, "Details", "Blog", new { id = item.Id }, new { @class = "btn btn-default text-uppercase" })</div>
+                        <div class="more">@Html.ActionLink(Resources.Read, "Details", "Blog", new { id = item.Id }, new { @class = "link btn btn-lg text-uppercase" })</div>
                     </div>
                 }
             </div>
@@ -82,7 +82,7 @@
                         Zapisz się do newslettera, aby być na bieżąco ze wszystkimi wpisami na blogu
                     </p>
                     <p>
-                        <a class="btn btn-default text-uppercase" href="http://go.microsoft.com/fwlink/?LinkId=301866">@Resources.SignIn</a>
+                        <a class="link btn btn-lg text-uppercase" href="http://go.microsoft.com/fwlink/?LinkId=301866">@Resources.SignIn</a>
                     </p>
                 </div>
             </div>
