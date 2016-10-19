@@ -36,7 +36,7 @@
             {
                 <div>
                     @Ajax.ActionLink(Resources.CommentAdd, "Comment", new { id = Model.Id },
-                        new AjaxOptions { UpdateTargetId = "new-comment", OnSuccess = "hideButton()" },
+                        new AjaxOptions { UpdateTargetId = "new-comment", OnBegin = "hideButton()" },
                         new { @class = "link btn text-uppercase new-comment-button" })
 
                     <div id="new-comment"></div>
