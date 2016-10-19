@@ -43,7 +43,7 @@
             {
                     <div class="short col-md-4 text-justify">
                         <img class="img-responsive" src="@item.ImageUrl" alt="@item.Title" />
-                        <h3 class="text-uppercase">@item.Title</h3>
+                        <h3 class="text-uppercase">@Html.ActionLink(item.Title, "Details", "Blog", new { id = item.Id }, new { @class = "text-uppercase" })</h3>
                         <p>@Html.Raw(item.Text)</p>
                         <div class="more">@Html.ActionLink(Resources.Read, "Details", "Blog", new { id = item.Id }, new { @class = "link btn btn-lg text-uppercase" })</div>
                     </div>
@@ -64,7 +64,7 @@
             {
                     <div class="short col-md-4 text-justify">
                         <img class="img-responsive" src="@item.ImageUrl" alt="@item.Title" />
-                        <h3 class="text-uppercase">@item.Title</h3>
+                        <h3 class="text-uppercase">@Html.ActionLink(item.Title, "Details", "Blog", new { id = item.Id }, new { @class = "text-uppercase" })</h3>
                         <p>@Html.Raw(item.Text)</p>
                         <div class="more">@Html.ActionLink(Resources.Read, "Details", "Blog", new { id = item.Id }, new { @class = "link btn btn-lg text-uppercase" })</div>
                     </div>
