@@ -19,7 +19,7 @@
                 {
                     var caption = p.Caption == "Microsoft" ? "windows" : p.Caption.ToLower();
 
-                    <button type="submit" class="btn btn-default" title="@Resources.LogInService @p.Caption">
+                    <button type="submit" class="btn btn-default" id="@p.AuthenticationType" value="@p.AuthenticationType" name="provider" title="@Resources.LogInService @p.Caption">
                         <i class="fa fa-@caption" aria-hidden="true"></i>
                         <span>@Resources.LogInService @p.Caption</span>
                     </button>
