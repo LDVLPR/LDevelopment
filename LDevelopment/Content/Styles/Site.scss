@@ -1,5 +1,7 @@
 ﻿$color-white: #ffffff;
 $color-blue: #0f6cc3;
+$color-left: #155fa7;
+$color-right: #118ad1;
 $color-dark: #0a365d;
 $color-gray: #949596;
 $color-black: #212427;
@@ -8,6 +10,7 @@ body {
     font-family: 'Roboto', sans-serif;
     padding: 50px 0 0;
     height: 100%;
+    letter-spacing: 0.05em;
 
     .navbar {
         background-color: $color-white;
@@ -17,11 +20,13 @@ body {
         }
 
         a {
+            font-size: 16px;
             font-weight: bold;
+            line-height: 26px;
             color: $color-black !important;
 
             &:hover {
-                color: $color-blue !important;
+                color: $color-left !important;
             }
         }
 
@@ -31,11 +36,11 @@ body {
     }
 
     .site {
-        /*position: relative;
-        min-height: 100%;*/
 
         input, select {
+            height: 46px;
             max-width: 280px;
+            padding: 6px 20px;
             border: 1px solid $color-blue;
             border-radius: 25px;
         }
@@ -52,14 +57,12 @@ body {
         h1 {
             font-size: 40px;
             line-height: 48px;
-            letter-spacing: 1px;
         }
 
         h2 {
             font-size: 32px;
             font-weight: bold;
             line-height: 30px;
-            letter-spacing: 2px;
             margin: 20px 0;
         }
 
@@ -76,8 +79,8 @@ body {
 
         p {
             color: $color-black;
-            font-size: 18px;
-            line-height: 28px;
+            font-size: 16px;
+            line-height: 26px;
 
             .text-2 {
                 color: $color-gray;
@@ -95,6 +98,16 @@ body {
                     display: inline-block;
                 }
             }
+        }
+
+        .bgnd {
+            background-attachment: fixed;
+            background-position: 50% 0;
+            background-repeat: no-repeat;
+            background-size: 1920px;
+            height: 54vh;
+            max-height: 1200px;
+            min-height: 200px;
         }
 
         @media only screen and (max-width: 767px) {
@@ -160,10 +173,14 @@ body {
 
         @media screen and (min-width: 992px) {
 
+            /*.navbar-nav > li > a {
+                padding: 26px;
+            }*/
+
             .home {
 
                 .container {
-                    padding: 240px 80px;
+                    padding: 320px 80px;
 
                     h1 {
                         font-size: 63px;
@@ -190,65 +207,65 @@ body {
         }
 
         .link {
-            border: 1px solid $color-blue;
+            border: 1px solid $color-dark;
             border-radius: 25px;
-            color: $color-blue;
+            color: $color-dark;
             background-color: $color-white;
-            padding: 10px 30px;
-            margin: 10px 0;
+            padding: 10px 40px;
 
             &:hover {
                 color: $color-white;
-                background-color: $color-blue;
+                background-color: $color-dark;
+                border: 1px solid $color-dark;
             }
         }
 
         .gradient {
-            background: $color-dark; /* For browsers that do not support gradients */
-            background: linear-gradient(to right, $color-dark, $color-blue); /* Standard syntax */
-            background: -webkit-linear-gradient(left, $color-dark, $color-blue); /* For Safari 5.1 to 6.0 */
-            background: -o-linear-gradient(right, $color-dark, $color-blue); /* For Opera 11.1 to 12.0 */
-            background: -moz-linear-gradient(right, $color-dark, $color-blue); /* For Firefox 3.6 to 15 */
+            background: $color-left; /* For browsers that do not support gradients */
+            background: linear-gradient(to right, $color-left, $color-right); /* Standard syntax */
+            background: -webkit-linear-gradient(left, $color-left, $color-right); /* For Safari 5.1 to 6.0 */
+            background: -o-linear-gradient(right, $color-left, $color-right); /* For Opera 11.1 to 12.0 */
+            background: -moz-linear-gradient(right, $color-left, $color-right); /* For Firefox 3.6 to 15 */
         }
 
         .main {
 
             .row {
-                margin: 20px 0;
+                margin: 100px 0;
 
                 p {
-                    margin: 10px 0;
-                }
-
-                a {
-                    border: 1px solid $color-white;
+                    margin: 60px 0;
                 }
             }
 
             .home {
-                background: url("/Content/Images/banner_01.jpg") center no-repeat;
+                @extend .bgnd;
+                height: 100vh;
+                background-position: center;
+                background-repeat: no-repeat;
+                background-image: url("/Content/Images/banner_01.jpg");
 
-                .row {
+                .container {
 
-                    h1, h2 {
-                        color: #fff;
-                        font-weight: normal;
-                        letter-spacing: normal;
+                    .row {
+
+                        h1 {
+                            color: #fff;
+                            font-weight: bold;
+                        }
+
+                        h2 {
+                            color: #fff;
+                            font-weight: normal;
+                        }
                     }
-                }
-            }
-
-            .about-me, .last, .popular {
-
-                a {
-                    border: 1px solid $color-blue;
                 }
             }
 
             .last, .popular {
 
                 .short {
-                    margin: 30px 0;
+                    margin: 60px 0;
 
                     h3 a {
                         color: $color-black;
@@ -263,15 +280,14 @@ body {
             }
 
             .section-1 {
-                @extend .banner;
-                background: url("/Content/Images/section_01.jpg") center no-repeat;
-                background-size: cover;
+                //@extend .banner;
+                @extend .bgnd;
+                background-image: url("/Content/Images/section_01.jpg");
             }
 
             .section-2 {
-                @extend .banner;
-                background: url("/Content/Images/section_02.jpg") center no-repeat;
-                background-size: cover;
+                @extend .bgnd;
+                background-image: url("/Content/Images/section_02.jpg");
             }
 
             .newsletter {
@@ -282,6 +298,8 @@ body {
                 }
 
                 a {
+                    color: $color-white;
+                    background-color: $color-left;
                     border: 1px solid $color-white;
                 }
             }
@@ -289,8 +307,7 @@ body {
 
         .blog {
             @extend .banner;
-            background: url("/Content/Images/blog_header.jpg") center no-repeat;
-            background-size: cover;
+            background-image: url("/Content/Images/blog_header.jpg");
 
             .search {
                 text-align: center;
@@ -302,7 +319,6 @@ body {
                 }
 
                 .link {
-                    padding: 8px 30px;
                     margin: 0 0 0 10px;
                 }
             }
@@ -310,7 +326,7 @@ body {
 
         .about {
             @extend .banner;
-            background: url("/Content/Images/about_header.jpg") center no-repeat;
+            background-image: url("/Content/Images/about_header.jpg");
             background-size: cover;
         }
 
@@ -333,15 +349,41 @@ body {
 
         .contact {
             @extend .banner;
-            background: url("/Content/Images/contact_header.jpg") center no-repeat;
-            background-size: cover;
+            background-image: url("/Content/Images/contact_header.jpg");
         }
 
         .posts {
 
-            .entity-title a {
-                color: $color-black;
-                text-decoration: none;
+            .entity {
+
+                .entity-title a {
+                    color: $color-black;
+                    text-decoration: none;
+                }
+            }
+
+            .pagination {
+
+                li {
+                    text-align: center;
+
+                    &:first-child > a {
+                        border-top-left-radius: 25px;
+                        border-bottom-left-radius: 25px;
+                    }
+
+                    &:last-child > a {
+                        border-top-right-radius: 25px;
+                        border-bottom-right-radius: 25px;
+                    }
+
+                    a {
+                        width: 40px;
+                        height: 40px;
+                        line-height: 28px;
+                        padding: 6px;
+                    }
+                }
             }
         }
 
@@ -438,6 +480,7 @@ body {
                 padding: 10px 15px;
 
                 .copyright {
+                    margin: 60px 0;
                     float: left;
 
                     img {
@@ -452,6 +495,7 @@ body {
                 }
 
                 .social-buttons {
+                    margin: 60px 0;
                     float: right;
 
                     a {

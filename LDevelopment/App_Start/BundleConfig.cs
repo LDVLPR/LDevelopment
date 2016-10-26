@@ -29,6 +29,9 @@ namespace LDevelopment
             bundles.Add(new ScriptBundle("~/bundles/insights")
                 .Include("~/Scripts/ldev/insights.js"));
 
+            bundles.Add(new ScriptBundle("~/bundles/parallax")
+                .Include("~/Scripts/ldev/parallax.js"));
+
             /* STYLES */
 
             bundles.Add(new StyleBundle("~/Content/Styles/css")

@@ -8,13 +8,13 @@
 
 <div class="blog">
     <div class="container body-content">
-        <h2 class="text-uppercase text-center">@Resources.Blog</h2>
+        <h1 class="text-uppercase text-center">@Resources.Blog</h1>
 
         @using (Html.BeginForm())
         {
             <div class="search">
                 @Html.TextBox("SearchString", Model.Search.SearchString, new { @class = "form-control", @placeholder = Resources.SearchPlaceholder })
-                <input type="submit" class="link btn text-uppercase" value="@Resources.Search" />
+                <input type="submit" class="link btn btn-lg text-uppercase" value="@Resources.Search" />
             </div>
         }
     </div>
@@ -37,7 +37,9 @@
                 {
                     if (!string.IsNullOrEmpty(item.ImageUrl))
                     {
-                        <img class="img-responsive" src="@item.ImageUrl" alt="@item.Title"/>
+                        <a href="@Url.Action("Details", new { id = item.Id })">
+                            <img class="img-responsive" src="@item.ImageUrl" alt="@item.Title" />
+                        </a>
                     }
                     <div class="tags">
                         @foreach (SelectListItem tag in item.Tags.Items)

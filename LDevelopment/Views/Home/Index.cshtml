@@ -4,12 +4,12 @@
 }
 
 <div class="main">
-    <section class="home">
+    <section class="home parallax-bg">
         <div class="container body-content">
             <div class="row">
                 <div class="col-md-12">
-                    <h1>CODE THE FUTURE</h1>
-                    <h2>.NET Framework ∙ Web Development ∙ Patterns & Practices</h2>
+                    <h1 class="text-uppercase">CODE THE FUTURE</h1>
+                    <h2 class="text-uppercase">.NET Framework ∙ Web Development ∙ Patterns & Practices</h2>
                     @Html.ActionLink(Resources.Read, "Index", "Blog", null, new { @class = "link btn btn-lg text-uppercase" })
                 </div>
             </div>
@@ -31,7 +31,7 @@
         </div>
     </section>
 
-    <section class="section-1"></section>
+    <section class="section-1 parallax-bg"></section>
 
     <section class="last">
         <div class="container body-content">
@@ -40,9 +40,11 @@
                     <h2 class="text-uppercase">@Resources.Last</h2>
                 </div>
                 @foreach (var item in Model.LastPosts)
-            {
+                {
                     <div class="short col-md-4 text-justify">
-                        <img class="img-responsive" src="@item.ImageUrl" alt="@item.Title" />
+                        <a href="@Url.Action("Details", "Blog", new { id = item.Id })">
+                            <img class="img-responsive" src="@item.ImageUrl" alt="@item.Title" />
+                        </a>
                         <h3 class="text-uppercase">@Html.ActionLink(item.Title, "Details", "Blog", new { id = item.Id }, new { @class = "text-uppercase" })</h3>
                         <p>@Html.Raw(item.Text)</p>
                         <div class="more">@Html.ActionLink(Resources.Read, "Details", "Blog", new { id = item.Id }, new { @class = "link btn btn-lg text-uppercase" })</div>
@@ -52,7 +54,7 @@
         </div>
     </section>
 
-    <section class="section-2"></section>
+    <section class="section-2 parallax-bg"></section>
 
     <section class="popular">
         <div class="container body-content">
@@ -61,9 +63,11 @@
                     <h2 class="text-uppercase">@Resources.Popular</h2>
                 </div>
                 @foreach (var item in Model.PopularPosts)
-            {
+                {
                     <div class="short col-md-4 text-justify">
-                        <img class="img-responsive" src="@item.ImageUrl" alt="@item.Title" />
+                        <a href="@Url.Action("Details", "Blog", new { id = item.Id })">
+                            <img class="img-responsive" src="@item.ImageUrl" alt="@item.Title" />
+                        </a>
                         <h3 class="text-uppercase">@Html.ActionLink(item.Title, "Details", "Blog", new { id = item.Id }, new { @class = "text-uppercase" })</h3>
                         <p>@Html.Raw(item.Text)</p>
                         <div class="more">@Html.ActionLink(Resources.Read, "Details", "Blog", new { id = item.Id }, new { @class = "link btn btn-lg text-uppercase" })</div>
