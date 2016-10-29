@@ -16,10 +16,11 @@ body {
         background-color: $color-white;
 
         .logo img {
-            padding: 10px 30px 10px 15px;
+            padding: 26px 45px 26px 15px;
         }
 
-        a {
+        li a {
+            padding: 26px;
             font-size: 16px;
             font-weight: bold;
             line-height: 26px;
@@ -32,6 +33,21 @@ body {
 
         button {
             background-color: $color-gray;
+        }
+
+        .navbar-toggle {
+            margin: 8px 15px;
+            float: left;
+            border: none;
+            background-color: $color-white;
+
+            &:hover {
+                background-color: $color-white;
+            }
+
+            .icon-bar {
+                background-color: $color-blue;
+            }
         }
     }
 
@@ -267,10 +283,16 @@ body {
                 .short {
                     margin: 60px 0;
 
-                    h3 a {
-                        color: $color-black;
-                        border: none;
-                        text-decoration: none;
+                    h3 {
+                            a {
+                            color: $color-black;
+                            border: none;
+                            text-decoration: none;
+                        }
+                    }
+
+                    p {
+                        margin: 10px 0;
                     }
 
                     .more {
@@ -293,14 +315,24 @@ body {
             .newsletter {
                 @extend .gradient;
 
-                h2, p {
-                    color: $color-white;
-                }
+                .row {
+                    margin: 40px 0;
 
-                a {
-                    color: $color-white;
-                    background-color: $color-left;
-                    border: 1px solid $color-white;
+                    h2, p {
+                        color: $color-white;
+                        margin: 40px 0;
+                    }
+
+                    a {
+                        color: $color-white;
+                        background-color: $color-left;
+                        border: 1px solid $color-white;
+
+                        &:hover {
+                            background-color: $color-dark;
+                            border-color: $color-dark;
+                        }
+                    }
                 }
             }
         }
@@ -339,10 +371,12 @@ body {
 
             a {
                 font-size: 64px;
-                padding: 10px 20px;
+                padding: 10px 40px;
+                color: $color-white;
+                opacity: 0.6;
 
                 &:hover {
-                    color: $color-white;
+                    opacity: 1;
                 }
             }
         }
@@ -488,9 +522,9 @@ body {
                     }
 
                     p {
-                        padding: 0 15px;
+                        padding: 15px;
                         font-size: 12px;
-                        color: $color-white;
+                        color: $color-gray;
                     }
                 }
 
@@ -501,7 +535,7 @@ body {
                     a {
                         color: inherit;
                         font-size: 32px;
-                        padding: 10px 5px;
+                        padding: 10px;
 
                         &:hover {
                             color: $color-gray;
