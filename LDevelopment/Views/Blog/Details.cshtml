@@ -30,7 +30,22 @@
             </div>
 
             <hr />
-            <h2 class="text-uppercase">@Resources.Comments</h2>
+            
+            @if (Model.Comments.Any())
+            {
+                <h2 class="text-uppercase">@Resources.Comments</h2>
+                <div class="comments">
+                    @foreach (var comment in Model.Comments)
+                    {
+                        <div class="comment">
+                            <span class="glyphicon glyphicon-time"></span> @Html.DisplayFor(model => comment.ReleaseDate)
+                            <span class="glyphicon glyphicon glyphicon-user"></span> <a href="mailto:@Html.DisplayFor(model => comment.AuthorMail)">@Html.DisplayFor(model => comment.AuthorName)</a>
+                            <p>@Html.DisplayFor(model => comment.Text)</p>
+                        </div>
+                    }
+                </div>
+                <hr />
+            }
 
             @if (Request.IsAuthenticated)
             {
@@ -44,6 +59,7 @@
             }
             else
             {
+                <h3 class="text-uppercase">@Resources.LogInToAddComment</h3>
                 <div class="login text-center">
                     <div class="col-md-5">
                         @Html.Partial("~/Views/Account/_LocalLoginPartial.cshtml", new LoginViewModel())
@@ -52,22 +68,8 @@
                         <h3 class="text-lowercase">@Resources.Or</h3>
                     </div>
                     <div class="col-md-5">
-                        @Html.Partial("~/Views/Account/_ExternalLoginsListPartial.cshtml", new ExternalLoginListViewModel { ReturnUrl = ViewBag.ReturnUrl })
+                        @Html.Partial("~/Views/Account/_ExternalLoginsListPartial.cshtml", new ExternalLoginListViewModel {ReturnUrl = ViewBag.ReturnUrl})
                     </div>
-                </div>
-            }
-
-            @if (Model.Comments.Any())
-            {
-                <div class="comments">
-                    @foreach (var comment in Model.Comments)
-                    {
-                        <div class="comment">
-                            <span class="glyphicon glyphicon-time"></span> @Html.DisplayFor(model => comment.ReleaseDate)
-                            <span class="glyphicon glyphicon glyphicon-user"></span> <a href="mailto:@Html.DisplayFor(model => comment.AuthorMail)">@Html.DisplayFor(model => comment.AuthorName)</a>
-                            <p>@Html.DisplayFor(model => comment.Text)</p>
-                        </div>
-                    }
                 </div>
             }
         </div>

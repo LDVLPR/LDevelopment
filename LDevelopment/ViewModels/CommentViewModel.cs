@@ -5,6 +5,7 @@ namespace LDevelopment.ViewModels
 {
     public class CommentViewModel
     {
+        [Required]
         public string Text { get; set; } = "";
 
         [DataType(DataType.Date)]

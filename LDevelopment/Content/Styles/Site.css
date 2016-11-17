@@ -18,20 +18,22 @@
     body .navbar button {
       background-color: #949596; }
     body .navbar .navbar-toggle {
-      margin: 8px 15px;
+      margin: 20px 15px;
       float: left;
       border: none;
-      background-color: #ffffff; }
-      body .navbar .navbar-toggle:hover {
-        background-color: #ffffff; }
+      background-color: #ffffff !important; }
       body .navbar .navbar-toggle .icon-bar {
-        background-color: #0f6cc3; }
+        background-color: #0f6cc3;
+        height: 4px; }
   body .site input, body .site select {
     height: 46px;
     max-width: 280px;
     padding: 6px 20px;
     border: 1px solid #0f6cc3;
     border-radius: 25px; }
+  body .site input[type=checkbox] {
+    vertical-align: middle;
+    height: 20px; }
   body .site img {
     max-width: 100%; }
   body .site header {
@@ -65,7 +67,7 @@
       display: inline-block; }
   body .site .bgnd, body .site .main .home, body .site .main .section-1, body .site .main .section-2 {
     background-attachment: fixed;
-    background-position: 50% 0;
+    background-position: center 0;
     background-repeat: no-repeat;
     background-size: 1920px;
     height: 54vh;
@@ -73,7 +75,7 @@
     min-height: 200px; }
   @media only screen and (max-width: 767px) {
     body .site .home .container {
-      padding: 120px 80px; }
+      padding: 20vh 80px; }
       body .site .home .container h1 {
         font-size: 47px; }
       body .site .home .container h2 {
@@ -87,7 +89,7 @@
       min-height: 200px; } }
   @media screen and (min-width: 768px) and (max-width: 991px) {
     body .site .home .container {
-      padding: 160px 80px; }
+      padding: 20vh 80px; }
       body .site .home .container h1 {
         font-size: 63px; }
       body .site .home .container h2 {
@@ -105,7 +107,7 @@
                 padding: 26px;
             }*/ }
       body .site .home .container {
-        padding: 320px 80px; }
+        padding: 30vh 80px; }
         body .site .home .container h1 {
           font-size: 63px; }
         body .site .home .container h2 {
@@ -139,13 +141,11 @@
     background: -moz-linear-gradient(right, #155fa7, #118ad1);
     /* For Firefox 3.6 to 15 */ }
   body .site .main .row {
-    margin: 100px 0; }
+    margin: 10vh 0; }
     body .site .main .row p {
       margin: 60px 0; }
   body .site .main .home {
     height: 100vh;
-    background-position: center;
-    background-repeat: no-repeat;
     background-image: url("/Content/Images/banner_01.jpg"); }
     body .site .main .home .container .row h1 {
       color: #fff;
@@ -219,7 +219,11 @@
       height: 40px;
       line-height: 28px;
       padding: 6px; }
+  body .site .post .login {
+    overflow: hidden; }
   body .site .post .new-comment {
+    border-radius: 25px;
+    padding: 10px;
     width: 100%; }
   body .site .post .comments .comment {
     padding: 10px 0 0; }
@@ -282,4 +286,7 @@
           padding: 10px; }
           body .site footer .container .social-buttons a:hover {
             color: #949596; }
+  body .site *:focus, body .site *:active {
+    outline: none !important;
+    /*box-shadow: none !important;*/ }
 
