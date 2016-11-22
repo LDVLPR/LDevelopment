@@ -38,8 +38,8 @@
                     @foreach (var comment in Model.Comments)
                     {
                         <div class="comment">
-                            <span class="glyphicon glyphicon-time"></span> @Html.DisplayFor(model => comment.ReleaseDate)
-                            <span class="glyphicon glyphicon glyphicon-user"></span> <a href="mailto:@Html.DisplayFor(model => comment.AuthorMail)">@Html.DisplayFor(model => comment.AuthorName)</a>
+                            <a href="mailto:@Html.DisplayFor(model => comment.AuthorMail)">@Html.DisplayFor(model => comment.AuthorName)</a><br/>
+                            <span class="date">@Html.DisplayFor(model => comment.ReleaseDate)</span>
                             <p>@Html.DisplayFor(model => comment.Text)</p>
                         </div>
                     }
