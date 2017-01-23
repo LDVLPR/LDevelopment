@@ -70,6 +70,15 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Jestem &lt;strong&gt;Łukasz Dudziak&lt;/strong&gt;, programista - pasjonat, a także założyciel przedsiębiorstwa rozwijanego pod nazwą &lt;strong&gt;LDevelopment&lt;/strong&gt;, którego ta strona jest wizytówką. Prywatnie miłośnik podróży, muzyki i literatury. Interesuję się również astronomią i naukami dalekiego wschodu. Zapraszam do kontaktu!.
+        /// </summary>
+        public static string AboutMessage {
+            get {
+                return ResourceManager.GetString("AboutMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Potwierdź swoje konto klikając &lt;a href=\&quot;{{callbackUrl}}\&quot;&gt;tutaj&lt;/a&gt;&quot;.
         /// </summary>
         public static string AccountConfirmContent {
@@ -120,6 +129,15 @@ namespace Resources {
         public static string AdminPanel {
             get {
                 return ResourceManager.GetString("AdminPanel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Połącz ze swoim kontem.
+        /// </summary>
+        public static string AssociateWith {
+            get {
+                return ResourceManager.GetString("AssociateWith", resourceCulture);
             }
         }
         
@@ -349,6 +367,15 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Zapisz się do newslettera, aby być na bieżąco ze wszystkimi wpisami na blogu.
+        /// </summary>
+        public static string NewsletterMessage {
+            get {
+                return ResourceManager.GetString("NewsletterMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Brak wyników wyszukiwania dla.
         /// </summary>
         public static string NoResults {
@@ -516,6 +543,15 @@ namespace Resources {
         public static string SignIn {
             get {
                 return ResourceManager.GetString("SignIn", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Wkrótce....
+        /// </summary>
+        public static string Soon {
+            get {
+                return ResourceManager.GetString("Soon", resourceCulture);
             }
         }
         

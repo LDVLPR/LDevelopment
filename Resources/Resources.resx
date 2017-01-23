@@ -291,4 +291,16 @@
   <data name="FindMe" xml:space="preserve">
     <value>Tu mnie znajdziesz</value>
   </data>
+  <data name="AboutMessage" xml:space="preserve">
+    <value>Jestem &lt;strong&gt;Łukasz Dudziak&lt;/strong&gt;, programista - pasjonat, a także założyciel przedsiębiorstwa rozwijanego pod nazwą &lt;strong&gt;LDevelopment&lt;/strong&gt;, którego ta strona jest wizytówką. Prywatnie miłośnik podróży, muzyki i literatury. Interesuję się również astronomią i naukami dalekiego wschodu. Zapraszam do kontaktu!</value>
+  </data>
+  <data name="AssociateWith" xml:space="preserve">
+    <value>Połącz ze swoim kontem</value>
+  </data>
+  <data name="NewsletterMessage" xml:space="preserve">
+    <value>Zapisz się do newslettera, aby być na bieżąco ze wszystkimi wpisami na blogu</value>
+  </data>
+  <data name="Soon" xml:space="preserve">
+    <value>Wkrótce...</value>
+  </data>
 </root>

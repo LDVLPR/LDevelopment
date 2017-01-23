@@ -8,24 +8,24 @@ namespace LDevelopment.Controllers
     {
         protected ApplicationDbContext db = new ApplicationDbContext();
 
-        protected override void OnException(ExceptionContext filterContext)
+        protected override void OnException(ExceptionContext exceptionContext)
         {
-            filterContext.ExceptionHandled = true;
-            filterContext.Result = RedirectToAction("Error", "Home");
+            exceptionContext.ExceptionHandled = true;
+            exceptionContext.Result = RedirectToAction("Error", "Home");
 
             var logModel = new LogModel
             {
-                Message = filterContext.Exception.InnerException != null ? filterContext.Exception.InnerException.Message : filterContext.Exception.Message,
-                StackTrace = filterContext.Exception.StackTrace.Trim(),
-                ControllerName = filterContext.RouteData.Values["controller"] != null ? filterContext.RouteData.Values["controller"].ToString() : "",
-                ActionName = filterContext.RouteData.Values["action"] != null ? filterContext.RouteData.Values["action"].ToString() : "",
-                Parameters = filterContext.RouteData.Values["id"] != null ? filterContext.RouteData.Values["id"].ToString() : ""
+                Message = exceptionContext.Exception.InnerException?.Message ?? exceptionContext.Exception.Message,
+                StackTrace = exceptionContext.Exception.StackTrace.Trim(),
+                ControllerName = exceptionContext.RouteData.Values["controller"]?.ToString() ?? "",
+                ActionName = exceptionContext.RouteData.Values["action"]?.ToString() ?? "",
+                Parameters = exceptionContext.RouteData.Values["id"]?.ToString() ?? ""
             };
 
             db.Logs.Add(logModel);
             db.SaveChanges();
 
-            base.OnException(filterContext);
+            base.OnException(exceptionContext);
         }
 
         protected override void Dispose(bool disposing)

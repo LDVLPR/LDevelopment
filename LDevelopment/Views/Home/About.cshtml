@@ -12,13 +12,9 @@
     <div class="container body-content">
         <div class="row">
             <div class="col-md-offset-2 col-md-8 text-center">
-                <h2 class="text-uppercase">Witaj!</h2>
+                <h2 class="text-uppercase">@Resources.Welcome</h2>
                 <p>
-                    Jestem <strong>Łukasz Dudziak</strong>, programista - pasjonat, a także założyciel przedsiębiorstwa
-                    rozwijanego pod nazwą <strong>LDevelopment</strong>, którego ta strona jest wizytówką.
-                </p>
-                <p>
-                    Kocham podróże, muzykę i literaturę, interesuję się również elektroniką, astronomią i naukami dalekiego wschodu.
+                    @Html.Raw(Resources.AboutMessage)
                 </p>
             </div>
         </div>

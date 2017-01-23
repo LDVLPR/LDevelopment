@@ -11,8 +11,10 @@
             <p>@Resources.LoginInvalid</p>
         </div>
     }
-    else {
-        using (Html.BeginForm("ExternalLogin", "Account", new { Model.ReturnUrl })) {
+    else
+    {
+        using (Html.BeginForm("ExternalLogin", "Account", new { Model.ReturnUrl }))
+        {
             @Html.AntiForgeryToken()
             <div class="social-buttons">
                 @foreach (var p in authenticationDescriptions)

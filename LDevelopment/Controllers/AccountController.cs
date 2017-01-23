@@ -59,6 +59,7 @@ namespace LDevelopment.Controllers
         public ActionResult Login(string returnUrl)
         {
             ViewBag.ReturnUrl = returnUrl;
+
             return View();
         }
 
@@ -100,8 +101,9 @@ namespace LDevelopment.Controllers
             // Require that the user has already logged in via username/password or external login
             if (!await SignInManager.HasBeenVerifiedAsync())
             {
-                return View("Error");
+                return RedirectToAction("Error", "Home");
             }
+
             return View(new VerifyCodeViewModel { Provider = provider, ReturnUrl = returnUrl, RememberMe = rememberMe });
         }
 
@@ -182,7 +184,7 @@ namespace LDevelopment.Controllers
         {
             if (userId == null || code == null)
             {
-                return View("Error");
+                return RedirectToAction("Error", "Home");
             }
             var result = await UserManager.ConfirmEmailAsync(userId, code);
             return View(result.Succeeded ? "ConfirmEmail" : "Error");
@@ -237,7 +239,12 @@ namespace LDevelopment.Controllers
         [AllowAnonymous]
         public ActionResult ResetPassword(string code)
         {
-            return code == null ? View("Error") : View();
+            if (code == null)
+            {
+                return RedirectToAction("Error", "Home");
+            }
+
+            return View();
         }
 
         //
@@ -293,7 +300,7 @@ namespace LDevelopment.Controllers
             var userId = await SignInManager.GetVerifiedUserIdAsync();
             if (userId == null)
             {
-                return View("Error");
+                return RedirectToAction("Error", "Home");
             }
             var userFactors = await UserManager.GetValidTwoFactorProvidersAsync(userId);
             var factorOptions = userFactors.Select(purpose => new SelectListItem { Text = purpose, Value = purpose }).ToList();
@@ -315,7 +322,7 @@ namespace LDevelopment.Controllers
             // Generate the token and send it
             if (!await SignInManager.SendTwoFactorCodeAsync(model.SelectedProvider))
             {
-                return View("Error");
+                return RedirectToAction("Error", "Home");
             }
             return RedirectToAction("VerifyCode", new { Provider = model.SelectedProvider, ReturnUrl = model.ReturnUrl, RememberMe = model.RememberMe });
         }
