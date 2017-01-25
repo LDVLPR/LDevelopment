@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>@ViewBag.Title - LDevelopment</title>
+        <title>@ViewBag.Title - @Resources.SiteName</title>
         <meta name="description" content="LDevelopment Łukasz Dudziak | .NET Framework ∙ Web Development ∙ Patterns & Practices ∙ Strony internetowe i programistyczne projekty biznesowe na zamówienie" />
         <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto">
 
@@ -20,7 +20,7 @@
                         <span class="icon-bar"></span>
                     </button>
                     <a class="logo" href='@Url.Action("Index", "Home")'>
-                        <img class="img-responsive" src='@Url.Content("~/Content/Images/logo_header.png")' alt="LDevelopment" />
+                        <img class="img-responsive" src='@Url.Content("~/Content/Images/logo_header.png")' alt="@Resources.SiteName" />
                     </a>
                 </div>
                 <div class="navbar-collapse collapse">
@@ -40,8 +40,8 @@
             <footer>
                 <div class="container">
                     <div class="copyright">
-                        <img class="img-responsive" src='@Url.Content("~/Content/Images/logo_footer.png")' alt="LDevelopment" />
-                        <p>&copy; @DateTime.Now.Year LDevelopment</p>
+                        <img class="img-responsive" src='@Url.Content("~/Content/Images/logo_footer.png")' alt="@Resources.SiteName" />
+                        <p>&copy; @DateTime.Now.Year @Resources.SiteName</p>
                     </div>
                     <div class="social-buttons">
                         <a href="https://www.facebook.com/ldev.eu/" target="_blank"><i class="fa fa-facebook" aria-hidden="true"></i></a>
@@ -51,8 +51,12 @@
                 </div>
             </footer>
         </div>
+        
+        <div id="modal" class="modal fade"></div>
+
         @Scripts.Render("~/bundles/jquery")
         @Scripts.Render("~/bundles/bootstrap")
+        @Scripts.Render("~/bundles/main")
         @Scripts.Render("~/bundles/analytics")
         @Scripts.Render("~/bundles/insights")
         @Scripts.Render("~/bundles/parallax")

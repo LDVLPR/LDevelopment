@@ -167,7 +167,7 @@ namespace LDevelopment.Controllers
             // Send an SMS through the SMS provider to verify the phone number
             if (phoneNumber == null)
             {
-                return RedirectToAction("Error", "Home");
+                return View("Error");
             }
 
             return View(new VerifyPhoneNumberViewModel { PhoneNumber = phoneNumber });
@@ -291,7 +291,7 @@ namespace LDevelopment.Controllers
             var user = await UserManager.FindByIdAsync(User.Identity.GetUserId());
             if (user == null)
             {
-                return RedirectToAction("Error", "Home");
+                return View("Error");
             }
             var userLogins = await UserManager.GetLoginsAsync(User.Identity.GetUserId());
             var otherLogins = AuthenticationManager.GetExternalAuthenticationTypes().Where(auth => userLogins.All(ul => auth.AuthenticationType != ul.LoginProvider)).ToList();

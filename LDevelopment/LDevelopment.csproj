@@ -249,7 +249,6 @@
     <Compile Include="Controllers\BlogController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
-    <Compile Include="ErrorHandler\AiHandleErrorAttribute.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -358,6 +357,7 @@
     <Content Include="Scripts\ldev\analytics.js" />
     <Content Include="Scripts\ldev\editor.js" />
     <Content Include="Scripts\ldev\insights.js" />
+    <Content Include="Scripts\ldev\main.js" />
     <Content Include="Scripts\ldev\parallax.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
     <Content Include="Scripts\respond.js" />
