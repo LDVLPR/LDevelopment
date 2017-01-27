@@ -1,3 +1,3 @@
-﻿$(document).ready(function () {
-    $('#modal').fadeOut(500);
+﻿$(window).on('load', function () {
+    $('#modal').fadeOut(1000);
 });

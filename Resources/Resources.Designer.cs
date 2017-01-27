@@ -259,7 +259,7 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Podczas przetwarzania Twojego żądania wystąpił błąd.
+        ///   Looks up a localized string similar to Podczas przetwarzania Twojego żądania wystąpił błąd. Skontaktuj się z administratorem strony!.
         /// </summary>
         public static string ErrorOccured {
             get {
@@ -421,6 +421,15 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Utwórz hasło.
+        /// </summary>
+        public static string PasswordCreate {
+            get {
+                return ResourceManager.GetString("PasswordCreate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Zapomniałeś hasła?.
         /// </summary>
         public static string PasswordForgot {
@@ -543,6 +552,15 @@ namespace Resources {
         public static string SignIn {
             get {
                 return ResourceManager.GetString("SignIn", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to LDevelopment.
+        /// </summary>
+        public static string SiteName {
+            get {
+                return ResourceManager.GetString("SiteName", resourceCulture);
             }
         }
         

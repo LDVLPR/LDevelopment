@@ -175,7 +175,7 @@
     <value>Błąd</value>
   </data>
   <data name="ErrorOccured" xml:space="preserve">
-    <value>Podczas przetwarzania Twojego żądania wystąpił błąd</value>
+    <value>Podczas przetwarzania Twojego żądania wystąpił błąd. Skontaktuj się z administratorem strony!</value>
   </data>
   <data name="Hello" xml:space="preserve">
     <value>Witaj</value>
@@ -302,5 +302,11 @@
   </data>
   <data name="Soon" xml:space="preserve">
     <value>Wkrótce...</value>
+  </data>
+  <data name="SiteName" xml:space="preserve">
+    <value>LDevelopment</value>
+  </data>
+  <data name="PasswordCreate" xml:space="preserve">
+    <value>Utwórz hasło</value>
   </data>
 </root>

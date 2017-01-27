@@ -3,7 +3,8 @@
   height: 100%;
   letter-spacing: 0.05em; }
   body .navbar {
-    background-color: #ffffff; }
+    background-color: #ffffff;
+    border-color: #dddddd; }
     body .navbar .logo img {
       padding: 26px 45px 26px 15px; }
     body .navbar li a {
@@ -155,6 +156,8 @@
     body .site .main .home .container .row h2 {
       color: #fff;
       font-weight: normal; }
+    body .site .main .home .container .row a {
+      border: 1px solid transparent; }
   body .site .main .about-me .body-content, body .site .main .last .body-content, body .site .main .popular .body-content {
     padding: 30px 0; }
   body .site .main .last .short, body .site .main .popular .short {
@@ -178,7 +181,7 @@
       margin: 40px 0; }
     body .site .main .newsletter .row a {
       color: #ffffff;
-      background-color: #155fa7;
+      background-color: transparent;
       border: 1px solid #ffffff; }
       body .site .main .newsletter .row a:hover {
         background-color: #0a365d;
@@ -228,6 +231,8 @@
       height: 40px;
       line-height: 28px;
       padding: 6px; }
+  body .site .post img {
+    margin: 20px 0 0; }
   body .site .post .login {
     overflow: hidden; }
   body .site .post .new-comment {
@@ -282,8 +287,12 @@
         float: left; }
   body .site .login .local-login {
     padding: 20px 0 0; }
+  body .site .register h2 {
+    padding: 15vh 0 2vh; }
   body .site .register .form {
     padding: 20px 0; }
+  body .site .error h2 {
+    padding: 15vh 0 2vh; }
   body .site footer {
     background-color: #212427;
     color: #ffffff;
@@ -314,4 +323,10 @@
   body .site *:focus, body .site *:active {
     outline: none !important;
     /*box-shadow: none !important;*/ }
+  body #modal {
+    background-image: url("/Content/Icons/spinner.svg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-color: #212427;
+    display: block; }
 

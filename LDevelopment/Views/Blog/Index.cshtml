@@ -38,7 +38,7 @@
                     if (!string.IsNullOrEmpty(item.ImageUrl))
                     {
                         <a href="@Url.Action("Details", new { id = item.Id })">
-                            <img class="img-responsive" src="@item.ImageUrl" alt="@item.Title" />
+                            <img class="img-responsive" src="@item.ImageUrl" alt="@item.Title" title="@item.Title" />
                         </a>
                     }
                     <div class="tags">
@@ -81,7 +81,10 @@
                     <hr>
                 }
 
-                @Html.PagedListPager(Model.Posts, pageNumber => Url.Action("Index", new { pageNumber }))
+                if (Model.Posts.Count > Model.Posts.PageSize)
+                {
+                    @Html.PagedListPager(Model.Posts, pageNumber => Url.Action("Index", new {pageNumber}))
+                }
             }
             else
             {

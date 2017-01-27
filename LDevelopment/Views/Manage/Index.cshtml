@@ -6,20 +6,20 @@
 <div class="manage">
     <div class="container body-content">
         <p class="text-success">@ViewBag.StatusMessage</p>
-        <div>
-            <h3>@Resources.AdminPanel</h3>
-            @if (User.IsInRole("Admin"))
-            {
+        @if (User.IsInRole("Admin"))
+        {
+            <div>
+                <h3>@Resources.AdminPanel</h3>
                 @Html.ActionLink(Resources.Posts, "Administrate", "Blog")
                 <br/>
                 @Html.ActionLink(Resources.Tags, "Index", "Tags")
                 <br/>
                 @Html.ActionLink(Resources.Users, "Index", "Users")
-            }
-        </div>
+            </div>
+        }
         <div>
             <h3>@Resources.Manage</h3>
-            @(Model.HasPassword ? Html.ActionLink(Resources.PasswordChange, "ChangePassword") : Html.ActionLink(Resources.Create, "SetPassword"))
+            @(Model.HasPassword ? Html.ActionLink(Resources.PasswordChange, "ChangePassword") : Html.ActionLink(Resources.PasswordCreate, "SetPassword"))
                 @*<dt>External Logins:</dt>
                 <dd>
                     @Model.Logins.Count [

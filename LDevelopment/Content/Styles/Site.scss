@@ -3,6 +3,7 @@ $color-blue: #0f6cc3;
 $color-left: #155fa7;
 $color-right: #118ad1;
 $color-dark: #0a365d;
+$color-pale: #dddddd;
 $color-gray: #949596;
 $color-black: #212427;
 
@@ -13,6 +14,7 @@ body {
 
     .navbar {
         background-color: $color-white;
+        border-color: $color-pale;
 
         .logo img {
             padding: 26px 45px 26px 15px;
@@ -68,7 +70,6 @@ body {
 
         header {
             color: $color-black;
-            //kerning:
         }
 
         h1 {
@@ -279,6 +280,10 @@ body {
                             color: #fff;
                             font-weight: normal;
                         }
+
+                        a {
+                            border: 1px solid transparent;
+                        }
                     }
                 }
             }
@@ -336,7 +341,7 @@ body {
 
                     a {
                         color: $color-white;
-                        background-color: $color-left;
+                        background-color: transparent;
                         border: 1px solid $color-white;
 
                         &:hover {
@@ -446,6 +451,10 @@ body {
 
         .post {
 
+            img {
+                margin: 20px 0 0;
+            }
+
             .login {
                 overflow: hidden;
             }
@@ -554,8 +563,19 @@ body {
 
         .register {
 
+            h2 {
+                padding: 15vh 0 2vh;
+            }
+
             .form {
                 padding: 20px 0;
+            }
+        }
+
+        .error {
+
+            h2 {
+                padding: 15vh 0 2vh;
             }
         }
 
@@ -606,5 +626,13 @@ body {
             outline: none !important;
             /*box-shadow: none !important;*/
         }
+    }
+
+    #modal {
+        background-image: url("/Content/Icons/spinner.svg");
+        background-repeat: no-repeat;
+        background-position: center;
+        background-color: $color-black;
+        display: block;
     }
 }

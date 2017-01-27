@@ -10,7 +10,7 @@
         <div class="col-md-offset-1 col-md-10">
             @if (!string.IsNullOrEmpty(Model.ImageUrl))
             {
-                <img class="img-responsive" src="@Url.Content(Model.ImageUrl)" alt="@Url.Content(Model.Title)" />
+                <img class="img-responsive" src="@Url.Content(Model.ImageUrl)" alt="@Url.Content(Model.Title)" title="@Url.Content(Model.Title)" />
             }
             <div class="tags">
                 @foreach (SelectListItem tag in Model.Tags.Items)
