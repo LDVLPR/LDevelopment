@@ -439,6 +439,24 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Nowe hasło.
+        /// </summary>
+        public static string PasswordNew {
+            get {
+                return ResourceManager.GetString("PasswordNew", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Stare hasło.
+        /// </summary>
+        public static string PasswordOld {
+            get {
+                return ResourceManager.GetString("PasswordOld", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Aby zresetować hasło, kliknij &lt;a href=\&quot;{{callbackUrl}}\&quot;&gt;tutaj&lt;/a&gt;.
         /// </summary>
         public static string PasswordResetContent {
