@@ -133,6 +133,18 @@ body {
             min-height: 200px;
         }
 
+        .banner {
+            @extend .bgnd;
+            background-attachment: scroll;
+            height: 200px;
+            margin: 80px 0 0;
+            color: $color-white;
+
+            .container {
+                padding: 64px 0;
+            }
+        }
+
         @media only screen and (max-width: 767px) {
 
             .home {
@@ -147,15 +159,6 @@ body {
                     h2 {
                         font-size: 16px;
                     }
-                }
-            }
-
-            .banner {
-                height: 120px;
-                color: $color-white;
-
-                .container {
-                    padding: 20px 0;
                 }
             }
 
@@ -181,25 +184,12 @@ body {
                 }
             }
 
-            .banner {
-                height: 160px;
-                color: $color-white;
-
-                .container {
-                    padding: 40px 0;
-                }
-            }
-
             .content {
                 min-height: 260px;
             }
         }
 
         @media screen and (min-width: 992px) {
-
-            /*.navbar-nav > li > a {
-                padding: 26px;
-            }*/
 
             .home {
 
@@ -213,15 +203,6 @@ body {
                     h2 {
                         font-size: 21px;
                     }
-                }
-            }
-
-            .banner {
-                height: 330px;
-                color: $color-white;
-
-                .container {
-                    padding: 20vh 0;
                 }
             }
 
@@ -355,11 +336,10 @@ body {
 
         .blog {
             @extend .banner;
-            @extend .bgnd;
             background-image: url("/Content/Images/blog_header.jpg");
 
             .container {
-                padding: 17vh 0;
+                padding: 42px 0;
 
                 .search {
                     text-align: center;
@@ -387,7 +367,6 @@ body {
         .about {
             @extend .banner;
             background-image: url("/Content/Images/about_header.jpg");
-            background-size: cover;
         }
 
         .find-me {
@@ -583,10 +562,6 @@ body {
         footer {
             background-color: $color-black;
             color: $color-white;
-            /*bottom: 0;
-            left: 0;
-            width: 100%;
-            position: absolute;*/
 
             .container {
                 padding: 10px 15px;

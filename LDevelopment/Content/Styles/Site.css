@@ -68,7 +68,7 @@
     padding: 80px 0; }
     body .site .body-content .form-group .form-control {
       display: inline-block; }
-  body .site .bgnd, body .site .main .home, body .site .main .section-1, body .site .main .section-2, body .site .blog {
+  body .site .bgnd, body .site .banner, body .site .blog, body .site .about, body .site .contact, body .site .main .home, body .site .main .section-1, body .site .main .section-2 {
     background-attachment: fixed;
     background-position: center 0;
     background-repeat: no-repeat;
@@ -76,6 +76,13 @@
     height: 54vh;
     max-height: 1200px;
     min-height: 200px; }
+  body .site .banner, body .site .blog, body .site .about, body .site .contact {
+    background-attachment: scroll;
+    height: 200px;
+    margin: 80px 0 0;
+    color: #ffffff; }
+    body .site .banner .container, body .site .blog .container, body .site .about .container, body .site .contact .container {
+      padding: 64px 0; }
   @media only screen and (max-width: 767px) {
     body .site .home .container {
       padding: 20vh 80px; }
@@ -83,11 +90,6 @@
         font-size: 47px; }
       body .site .home .container h2 {
         font-size: 16px; }
-    body .site .banner, body .site .blog, body .site .about, body .site .contact {
-      height: 120px;
-      color: #ffffff; }
-      body .site .banner .container, body .site .blog .container, body .site .about .container, body .site .contact .container {
-        padding: 20px 0; }
     body .site .content {
       min-height: 200px; } }
   @media screen and (min-width: 768px) and (max-width: 991px) {
@@ -97,31 +99,17 @@
         font-size: 63px; }
       body .site .home .container h2 {
         font-size: 18px; }
-    body .site .banner, body .site .blog, body .site .about, body .site .contact {
-      height: 160px;
-      color: #ffffff; }
-      body .site .banner .container, body .site .blog .container, body .site .about .container, body .site .contact .container {
-        padding: 40px 0; }
     body .site .content {
       min-height: 260px; } }
   @media screen and (min-width: 992px) {
-    body .site {
-      /*.navbar-nav > li > a {
-                padding: 26px;
-            }*/ }
-      body .site .home .container {
-        padding: 30vh 80px; }
-        body .site .home .container h1 {
-          font-size: 63px; }
-        body .site .home .container h2 {
-          font-size: 21px; }
-      body .site .banner, body .site .blog, body .site .about, body .site .contact {
-        height: 330px;
-        color: #ffffff; }
-        body .site .banner .container, body .site .blog .container, body .site .about .container, body .site .contact .container {
-          padding: 20vh 0; }
-      body .site .content {
-        min-height: 320px; } }
+    body .site .home .container {
+      padding: 30vh 80px; }
+      body .site .home .container h1 {
+        font-size: 63px; }
+      body .site .home .container h2 {
+        font-size: 21px; }
+    body .site .content {
+      min-height: 320px; } }
   body .site .link {
     border: 1px solid #0a365d;
     border-radius: 25px;
@@ -189,7 +177,7 @@
   body .site .blog {
     background-image: url("/Content/Images/blog_header.jpg"); }
     body .site .blog .container {
-      padding: 17vh 0; }
+      padding: 42px 0; }
       body .site .blog .container .search {
         text-align: center; }
         body .site .blog .container .search input {
@@ -202,8 +190,7 @@
         body .site .blog .container .search .link {
           margin: 0 0 0 10px; }
   body .site .about {
-    background-image: url("/Content/Images/about_header.jpg");
-    background-size: cover; }
+    background-image: url("/Content/Images/about_header.jpg"); }
   body .site .find-me h2 {
     color: #ffffff; }
   body .site .find-me a {
@@ -296,11 +283,7 @@
     padding: 15vh 0 2vh; }
   body .site footer {
     background-color: #212427;
-    color: #ffffff;
-    /*bottom: 0;
-            left: 0;
-            width: 100%;
-            position: absolute;*/ }
+    color: #ffffff; }
     body .site footer .container {
       padding: 10px 15px; }
       body .site footer .container .copyright {
