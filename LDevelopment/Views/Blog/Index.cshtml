@@ -15,6 +15,7 @@
             <div class="search col-md-offset-2 col-md-8">
                 @Html.TextBox("SearchString", Model.Search.SearchString, new { @class = "form-control", @placeholder = Resources.SearchPlaceholder })
                 <input type="submit" class="link btn btn-lg text-uppercase" value="@Resources.Search" />
+                <input type="submit" class="link btn btn-sm fa" value="&#xf002;"/>
             </div>
         }
     </div>

@@ -170,6 +170,7 @@ namespace LDevelopment.Controllers
 
                     return RedirectToAction("Index", "Home");
                 }
+
                 AddErrors(result);
             }
 
@@ -374,25 +375,33 @@ namespace LDevelopment.Controllers
             {
                 // Get the information about the user from the external login provider
                 var info = await AuthenticationManager.GetExternalLoginInfoAsync();
+
                 if (info == null)
                 {
                     return View("ExternalLoginFailure");
                 }
+
                 var user = new ApplicationUser { UserName = model.UserName, Email = model.Email };
                 var result = await UserManager.CreateAsync(user);
+
                 if (result.Succeeded)
                 {
                     result = await UserManager.AddLoginAsync(user.Id, info.Login);
+
                     if (result.Succeeded)
                     {
+                        await UserManager.AddToRoleAsync(user.Id, "User");
                         await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
+
                         return RedirectToLocal(returnUrl);
                     }
                 }
+
                 AddErrors(result);
             }
 
             ViewBag.ReturnUrl = returnUrl;
+
             return View(model);
         }
 

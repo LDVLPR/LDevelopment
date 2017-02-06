@@ -90,6 +90,10 @@
         font-size: 47px; }
       body .site .home .container h2 {
         font-size: 16px; }
+    body .site .blog .container .search .btn-lg {
+      display: none; }
+    body .site .blog .container .search .btn-sm {
+      display: inline-block !important; }
     body .site .content {
       min-height: 200px; } }
   @media screen and (min-width: 768px) and (max-width: 991px) {
@@ -189,6 +193,10 @@
             max-width: 70%; }
         body .site .blog .container .search .link {
           margin: 0 0 0 10px; }
+        body .site .blog .container .search .btn-sm {
+          padding: 0 14px;
+          font-size: 20px;
+          display: none; }
   body .site .about {
     background-image: url("/Content/Images/about_header.jpg"); }
   body .site .find-me h2 {

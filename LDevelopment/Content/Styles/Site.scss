@@ -162,6 +162,22 @@ body {
                 }
             }
 
+            .blog {
+                .container {
+
+                    .search {
+
+                        .btn-lg {
+                            display: none;
+                        }
+
+                        .btn-sm {
+                            display: inline-block !important;
+                        }
+                    }
+                }
+            }
+
             .content {
                 min-height: 200px;
             }
@@ -357,6 +373,12 @@ body {
 
                     .link {
                         margin: 0 0 0 10px;
+                    }
+
+                    .btn-sm {
+                        padding: 0 14px;
+                        font-size: 20px;
+                        display: none;
                     }
                 }
             }
