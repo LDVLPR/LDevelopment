@@ -11,14 +11,14 @@ namespace LDevelopment.Controllers
         {
             var result = new HomeViewModel
             {
-                LastPosts = db.Posts
-                    .Where(x => x.IsReleased)
+                LastPosts = Repository
+                    .All<PostModel>(x => x.IsReleased)
                     .OrderByDescending(x => x.ReleaseDate)
                     .Take(3)
                     .Select(GetPostViewModel),
 
-                PopularPosts = db.Posts
-                    .Where(x => x.IsReleased)
+                PopularPosts = Repository
+                    .All<PostModel>(x => x.IsReleased)
                     .OrderByDescending(x => x.ViewsCount)
                     .Take(3)
                     .Select(GetPostViewModel)
@@ -45,7 +45,8 @@ namespace LDevelopment.Controllers
                 Title = postModel.Title,
                 Text = postModel.Text.Length > 200 ? postModel.Text.Substring(0, 200) + "..." : postModel.Text,
                 ReleaseDate = postModel.ReleaseDate,
-                ImageUrl = postModel.Image
+                ImageUrl = postModel.Image,
+                Url = postModel.Url
             };
         }
     }

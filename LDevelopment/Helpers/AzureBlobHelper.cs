@@ -1,6 +1,6 @@
-﻿using System;
-using System.Configuration;
+﻿using System.Configuration;
 using System.IO;
+using System.Web;
 using Microsoft.WindowsAzure.Storage;
 using Microsoft.WindowsAzure.Storage.Blob;
 
@@ -19,23 +19,22 @@ namespace LDevelopment.Helpers
 
         public CloudBlockBlob UploadBlob(string fileName, Stream stream)
         {
-
             var blobClient = _storageAccount.CreateCloudBlobClient();
             var container = blobClient.GetContainerReference(_containerName.ToLower());
             var blockBlob = container.GetBlockBlobReference(fileName);
 
-            try
-            {
-                blockBlob.UploadFromStream(stream);
+            blockBlob.UploadFromStream(stream);
 
-                return blockBlob;
-            }
-            catch (Exception ex)
-            {
-                throw;
-            }
+            return blockBlob;
+        }
 
+        public static string UploadPhoto(HttpPostedFileBase image)
+        {
+            var utility = new AzureBlobHelper();
 
+            var result = utility.UploadBlob(image.FileName, image.InputStream);
+
+            return result != null ? result.Uri.ToString() : string.Empty;
         }
     }
 }

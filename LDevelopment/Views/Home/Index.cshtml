@@ -42,12 +42,12 @@
                 @foreach (var item in Model.LastPosts)
                 {
                     <div class="short col-md-4 text-justify">
-                        <a href="@Url.Action("Details", "Blog", new { id = item.Id })">
+                        <a href="@Url.Action("Details", "Blog", new { url = item.Url })">
                             <img class="img-responsive" src="@item.ImageUrl" alt="@item.Title" title="@item.Title" />
                         </a>
-                        <h3 class="text-uppercase">@Html.ActionLink(item.Title, "Details", "Blog", new { id = item.Id }, new { @class = "text-uppercase" })</h3>
+                        <h3 class="text-uppercase">@Html.ActionLink(item.Title, "Details", "Blog", new { url = item.Url }, new { @class = "text-uppercase" })</h3>
                         <p>@Html.Raw(item.Text)</p>
-                        <div class="more">@Html.ActionLink(Resources.Read, "Details", "Blog", new { id = item.Id }, new { @class = "link btn btn-lg text-uppercase" })</div>
+                        <div class="more">@Html.ActionLink(Resources.Read, "Details", "Blog", new { url = item.Url }, new { @class = "link btn btn-lg text-uppercase" })</div>
                     </div>
                 }
             </div>
@@ -65,12 +65,12 @@
                 @foreach (var item in Model.PopularPosts)
                 {
                     <div class="short col-md-4 text-justify">
-                        <a href="@Url.Action("Details", "Blog", new { id = item.Id })">
+                        <a href="@Url.Action("Details", "Blog", new { url = item.Url })">
                             <img class="img-responsive" src="@item.ImageUrl" alt="@item.Title" title="@item.Title" />
                         </a>
-                        <h3 class="text-uppercase">@Html.ActionLink(item.Title, "Details", "Blog", new { id = item.Id }, new { @class = "text-uppercase" })</h3>
+                        <h3 class="text-uppercase">@Html.ActionLink(item.Title, "Details", "Blog", new { url = item.Url }, new { @class = "text-uppercase" })</h3>
                         <p>@Html.Raw(item.Text)</p>
-                        <div class="more">@Html.ActionLink(Resources.Read, "Details", "Blog", new { id = item.Id }, new { @class = "link btn btn-lg text-uppercase" })</div>
+                        <div class="more">@Html.ActionLink(Resources.Read, "Details", "Blog", new { url = item.Url }, new { @class = "link btn btn-lg text-uppercase" })</div>
                     </div>
                 }
             </div>

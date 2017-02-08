@@ -1,5 +1,4 @@
-﻿using System.Data.Entity;
-using System.Linq;
+﻿using System.Linq;
 using System.Web.Mvc;
 using LDevelopment.Models;
 
@@ -10,13 +9,15 @@ namespace LDevelopment.Controllers
         // GET: Tags
         public ActionResult Index()
         {
-            return View(db.Tags.ToList());
+            var tags = Repository.All<TagModel>().ToList();
+
+            return View(tags);
         }
 
         // GET: Tags/Details/5
-        public ActionResult Details(int? id)
+        public ActionResult Details(int id)
         {
-            var tagModel = db.Tags.Find(id);
+            var tagModel = Repository.Find<TagModel>(id);
 
             return View(tagModel);
         }
@@ -36,8 +37,8 @@ namespace LDevelopment.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Tags.Add(tagModel);
-                db.SaveChanges();
+                Repository.Add(tagModel);
+                Repository.Save();
 
                 return RedirectToAction("Index");
             }
@@ -46,9 +47,9 @@ namespace LDevelopment.Controllers
         }
 
         // GET: Tags/Edit/5
-        public ActionResult Edit(int? id)
+        public ActionResult Edit(int id)
         {
-            var tagModel = db.Tags.Find(id);
+            var tagModel = Repository.Find<TagModel>(id);
 
             return View(tagModel);
         }
@@ -62,18 +63,19 @@ namespace LDevelopment.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Entry(tagModel).State = EntityState.Modified;
-                db.SaveChanges();
+                Repository.Update(tagModel);
+                Repository.Save();
 
                 return RedirectToAction("Index");
             }
+
             return View(tagModel);
         }
 
         // GET: Tags/Delete/5
-        public ActionResult Delete(int? id)
+        public ActionResult Delete(int id)
         {
-            var tagModel = db.Tags.Find(id);
+            var tagModel = Repository.Find<TagModel>(id);
 
             return View(tagModel);
         }
@@ -83,10 +85,8 @@ namespace LDevelopment.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            var tagModel = db.Tags.Find(id);
-
-            db.Tags.Remove(tagModel);
-            db.SaveChanges();
+            Repository.Delete<TagModel>(id);
+            Repository.Save();
 
             return RedirectToAction("Index");
         }

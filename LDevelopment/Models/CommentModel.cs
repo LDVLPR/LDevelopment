@@ -1,15 +1,18 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
+using LDevelopment.Interfaces;
 
 namespace LDevelopment.Models
 {
-    public class CommentModel
+    public class CommentModel : IModel
     {
+        [Key]
         public int Id { get; set; }
 
         [Required]
         public string Text { get; set; }
 
+        [Required]
         public DateTime ReleaseDate { get; set; }
 
         [Required]
@@ -19,5 +22,9 @@ namespace LDevelopment.Models
         [Required]
         public int PostId { get; set; }
         public virtual PostModel Post { get; set; }
+
+        public bool? IsDeleted { get; set; }
+
+        public DateTime? DeletedDate { get; set; }
     }
 }

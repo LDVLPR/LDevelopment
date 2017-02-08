@@ -1,10 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Data.Entity;
+﻿using System.Data.Entity;
 using System.Linq;
-using System.Net;
-using System.Web;
 using System.Web.Mvc;
 using LDevelopment.Models;
 
@@ -15,15 +10,17 @@ namespace LDevelopment.Controllers
         // GET: Users
         public ActionResult Index()
         {
-            return View(db.Users.ToList());
+            var users = Repository.Context.Users.ToList();
+
+            return View(users);
         }
 
         // GET: Users/Details/5
         public ActionResult Details(string id)
         {
-            var applicationUser = db.Users.Find(id);
+            var user = Repository.Context.Users.Find(id);
 
-            return View(applicationUser);
+            return View(user);
         }
 
         // GET: Users/Create
@@ -37,25 +34,25 @@ namespace LDevelopment.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Email,EmailConfirmed,PasswordHash,SecurityStamp,PhoneNumber,PhoneNumberConfirmed,TwoFactorEnabled,LockoutEndDateUtc,LockoutEnabled,AccessFailedCount,UserName")] ApplicationUser applicationUser)
+        public ActionResult Create([Bind(Include = "Id,Email,EmailConfirmed,PasswordHash,SecurityStamp,PhoneNumber,PhoneNumberConfirmed,TwoFactorEnabled,LockoutEndDateUtc,LockoutEnabled,AccessFailedCount,UserName")] ApplicationUser user)
         {
             if (ModelState.IsValid)
             {
-                db.Users.Add(applicationUser);
-                db.SaveChanges();
+                Repository.Context.Users.Add(user);
+                Repository.Save();
 
                 return RedirectToAction("Index");
             }
 
-            return View(applicationUser);
+            return View(user);
         }
 
         // GET: Users/Edit/5
         public ActionResult Edit(string id)
         {
-            var applicationUser = db.Users.Find(id);
+            var user = Repository.Context.Users.Find(id);
 
-            return View(applicationUser);
+            return View(user);
         }
 
         // POST: Users/Edit/5
@@ -63,36 +60,36 @@ namespace LDevelopment.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Email,EmailConfirmed,PasswordHash,SecurityStamp,PhoneNumber,PhoneNumberConfirmed,TwoFactorEnabled,LockoutEndDateUtc,LockoutEnabled,AccessFailedCount,UserName")] ApplicationUser applicationUser)
+        public ActionResult Edit([Bind(Include = "Id,Email,EmailConfirmed,PasswordHash,SecurityStamp,PhoneNumber,PhoneNumberConfirmed,TwoFactorEnabled,LockoutEndDateUtc,LockoutEnabled,AccessFailedCount,UserName")] ApplicationUser user)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(applicationUser).State = EntityState.Modified;
-                db.SaveChanges();
+                Repository.Context.Entry(user).State = EntityState.Modified;
+                Repository.Save();
 
                 return RedirectToAction("Index");
             }
 
-            return View(applicationUser);
+            return View(user);
         }
 
         // GET: Users/Delete/5
         public ActionResult Delete(string id)
         {
-            var applicationUser = db.Users.Find(id);
+            var user = Repository.Context.Users.Find(id);
 
-            return View(applicationUser);
+            return View(user);
         }
 
         // POST: Users/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(string id)
+        public ActionResult DeleteConfirmed(int id)
         {
-            var applicationUser = db.Users.Find(id);
+            var user = Repository.Context.Users.Find(id);
 
-            db.Users.Remove(applicationUser);
-            db.SaveChanges();
+            Repository.Context.Users.Remove(user);
+            Repository.Save();
 
             return RedirectToAction("Index");
         }

@@ -38,7 +38,7 @@
                 {
                     if (!string.IsNullOrEmpty(item.ImageUrl))
                     {
-                        <a href="@Url.Action("Details", new { id = item.Id })">
+                        <a href="@Url.Action("Details", new { url = item.Url })">
                             <img class="img-responsive" src="@item.ImageUrl" alt="@item.Title" title="@item.Title" />
                         </a>
                     }
@@ -50,7 +50,7 @@
                     </div>
                     <div class="entity">
                         <h2 class="entity-title text-uppercase">
-                            @Html.ActionLink(item.Title, "Details", new { id = item.Id })
+                            @Html.ActionLink(item.Title, "Details", new { url = item.Url })
                         </h2>
                         <div class="entity-header">
                             <span class="glyphicon glyphicon-time"></span>
@@ -58,7 +58,7 @@
                             <span class="glyphicon glyphicon-comment"></span>
                             <span class="comments-info">
                                 @Html.ActionLink(Resources.Comments + ": " + item.Comments.Count, "Details",
-                                    "Blog", null, null, "comments", new { id = item.Id }, null)
+                                    "Blog", null, null, "comments", new { url = item.Url }, null)
                             </span>
                         </div>
                         <div class="content">
@@ -75,7 +75,7 @@
 
                             @if (item.HasReadMoreLink)
                             {
-                                @Html.ActionLink(Resources.ReadMore, "Details", new { id = item.Id }, new  { @class = "link btn btn-lg text-uppercase" })
+                                @Html.ActionLink(Resources.ReadMore, "Details", new { url = item.Url }, new  { @class = "link btn btn-lg text-uppercase" })
                             }
                         </div>
                     </div>

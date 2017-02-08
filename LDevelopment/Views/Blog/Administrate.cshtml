@@ -29,13 +29,13 @@
                 foreach (var item in Model.Posts)
                 {
                 <div>
-                    <h3>@Html.ActionLink(item.Title, "Details", new { id = item.Id })</h3>
+                    <h3>@Html.ActionLink(item.Title, "Details", new { url = item.Url })</h3>
                     <div class="content">
                         @Html.Raw(HttpUtility.HtmlDecode(Html.DisplayFor(modelItem => item.Text).ToString()))
 
                         @if (item.HasReadMoreLink)
                         {
-                            @Html.ActionLink(Resources.ReadMore, "Details", new { id = item.Id }, new { @class = "btn btn-default" })
+                            @Html.ActionLink(Resources.ReadMore, "Details", new { url = item.Url }, new { @class = "btn btn-default" })
                         }
                     </div>
                     <div style="text-align: center">

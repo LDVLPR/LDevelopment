@@ -2,16 +2,18 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Web.Mvc;
+using LDevelopment.Interfaces;
 
 namespace LDevelopment.Models
 {
-    public class PostModel
+    public class PostModel : IModel
     {
         public PostModel()
         {
             PostTags = new List<TagModel>();
         }
 
+        [Key]
         public int Id { get; set; }
 
         [Required]
@@ -20,7 +22,9 @@ namespace LDevelopment.Models
         [AllowHtml]
         public string Text { get; set; }
 
-        public DateTime ReleaseDate { get; set; } = DateTime.UtcNow;
+        [Required]
+        public DateTime ReleaseDate { get; set; }
+
         public bool IsReleased { get; set; } = true;
 
         public int ViewsCount { get; set; }
@@ -28,8 +32,15 @@ namespace LDevelopment.Models
         [DataType(DataType.ImageUrl)]
         public string Image { get; set; }
 
+        [Required]
+        public string Url { get; set; }
+
         public ICollection<TagModel> PostTags { get; set; }
 
         public ICollection<CommentModel> Comments { get; set; }
+
+        public bool? IsDeleted { get; set; }
+
+        public DateTime? DeletedDate { get; set; }
     }
 }

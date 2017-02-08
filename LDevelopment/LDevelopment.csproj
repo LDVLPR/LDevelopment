@@ -253,6 +253,8 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Helpers\AzureBlobHelper.cs" />
+    <Compile Include="Helpers\BlogHelper.cs" />
+    <Compile Include="Interfaces\IModel.cs" />
     <Compile Include="Migrations\201609141933300_InitialCreate.cs" />
     <Compile Include="Migrations\201609141933300_InitialCreate.Designer.cs">
       <DependentUpon>201609141933300_InitialCreate.cs</DependentUpon>
@@ -269,11 +271,17 @@
     <Compile Include="Migrations\201609301627409_ExceptionHandler.Designer.cs">
       <DependentUpon>201609301627409_ExceptionHandler.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201702081240209_GenericRepository.cs" />
+    <Compile Include="Migrations\201702081240209_GenericRepository.Designer.cs">
+      <DependentUpon>201702081240209_GenericRepository.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\CommentModel.cs" />
     <Compile Include="Models\LogModel.cs" />
     <Compile Include="Models\PostModel.cs" />
     <Compile Include="Models\TagModel.cs" />
+    <Compile Include="Interfaces\IRepository.cs" />
+    <Compile Include="Repository\Repository.cs" />
     <Compile Include="ViewModels\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModel.cs" />
     <Compile Include="ViewModels\BlogViewModel.cs" />
@@ -622,6 +630,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201609301627409_ExceptionHandler.resx">
       <DependentUpon>201609301627409_ExceptionHandler.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201702081240209_GenericRepository.resx">
+      <DependentUpon>201702081240209_GenericRepository.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

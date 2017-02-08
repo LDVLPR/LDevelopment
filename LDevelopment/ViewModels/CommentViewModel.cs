@@ -6,7 +6,7 @@ namespace LDevelopment.ViewModels
     public class CommentViewModel
     {
         [Required]
-        public string Text { get; set; } = "";
+        public string Text { get; set; }
 
         [DataType(DataType.Date)]
         [DisplayFormat(DataFormatString = "{0:dd.MM.yyyy}", ApplyFormatInEditMode = true)]

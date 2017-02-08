@@ -1,4 +1,5 @@
-﻿using System.Web.Mvc;
+﻿using System;
+using System.Web.Mvc;
 using LDevelopment.Models;
 using Microsoft.ApplicationInsights;
 
@@ -7,7 +8,12 @@ namespace LDevelopment.Controllers
     [RequireHttps]
     public class BaseController : Controller
     {
-        protected ApplicationDbContext db = new ApplicationDbContext();
+        protected Repository Repository;
+
+        public BaseController()
+        {
+            Repository = new Repository();
+        }
 
         protected override void OnException(ExceptionContext filterContext)        {            if (filterContext != null && filterContext.HttpContext != null && filterContext.Exception != null)            {
                 //If customError is Off, then AI HTTPModule will report the exception
@@ -23,17 +29,18 @@ namespace LDevelopment.Controllers
                     StackTrace = filterContext.Exception.StackTrace.Trim(),
                     ControllerName = filterContext.RouteData.Values["controller"]?.ToString() ?? "",
                     ActionName = filterContext.RouteData.Values["action"]?.ToString() ?? "",
-                    Parameters = filterContext.RouteData.Values["id"]?.ToString() ?? ""
+                    Parameters = filterContext.RouteData.Values["id"]?.ToString() ?? "",
+                    CreatedDate = DateTime.UtcNow
                 };
 
-                db.Logs.Add(logModel);
-                db.SaveChanges();            }            base.OnException(filterContext);        }
+                Repository.Add(logModel);
+                Repository.Save();            }            base.OnException(filterContext);        }
 
         protected override void Dispose(bool disposing)
         {
             if (disposing)
             {
-                db.Dispose();
+                Repository.Dispose();
             }
 
             base.Dispose(disposing);

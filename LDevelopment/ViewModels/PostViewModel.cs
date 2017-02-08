@@ -24,11 +24,13 @@ namespace LDevelopment.ViewModels
 
         public bool IsReleased { get; set; } = true;
 
-        public bool HasReadMoreLink { get; set; } = false;
+        public bool HasReadMoreLink { get; set; }
 
         [DataType(DataType.Upload)]
         public HttpPostedFileBase Image { get; set; }
         public string ImageUrl { get; set; }
+
+        public string Url { get; set; }
 
         public List<string> TagsIds { get; set; }
         public MultiSelectList Tags { get; set; }

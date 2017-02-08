@@ -3,7 +3,6 @@ using System.Configuration;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 using LDevelopment.Helpers;
 using LDevelopment.Models;
@@ -15,7 +14,7 @@ namespace LDevelopment.Controllers
 {
     public class BlogController : BaseController
     {
-        readonly int _pageSize = int.Parse(ConfigurationManager.AppSettings["PageSize"]);
+        private readonly int _pageSize = int.Parse(ConfigurationManager.AppSettings["PageSize"]);
 
         public ActionResult Index(SearchViewModel searchViewModel, int pageNumber = 1)
         {
@@ -59,12 +58,13 @@ namespace LDevelopment.Controllers
             return View("Index", blogViewModel);
         }
 
-        public ActionResult Details(int? id)
+        public ActionResult Details(string url)
         {
-            var post = db.Posts
-                .Include(x => x.PostTags)
-                .Include(x => x.Comments)
-                .SingleOrDefault(x => x.Id == id.Value);
+            int id;
+
+            var post = int.TryParse(url, out id) ? 
+                Repository.Find<PostModel>(id, x => x.PostTags, x => x.Comments) : 
+                Repository.Find<PostModel>(x => x.Url == url, x => x.PostTags, x => x.Comments);
 
             var tags = new MultiSelectList(post.PostTags.Select(x => new SelectListItem
             {
@@ -95,11 +95,11 @@ namespace LDevelopment.Controllers
 
             foreach (var comment in post.Comments)
             {
-                db.Entry(comment).Reference(x => x.Author).Load();
+                Repository.Context.Entry(comment).Reference(x => x.Author).Load();
             }
 
-            db.Entry(post).Entity.ViewsCount++;
-            db.SaveChanges();
+            Repository.Context.Entry(post).Entity.ViewsCount++;
+            Repository.Save();
 
             return View(postViewModel);
         }
@@ -128,7 +128,7 @@ namespace LDevelopment.Controllers
         [Authorize(Roles = "Admin")]
         public ActionResult Create()
         {
-            var tags = db.Tags
+            var tags = Repository.All<TagModel>()
                 .Select(tag => new SelectListItem
                 {
                     Value = tag.Id.ToString(),
@@ -151,55 +151,47 @@ namespace LDevelopment.Controllers
         {
             if (ModelState.IsValid)
             {
-                var postModel = new PostModel
+                var post = new PostModel
                 {
                     Title = postViewModel.Title,
                     Text = postViewModel.Text,
                     ReleaseDate = DateTime.UtcNow,
-                    IsReleased = true
+                    IsReleased = true,
+                    Url = BlogHelper.GeneratePostUrl(postViewModel.Title)
                 };
 
                 if (postViewModel.TagsIds != null)
                 {
                     var tagsIds = postViewModel.TagsIds.Select(int.Parse).ToList();
 
-                    foreach (var tagId in tagsIds)
+                    foreach (var id in tagsIds)
                     {
-                        var tag = db.Tags.SingleOrDefault(x => x.Id == tagId);
+                        var tag = Repository.Find<TagModel>(id);
 
-                        postModel.PostTags.Add(tag);
+                        post.PostTags.Add(tag);
                     }
                 }
 
                 if (postViewModel.Image != null && postViewModel.Image.ContentLength > 0)
                 {
-                    postModel.Image = UploadPhoto(postViewModel.Image);
+                    post.Image = AzureBlobHelper.UploadPhoto(postViewModel.Image);
                 }
 
-                try
-                {
-                    db.Posts.Add(postModel);
-                    db.SaveChanges();
-                }
-                catch (Exception ex)
-                {
-                    ModelState.AddModelError("", ex.Message);
-                }
+                Repository.Add(post);
+                Repository.Save();
 
-                return RedirectToAction("Details", new { id = postModel.Id });
+                return RedirectToAction("Details", new { url = post.Url });
             }
 
             return RedirectToAction("Index");
         }
 
         // GET: Blog/Edit/5
-        public ActionResult Edit(int? id)
+        public ActionResult Edit(int id)
         {
-            var post = db.Posts
-                .Include(x => x.PostTags)
-                .SingleOrDefault(x => x.Id == id);
+            var post = Repository.Find<PostModel>(id, x => x.PostTags);
 
-            var tags = db.Tags
+            var tags = Repository.All<TagModel>()
                 .Select(tag => new SelectListItem
                 {
                     Value = tag.Id.ToString(),
@@ -228,38 +220,36 @@ namespace LDevelopment.Controllers
         {
             if (ModelState.IsValid)
             {
-                var postModel = db.Posts
-                    .Include(x => x.PostTags)
-                    .SingleOrDefault(x => x.Id == postViewModel.Id);
+                var post = Repository.Find<PostModel>(postViewModel.Id, x => x.PostTags);
 
-                postModel.Title = postViewModel.Title;
-                postModel.Text = postViewModel.Text;
-                postModel.ReleaseDate = postViewModel.ReleaseDate;
-                postModel.IsReleased = postViewModel.IsReleased;
+                post.Title = postViewModel.Title;
+                post.Text = postViewModel.Text;
+                post.ReleaseDate = postViewModel.ReleaseDate;
+                post.IsReleased = postViewModel.IsReleased;
 
                 var newTags = postViewModel.TagsIds.Select(int.Parse).ToList();
-                var oldTags = postModel.PostTags.Select(x => x.Id).ToList();
+                var oldTags = post.PostTags.Select(x => x.Id).ToList();
 
                 var tagsToAdd = newTags.Except(oldTags).ToList();
                 var tagsToRemove = oldTags.Except(newTags).ToList();
 
                 if (tagsToAdd.Any())
                 {
-                    foreach (var tagId in tagsToAdd)
+                    foreach (var id in tagsToAdd)
                     {
-                        var tag = db.Tags.SingleOrDefault(x => x.Id == tagId);
+                        var tag = Repository.Find<TagModel>(id);
 
-                        postModel.PostTags.Add(tag);
+                        post.PostTags.Add(tag);
                     }
                 }
 
                 if (tagsToRemove.Any())
                 {
-                    foreach (var tagId in tagsToRemove)
+                    foreach (var id in tagsToRemove)
                     {
-                        var tag = db.Tags.SingleOrDefault(x => x.Id == tagId);
+                        var tag = Repository.Find<TagModel>(id);
 
-                        postModel.PostTags.Remove(tag);
+                        post.PostTags.Remove(tag);
                     }
                 }
 
@@ -272,29 +262,22 @@ namespace LDevelopment.Controllers
                     //postViewModel.Image.SaveAs(path);
                     //postModel.Image = url;
 
-                    postModel.Image = UploadPhoto(postViewModel.Image);
+                    post.Image = AzureBlobHelper.UploadPhoto(postViewModel.Image);
                 }
 
-                try
-                {
-                    db.Entry(postModel).State = EntityState.Modified;
-                    db.SaveChanges();
-                }
-                catch (Exception ex)
-                {
-                    ModelState.AddModelError("", ex.Message);
-                }
+                Repository.Update(post);
+                Repository.Save();
 
-                return RedirectToAction("Details", new { id = postModel.Id });
+                return RedirectToAction("Details", new { url = post.Url });
             }
 
             return View(postViewModel);
         }
 
         // GET: Blog/Delete/5
-        public ActionResult Delete(int? id)
+        public ActionResult Delete(int id)
         {
-            var post = db.Posts.SingleOrDefault(x => x.Id == id);
+            var post = Repository.Find<PostModel>(id);
 
             var postViewModel = new PostViewModel
             {
@@ -313,20 +296,23 @@ namespace LDevelopment.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            var postModel = db.Posts.SingleOrDefault(x => x.Id == id);
+            var post = Repository.Find<PostModel>(id);
 
-            //TODO komentarze
+            foreach (var comment in post.Comments)
+            {
+                Repository.Delete<CommentModel>(comment.Id);
+            }
 
-            db.Posts.Remove(postModel);
-            db.SaveChanges();
+            Repository.Delete<PostModel>(post.Id);
+            Repository.Save();
 
             return RedirectToAction("Index");
         }
 
         [Authorize]
-        public ActionResult Comment(int? id)
+        public ActionResult Comment(int id)
         {
-            var post = db.Posts.Find(id);
+            var post = Repository.Find<PostModel>(id);
 
             var comment = new CommentViewModel
             {
@@ -341,28 +327,26 @@ namespace LDevelopment.Controllers
         [Authorize]
         public ActionResult Comment([Bind(Include = "Text, PostId")] CommentViewModel commentViewModel)
         {
+            var post = Repository.Find<PostModel>(commentViewModel.PostId, x => x.Comments);
+
             if (ModelState.IsValid)
             {
                 var username = HttpContext.User.Identity.GetUserId();
-
-                var post = db.Posts
-                    .Include(x => x.Comments)
-                    .Single(x => x.Id == commentViewModel.PostId);
 
                 var comment = new CommentModel()
                 {
                     Text = commentViewModel.Text,
                     ReleaseDate = DateTime.UtcNow,
-                    AuthorId = db.Users.Find(username).Id,
+                    AuthorId = Repository.Context.Users.Find(username).Id,
                     Post = post
                 };
 
                 post.Comments.Add(comment);
 
-                db.SaveChanges();
+                Repository.Save();
             }
 
-            return RedirectToAction("Details", new { id = commentViewModel.PostId });
+            return RedirectToAction("Details", new { url = post.Url });
         }
 
         private static PostViewModel GetPostViewModel(PostModel postModel)
@@ -382,6 +366,7 @@ namespace LDevelopment.Controllers
                 ReleaseDate = postModel.ReleaseDate,
                 Tags = tags,
                 ImageUrl = postModel.Image,
+                Url = postModel.Url,
                 Comments = postModel.Comments.Select(c => new CommentViewModel()).ToList()
             };
         }
@@ -403,8 +388,8 @@ namespace LDevelopment.Controllers
 
         private IEnumerable<PostModel> GetPosts()
         {
-            var posts = db.Posts
-                .Where(x => x.IsReleased)
+            var posts = Repository
+                .All<PostModel>(x => x.IsReleased)
                 .OrderByDescending(x => x.ReleaseDate)
                 .ThenBy(x => x.Title)
                 .Include(x => x.PostTags)
@@ -426,14 +411,6 @@ namespace LDevelopment.Controllers
                 .ToList();
 
             return tags;
-        }
-
-        private static string UploadPhoto(HttpPostedFileBase image)
-        {
-            var utility = new AzureBlobHelper();
-            var result = utility.UploadBlob(image.FileName, image.InputStream);
-
-            return result != null ? result.Uri.ToString() : string.Empty;
         }
     }
 }
