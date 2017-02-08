@@ -15,10 +15,16 @@ namespace LDevelopment.Controllers
             Repository = new Repository();
         }
 
-        protected override void OnException(ExceptionContext filterContext)        {            if (filterContext != null && filterContext.HttpContext != null && filterContext.Exception != null)            {
+        protected override void OnException(ExceptionContext filterContext)
+        {
+            if (filterContext != null && filterContext.HttpContext != null && filterContext.Exception != null)
+            {
                 //If customError is Off, then AI HTTPModule will report the exception
-                if (filterContext.HttpContext.IsCustomErrorEnabled)                {
-                    var ai = new TelemetryClient();                    ai.TrackException(filterContext.Exception);                }
+                if (filterContext.HttpContext.IsCustomErrorEnabled)
+                {
+                    var ai = new TelemetryClient();
+                    ai.TrackException(filterContext.Exception);
+                }
 
                 filterContext.ExceptionHandled = true;
                 filterContext.Result = View("Error");
@@ -34,7 +40,11 @@ namespace LDevelopment.Controllers
                 };
 
                 Repository.Add(logModel);
-                Repository.Save();            }            base.OnException(filterContext);        }
+                Repository.Save();
+            }
+
+            base.OnException(filterContext);
+        }
 
         protected override void Dispose(bool disposing)
         {

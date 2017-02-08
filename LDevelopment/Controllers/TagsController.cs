@@ -4,6 +4,7 @@ using LDevelopment.Models;
 
 namespace LDevelopment.Controllers
 {
+    [Authorize(Roles = "Admin")]
     public class TagsController : BaseController
     {
         // GET: Tags

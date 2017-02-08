@@ -187,6 +187,7 @@ namespace LDevelopment.Controllers
         }
 
         // GET: Blog/Edit/5
+        [Authorize(Roles = "Admin")]
         public ActionResult Edit(int id)
         {
             var post = Repository.Find<PostModel>(id, x => x.PostTags);
@@ -275,6 +276,7 @@ namespace LDevelopment.Controllers
         }
 
         // GET: Blog/Delete/5
+        [Authorize(Roles = "Admin")]
         public ActionResult Delete(int id)
         {
             var post = Repository.Find<PostModel>(id);
@@ -294,6 +296,7 @@ namespace LDevelopment.Controllers
         // POST: Blog/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin")]
         public ActionResult DeleteConfirmed(int id)
         {
             var post = Repository.Find<PostModel>(id);
