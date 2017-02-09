@@ -90,7 +90,8 @@ namespace LDevelopment.Controllers
                     ReleaseDate = c.ReleaseDate,
                     AuthorName = c.Author.UserName,
                     AuthorMail = c.Author.Email
-                }).ToList()
+                })
+                .ToList()
             };
 
             foreach (var comment in post.Comments)
@@ -227,6 +228,7 @@ namespace LDevelopment.Controllers
                 post.Text = postViewModel.Text;
                 post.ReleaseDate = postViewModel.ReleaseDate;
                 post.IsReleased = postViewModel.IsReleased;
+                post.Url = BlogHelper.GeneratePostUrl(postViewModel.Title);
 
                 var newTags = postViewModel.TagsIds.Select(int.Parse).ToList();
                 var oldTags = post.PostTags.Select(x => x.Id).ToList();
@@ -261,7 +263,7 @@ namespace LDevelopment.Controllers
                     //var url = Path.Combine(directory, postViewModel.Image.FileName);
 
                     //postViewModel.Image.SaveAs(path);
-                    //postModel.Image = url;
+                    //post.Image = url;
 
                     post.Image = AzureBlobHelper.UploadPhoto(postViewModel.Image);
                 }
@@ -299,11 +301,14 @@ namespace LDevelopment.Controllers
         [Authorize(Roles = "Admin")]
         public ActionResult DeleteConfirmed(int id)
         {
-            var post = Repository.Find<PostModel>(id);
+            var post = Repository.Find<PostModel>(id, x => x.Comments);
 
-            foreach (var comment in post.Comments)
+            if (post.Comments.Any())
             {
-                Repository.Delete<CommentModel>(comment.Id);
+                foreach (var comment in post.Comments)
+                {
+                    Repository.Delete<CommentModel>(comment.Id);
+                }
             }
 
             Repository.Delete<PostModel>(post.Id);
