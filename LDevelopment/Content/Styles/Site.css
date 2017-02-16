@@ -93,27 +93,21 @@
     body .site .blog .container .search .btn-lg {
       display: none; }
     body .site .blog .container .search .btn-sm {
-      display: inline-block !important; }
-    body .site .content {
-      min-height: 200px; } }
+      display: inline-block !important; } }
   @media screen and (min-width: 768px) and (max-width: 991px) {
     body .site .home .container {
       padding: 20vh 80px; }
       body .site .home .container h1 {
         font-size: 63px; }
       body .site .home .container h2 {
-        font-size: 18px; }
-    body .site .content {
-      min-height: 260px; } }
+        font-size: 18px; } }
   @media screen and (min-width: 992px) {
     body .site .home .container {
       padding: 30vh 80px; }
       body .site .home .container h1 {
         font-size: 63px; }
       body .site .home .container h2 {
-        font-size: 21px; }
-    body .site .content {
-      min-height: 320px; } }
+        font-size: 21px; } }
   body .site .link {
     border: 1px solid #0a365d;
     border-radius: 25px;
@@ -148,7 +142,7 @@
     body .site .main .home .container .row h2 {
       color: #fff;
       font-weight: normal; }
-    body .site .main .home .container .row a {
+    body .site .main .home .container .row .link {
       border: 1px solid transparent; }
   body .site .main .about-me .body-content, body .site .main .last .body-content, body .site .main .popular .body-content {
     padding: 30px 0; }
@@ -161,6 +155,7 @@
     body .site .main .last .short p, body .site .main .popular .short p {
       margin: 10px 0; }
     body .site .main .last .short .more, body .site .main .popular .short .more {
+      margin: 20px 0 0;
       text-align: center; }
   body .site .main .section-1 {
     background-image: url("/Content/Images/section_01.jpg"); }
@@ -213,6 +208,8 @@
   body .site .posts .entity .entity-title a {
     color: #212427;
     text-decoration: none; }
+  body .site .posts .entity .more {
+    margin: 20px 0 0; }
   body .site .posts .pagination li {
     text-align: center; }
     body .site .posts .pagination li:first-child > a {

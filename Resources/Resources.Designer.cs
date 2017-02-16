@@ -70,7 +70,7 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Jestem &lt;strong&gt;Łukasz Dudziak&lt;/strong&gt;, programista - pasjonat, a także założyciel przedsiębiorstwa rozwijanego pod nazwą &lt;strong&gt;LDevelopment&lt;/strong&gt;, którego ta strona jest wizytówką. Prywatnie miłośnik podróży, muzyki i literatury. Interesuję się również astronomią i naukami dalekiego wschodu. Zapraszam do kontaktu!.
+        ///   Looks up a localized string similar to Jestem &lt;strong&gt;Łukasz Dudziak&lt;/strong&gt;, programista-pasjonat i założyciel przedsiębiorstwa rozwijanego pod nazwą &lt;strong&gt;LDevelopment&lt;/strong&gt;, którego ta strona jest wizytówką. Prywatnie miłośnik podróży, muzyki i literatury. Interesuję się również astronomią i naukami dalekiego wschodu.&lt;br/&gt;Zapraszam do kontaktu!.
         /// </summary>
         public static string AboutMessage {
             get {
@@ -232,7 +232,7 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Email.
+        ///   Looks up a localized string similar to E-mail.
         /// </summary>
         public static string Email {
             get {
@@ -475,6 +475,15 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Telefon.
+        /// </summary>
+        public static string Phone {
+            get {
+                return ResourceManager.GetString("Phone", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Popularne.
         /// </summary>
         public static string Popular {
@@ -570,6 +579,15 @@ namespace Resources {
         public static string SignIn {
             get {
                 return ResourceManager.GetString("SignIn", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .NET Framework ∙ Web Development ∙ Patterns &amp; Practices ∙ Usługi programistyczne.
+        /// </summary>
+        public static string SiteDescription {
+            get {
+                return ResourceManager.GetString("SiteDescription", resourceCulture);
             }
         }
         

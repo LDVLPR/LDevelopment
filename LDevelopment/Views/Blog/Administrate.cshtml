@@ -5,52 +5,57 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Blog Administration</h2>
-
-@using (Html.BeginForm())
-{
-    <div id="search" class="input-group">
-        @Html.TextBox("SearchString", Model.Search.SearchString, new { @class = "form-control" })
-        <span class="input-group-btn">
-            <input type="submit" class="btn btn-default" value="Search" />
-        </span>
-    </div>
-}
-
 <div>
-    <div class="col-md-12 admin">
-        @if (Model.Posts.Any())
+    <div class="container body-content">
+
+        <h2>Blog Administration</h2>
+
+        @using (Html.BeginForm())
+        {
+            <div id="search" class="input-group">
+                @Html.TextBox("SearchString", Model.Search.SearchString, new { @class = "form-control" })
+                <span class="input-group-btn">
+                    <input type="submit" class="btn btn-default" value="Search" />
+                </span>
+            </div>
+        }
+
+        <div>
+            <div class="col-md-12 admin">
+                @if (Model.Posts.Any())
             {
                 if (Model.Search.SearchResult)
                 {
-                    @:Results: @Model.Posts.Count()
+                        @:Results: @Model.Posts.Count()
                 }
 
                 foreach (var item in Model.Posts)
                 {
-                <div>
-                    <h3>@Html.ActionLink(item.Title, "Details", new { url = item.Url })</h3>
-                    <div class="content">
-                        @Html.Raw(HttpUtility.HtmlDecode(Html.DisplayFor(modelItem => item.Text).ToString()))
+                        <div>
+                            <h3>@Html.ActionLink(item.Title, "Details", new { url = item.Url })</h3>
+                            <div class="content">
+                                @Html.Raw(HttpUtility.HtmlDecode(Html.DisplayFor(modelItem => item.Text).ToString()))
 
-                        @if (item.HasReadMoreLink)
-                        {
-                            @Html.ActionLink(Resources.ReadMore, "Details", new { url = item.Url }, new { @class = "btn btn-default" })
-                        }
-                    </div>
-                    <div style="text-align: center">
-                        @Html.DisplayFor(modelItem => item.ReleaseDate)
-                        @Html.ActionLink("Edit", "Edit", new { id = item.Id }, new { @class = "btn btn-warning" })
-                        @Html.ActionLink("Delete", "Delete", new { id = item.Id }, new { @class = "btn btn-danger" })
-                    </div>
-                </div>
-            }
+                                @if (item.HasReadMoreLink)
+                                {
+                                    @Html.ActionLink(Resources.ReadMore, "Details", new { url = item.Url }, new { @class = "btn btn-default" })
+                                }
+                            </div>
+                            <div style="text-align: center">
+                                @Html.DisplayFor(modelItem => item.ReleaseDate)
+                                @Html.ActionLink("Edit", "Edit", new { id = item.Id }, new { @class = "btn btn-warning" })
+                                @Html.ActionLink("Delete", "Delete", new { id = item.Id }, new { @class = "btn btn-danger" })
+                            </div>
+                        </div>
+                    }
 
-            @Html.PagedListPager(Model.Posts, pageNumber => Url.Action("Index", new { pageNumber }))
-        }
-        else
-        {
-            @:No results
+                    @Html.PagedListPager(Model.Posts, pageNumber => Url.Action("Index", new { pageNumber }))
+                }
+                else
+                {
+                    @:No results
             }
+            </div>
+        </div>
     </div>
 </div>

@@ -75,7 +75,9 @@
 
                             @if (item.HasReadMoreLink)
                             {
-                                @Html.ActionLink(Resources.ReadMore, "Details", new { url = item.Url }, new  { @class = "link btn btn-lg text-uppercase" })
+                                <div class="more">
+                                    @Html.ActionLink(Resources.ReadMore, "Details", new { url = item.Url }, new  { @class = "link btn btn-lg text-uppercase" })
+                                </div>
                             }
                         </div>
                     </div>
