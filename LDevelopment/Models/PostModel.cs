@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Web.Mvc;
 using LDevelopment.Interfaces;
 
@@ -32,6 +33,8 @@ namespace LDevelopment.Models
         [DataType(DataType.ImageUrl)]
         public string Image { get; set; }
 
+        [MaxLength(200)]
+        [Index(IsUnique = true)]
         [Required]
         public string Url { get; set; }
 
