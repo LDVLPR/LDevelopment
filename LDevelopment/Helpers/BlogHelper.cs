@@ -6,10 +6,15 @@ namespace LDevelopment.Helpers
     {
         public static string GeneratePostUrl(string title)
         {
-            var regex = new Regex("(?:[^a-z0-9 ]|(?<=['\"])s)", RegexOptions.IgnoreCase | RegexOptions.CultureInvariant | RegexOptions.Compiled);
-            var result = regex.Replace(title, string.Empty).ToLower().Trim().Replace(" ", "-");
+            var result = title.Trim();
 
-            return result;
+            var specialCharacters = new Regex("(?:[^a-z0-9 ]|(?<=['\"])s)", RegexOptions.IgnoreCase | RegexOptions.CultureInvariant | RegexOptions.Compiled);
+            result = specialCharacters.Replace(result, string.Empty);
+
+            var whitespaces = new Regex("[ ]{1,}");
+            result = whitespaces.Replace(result, "-");
+
+            return result.ToLower();
         }
     }
 }
