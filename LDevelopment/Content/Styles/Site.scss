@@ -157,7 +157,7 @@ body {
                     }
 
                     h2 {
-                        font-size: 16px;
+                        font-size: 12px;
                     }
                 }
             }
@@ -221,6 +221,7 @@ body {
             color: $color-dark;
             background-color: $color-white;
             padding: 10px 40px;
+            transition: 0.2s;
 
             &:hover {
                 color: $color-white;
@@ -519,7 +520,7 @@ body {
                 padding: 15vh 0 2vh;
             }
 
-            .social-buttons {
+            .social-login-buttons {
                 padding: 20px 0;
 
                 #Google {

@@ -89,7 +89,7 @@
       body .site .home .container h1 {
         font-size: 47px; }
       body .site .home .container h2 {
-        font-size: 16px; }
+        font-size: 12px; }
     body .site .blog .container .search .btn-lg {
       display: none; }
     body .site .blog .container .search .btn-sm {
@@ -113,7 +113,8 @@
     border-radius: 25px;
     color: #0a365d;
     background-color: #ffffff;
-    padding: 10px 40px; }
+    padding: 10px 40px;
+    transition: 0.2s; }
     body .site .link:hover {
       color: #ffffff;
       background-color: #0a365d;
@@ -260,22 +261,22 @@
       margin: 0 3px 0 10px; }
   body .site .login h2 {
     padding: 15vh 0 2vh; }
-  body .site .login .social-buttons {
+  body .site .login .social-login-buttons {
     padding: 20px 0; }
-    body .site .login .social-buttons #Google {
+    body .site .login .social-login-buttons #Google {
       background-color: #db3236; }
-    body .site .login .social-buttons #Facebook {
+    body .site .login .social-login-buttons #Facebook {
       background-color: #3b5998; }
-    body .site .login .social-buttons #Microsoft {
+    body .site .login .social-login-buttons #Microsoft {
       background-color: #00a1f1; }
-    body .site .login .social-buttons button {
+    body .site .login .social-login-buttons button {
       color: #ffffff;
       border: none;
       width: 280px;
       margin: 5px; }
-      body .site .login .social-buttons button:hover {
+      body .site .login .social-login-buttons button:hover {
         background-color: #0a365d !important; }
-      body .site .login .social-buttons button i {
+      body .site .login .social-login-buttons button i {
         font-size: 24px;
         float: left; }
   body .site .login .local-login {
