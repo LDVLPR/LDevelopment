@@ -84,10 +84,7 @@
                     <hr>
                 }
 
-                if (Model.Posts.Count > Model.Posts.PageSize)
-                {
-                    @Html.PagedListPager(Model.Posts, pageNumber => Url.Action("Index", new {pageNumber}))
-                }
+                @Html.PagedListPager(Model.Posts, pageNumber => Url.Action("Index", new { pageNumber }), new PagedListRenderOptions { Display = PagedListDisplayMode.IfNeeded })
             }
             else
             {
