@@ -1,5 +1,4 @@
-﻿using LDevelopment.Models;
-using System.Collections.Generic;
+﻿using System.Web.Mvc;
 using PagedList;
 
 namespace LDevelopment.ViewModels
@@ -8,7 +7,7 @@ namespace LDevelopment.ViewModels
     {
         public IPagedList<PostViewModel> Posts { get; set; }
 
-        public ICollection<TagModel> Tags { get; set; }
+        public MultiSelectList Tags { get; set; }
 
         public SearchViewModel Search { get; set; }
 

@@ -165,12 +165,6 @@
   <data name="EmailInvalid" xml:space="preserve">
     <value>Email is not valid</value>
   </data>
-  <data name="Entities" xml:space="preserve">
-    <value>Posts</value>
-  </data>
-  <data name="Entity" xml:space="preserve">
-    <value>Post</value>
-  </data>
   <data name="Error" xml:space="preserve">
     <value>Error</value>
   </data>
@@ -254,5 +248,80 @@
   </data>
   <data name="PasswordResetSubject" xml:space="preserve">
     <value>Reset your password</value>
+  </data>
+  <data name="AboutMessage" xml:space="preserve">
+    <value>Jestem &lt;strong&gt;Łukasz Dudziak&lt;/strong&gt;, passionate programmer and founder of &lt;strong&gt;LDevelopment&lt;/strong&gt;. If you are interested in cooperation, please do not hesitate to contact me!</value>
+  </data>
+  <data name="AboutMessageShort" xml:space="preserve">
+    <value>I'm &lt;strong&gt;Łukasz Dudziak&lt;/strong&gt;, passionate programmer and founder of &lt;strong&gt;LDevelopment&lt;/strong&gt;. Welcome!</value>
+  </data>
+  <data name="AccountNotCreated" xml:space="preserve">
+    <value>Not have an account yet?</value>
+  </data>
+  <data name="AssociateWith" xml:space="preserve">
+    <value>Associate with your account</value>
+  </data>
+  <data name="FindMe" xml:space="preserve">
+    <value>Find me here</value>
+  </data>
+  <data name="Last" xml:space="preserve">
+    <value>Last</value>
+  </data>
+  <data name="Manage" xml:space="preserve">
+    <value>Manage</value>
+  </data>
+  <data name="Newsletter" xml:space="preserve">
+    <value>Newsletter</value>
+  </data>
+  <data name="NewsletterMessage" xml:space="preserve">
+    <value>Sign up to the newsletter to be updated with the latest news</value>
+  </data>
+  <data name="Or" xml:space="preserve">
+    <value>Or</value>
+  </data>
+  <data name="PasswordCreate" xml:space="preserve">
+    <value>Create password</value>
+  </data>
+  <data name="PasswordOld" xml:space="preserve">
+    <value>Old password</value>
+  </data>
+  <data name="Phone" xml:space="preserve">
+    <value>Phone</value>
+  </data>
+  <data name="Popular" xml:space="preserve">
+    <value>Popular</value>
+  </data>
+  <data name="Post" xml:space="preserve">
+    <value>Post</value>
+  </data>
+  <data name="Posts" xml:space="preserve">
+    <value>Posts</value>
+  </data>
+  <data name="Read" xml:space="preserve">
+    <value>Read</value>
+  </data>
+  <data name="Search" xml:space="preserve">
+    <value>Search</value>
+  </data>
+  <data name="SearchPlaceholder" xml:space="preserve">
+    <value>Search...</value>
+  </data>
+  <data name="SignIn" xml:space="preserve">
+    <value>Sign in</value>
+  </data>
+  <data name="SiteDescription" xml:space="preserve">
+    <value>.NET Framework ∙ Web Development ∙ Patterns &amp; Practices ∙ Programming Services</value>
+  </data>
+  <data name="SiteName" xml:space="preserve">
+    <value>LDevelopment</value>
+  </data>
+  <data name="Soon" xml:space="preserve">
+    <value>Soon...</value>
+  </data>
+  <data name="PasswordNew" xml:space="preserve">
+    <value>New password</value>
+  </data>
+  <data name="PasswordChange" xml:space="preserve">
+    <value>Change your password</value>
   </data>
 </root>

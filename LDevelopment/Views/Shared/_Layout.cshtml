@@ -5,7 +5,8 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>@ViewBag.Title - @Resources.SiteName</title>
         <meta name="description" content="@Resources.SiteDescription" />
-        <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto">
+        <link rel="alternate" type="application/rss+xml" href="@Url.Action("Feed", "Blog")" />
+        <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto" />
 
         @Styles.Render("~/Content/Styles/css")
         @Scripts.Render("~/bundles/modernizr")
@@ -47,6 +48,7 @@
                         <a href="https://www.facebook.com/ldev.eu/" target="_blank"><i class="fa fa-facebook" aria-hidden="true"></i></a>
                         <a href="https://www.linkedin.com/in/lukaszdudziak1990/" target="_blank"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
                         <a href="https://github.com/LDVLPR/" target="_blank"><i class="fa fa-github" aria-hidden="true"></i></a>
+                        <a href="@Url.Action("Feed", "Blog")" target="_blank"><i class="fa fa-rss" aria-hidden="true"></i></a>
                     </div>
                 </div>
             </footer>

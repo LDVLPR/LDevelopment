@@ -292,13 +292,13 @@
     <value>Tu mnie znajdziesz</value>
   </data>
   <data name="AboutMessage" xml:space="preserve">
-    <value>Jestem &lt;strong&gt;Łukasz Dudziak&lt;/strong&gt;, programista-pasjonat i założyciel przedsiębiorstwa rozwijanego pod nazwą &lt;strong&gt;LDevelopment&lt;/strong&gt;, którego ta strona jest wizytówką. Prywatnie miłośnik podróży, muzyki i literatury. Interesuję się również astronomią i naukami dalekiego wschodu.&lt;br/&gt;Zapraszam do kontaktu!</value>
+    <value>Jestem &lt;strong&gt;Łukasz Dudziak&lt;/strong&gt;, programista - pasjonat i założyciel przedsiębiorstwa rozwijanego pod nazwą &lt;strong&gt;LDevelopment&lt;/strong&gt;, którego ta strona jest wizytówką. Prywatnie miłośnik podróży, muzyki i literatury. Interesuję się również astronomią i naukami dalekiego wschodu.&lt;br/&gt;Zapraszam do kontaktu!</value>
   </data>
   <data name="AssociateWith" xml:space="preserve">
     <value>Połącz ze swoim kontem</value>
   </data>
   <data name="NewsletterMessage" xml:space="preserve">
-    <value>Zapisz się do newslettera, aby być na bieżąco ze wszystkimi wpisami na blogu</value>
+    <value>Zapisz się do newslettera, aby być na bieżąco ze wszystkimi aktualnościami</value>
   </data>
   <data name="Soon" xml:space="preserve">
     <value>Wkrótce...</value>
@@ -316,9 +316,12 @@
     <value>Stare hasło</value>
   </data>
   <data name="SiteDescription" xml:space="preserve">
-    <value>.NET Framework ∙ Web Development ∙ Patterns &amp; Practices ∙ Usługi programistyczne</value>
+    <value>.NET Framework ∙ Web Development ∙ Patterns &amp; Practices ∙ Usługi Programistyczne</value>
   </data>
   <data name="Phone" xml:space="preserve">
     <value>Telefon</value>
+  </data>
+  <data name="AboutMessageShort" xml:space="preserve">
+    <value>Jestem &lt;strong&gt;Łukasz Dudziak&lt;/strong&gt;, programista - pasjonat i założyciel przedsiębiorstwa rozwijanego pod nazwą &lt;strong&gt;LDevelopment&lt;/strong&gt;, którego ta strona jest wizytówką. Jeżeli jesteś zainteresowany współpracą, nie wahaj się skontaktować ze mną odnośnie szczegółów. Zapraszam!</value>
   </data>
 </root>

@@ -70,11 +70,20 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Jestem &lt;strong&gt;Łukasz Dudziak&lt;/strong&gt;, programista-pasjonat i założyciel przedsiębiorstwa rozwijanego pod nazwą &lt;strong&gt;LDevelopment&lt;/strong&gt;, którego ta strona jest wizytówką. Prywatnie miłośnik podróży, muzyki i literatury. Interesuję się również astronomią i naukami dalekiego wschodu.&lt;br/&gt;Zapraszam do kontaktu!.
+        ///   Looks up a localized string similar to Jestem &lt;strong&gt;Łukasz Dudziak&lt;/strong&gt;, programista - pasjonat i założyciel przedsiębiorstwa rozwijanego pod nazwą &lt;strong&gt;LDevelopment&lt;/strong&gt;, którego ta strona jest wizytówką. Prywatnie miłośnik podróży, muzyki i literatury. Interesuję się również astronomią i naukami dalekiego wschodu.&lt;br/&gt;Zapraszam do kontaktu!.
         /// </summary>
         public static string AboutMessage {
             get {
                 return ResourceManager.GetString("AboutMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Jestem &lt;strong&gt;Łukasz Dudziak&lt;/strong&gt;, programista - pasjonat i założyciel przedsiębiorstwa rozwijanego pod nazwą &lt;strong&gt;LDevelopment&lt;/strong&gt;, którego ta strona jest wizytówką. Jeżeli jesteś zainteresowany współpracą, nie wahaj się skontaktować ze mną odnośnie szczegółów. Zapraszam!.
+        /// </summary>
+        public static string AboutMessageShort {
+            get {
+                return ResourceManager.GetString("AboutMessageShort", resourceCulture);
             }
         }
         
@@ -367,7 +376,7 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Zapisz się do newslettera, aby być na bieżąco ze wszystkimi wpisami na blogu.
+        ///   Looks up a localized string similar to Zapisz się do newslettera, aby być na bieżąco ze wszystkimi aktualnościami.
         /// </summary>
         public static string NewsletterMessage {
             get {
@@ -583,7 +592,7 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to .NET Framework ∙ Web Development ∙ Patterns &amp; Practices ∙ Usługi programistyczne.
+        ///   Looks up a localized string similar to .NET Framework ∙ Web Development ∙ Patterns &amp; Practices ∙ Usługi Programistyczne.
         /// </summary>
         public static string SiteDescription {
             get {

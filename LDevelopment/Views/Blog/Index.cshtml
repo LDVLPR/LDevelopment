@@ -96,7 +96,7 @@
             <h3 class="text-uppercase">@Resources.Categories</h3>
             @foreach (var item in Model.Tags)
             {
-                @Html.ActionLink(item.Title, "Tag", new { tag = item.Id }, new { @class = "tag" })
+                @Html.ActionLink(item.Text, "Tag", new { tag = item.Value }, new { @class = "tag" })
             }
         </div>
     </div>

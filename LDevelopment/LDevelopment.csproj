@@ -130,6 +130,7 @@
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.ServiceModel" />
     <Reference Include="System.Spatial, Version=5.6.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Spatial.5.6.4\lib\net40\System.Spatial.dll</HintPath>
       <Private>True</Private>
@@ -275,8 +276,13 @@
     <Compile Include="Migrations\201702081240209_GenericRepository.Designer.cs">
       <DependentUpon>201702081240209_GenericRepository.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201702151605223_AddIndexToPostUrl.cs" />
+    <Compile Include="Migrations\201702151605223_AddIndexToPostUrl.Designer.cs">
+      <DependentUpon>201702151605223_AddIndexToPostUrl.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\CommentModel.cs" />
+    <Compile Include="ActionResults\FeedResult.cs" />
     <Compile Include="Models\LogModel.cs" />
     <Compile Include="Models\PostModel.cs" />
     <Compile Include="Models\TagModel.cs" />
@@ -356,9 +362,16 @@
     <Content Include="Scripts\jquery-3.1.0.min.js" />
     <Content Include="Scripts\jquery-3.1.0.slim.js" />
     <Content Include="Scripts\jquery-3.1.0.slim.min.js" />
-    <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <None Include="Scripts\jquery-3.1.1-vsdoc.js" />
+    <Content Include="Scripts\jquery-3.1.1.js" />
+    <Content Include="Scripts\jquery-3.1.1.min.js" />
+    <Content Include="Scripts\jquery-3.1.1.slim.js" />
+    <Content Include="Scripts\jquery-3.1.1.slim.min.js" />
+    <Content Include="Scripts\jquery-3.1.1.slim.min.map" />
+    <Content Include="Scripts\jquery-3.1.1.min.map" />
     <Content Include="Scripts\jquery.unobtrusive-ajax.js" />
     <Content Include="Scripts\jquery.unobtrusive-ajax.min.js" />
+    <None Include="Scripts\jquery.validate-vsdoc.js" />
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
@@ -452,15 +465,12 @@
     <Content Include="Scripts\tinymce\plugins\importcss\plugin.min.js" />
     <Content Include="Scripts\tinymce\plugins\insertdatetime\plugin.js" />
     <Content Include="Scripts\tinymce\plugins\insertdatetime\plugin.min.js" />
-    <Content Include="Scripts\tinymce\plugins\layer\plugin.js" />
-    <Content Include="Scripts\tinymce\plugins\layer\plugin.min.js" />
     <Content Include="Scripts\tinymce\plugins\legacyoutput\plugin.js" />
     <Content Include="Scripts\tinymce\plugins\legacyoutput\plugin.min.js" />
     <Content Include="Scripts\tinymce\plugins\link\plugin.js" />
     <Content Include="Scripts\tinymce\plugins\link\plugin.min.js" />
     <Content Include="Scripts\tinymce\plugins\lists\plugin.js" />
     <Content Include="Scripts\tinymce\plugins\lists\plugin.min.js" />
-    <Content Include="Scripts\tinymce\plugins\media\moxieplayer.swf" />
     <Content Include="Scripts\tinymce\plugins\media\plugin.js" />
     <Content Include="Scripts\tinymce\plugins\media\plugin.min.js" />
     <Content Include="Scripts\tinymce\plugins\nonbreaking\plugin.js" />
@@ -491,6 +501,8 @@
     <Content Include="Scripts\tinymce\plugins\textcolor\plugin.min.js" />
     <Content Include="Scripts\tinymce\plugins\textpattern\plugin.js" />
     <Content Include="Scripts\tinymce\plugins\textpattern\plugin.min.js" />
+    <Content Include="Scripts\tinymce\plugins\toc\plugin.js" />
+    <Content Include="Scripts\tinymce\plugins\toc\plugin.min.js" />
     <Content Include="Scripts\tinymce\plugins\visualblocks\css\visualblocks.css" />
     <Content Include="Scripts\tinymce\plugins\visualblocks\img\address.gif" />
     <Content Include="Scripts\tinymce\plugins\visualblocks\img\article.gif" />
@@ -589,6 +601,8 @@
     <Content Include="Views\Users\Index.cshtml" />
     <Content Include="Views\Blog\Administrate.cshtml" />
     <Content Include="Views\Blog\Comment.cshtml" />
+    <Content Include="Views\Account\_LocalLoginPartial.cshtml" />
+    <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Scripts\tinymce\skins\lightgray\fonts\tinymce.woff" />
     <Content Include="Scripts\tinymce\skins\lightgray\fonts\tinymce.ttf" />
     <Content Include="Scripts\tinymce\skins\lightgray\fonts\tinymce.json" />
@@ -599,8 +613,6 @@
     <Content Include="Scripts\tinymce\skins\lightgray\fonts\tinymce-small.eot" />
     <Content Include="Scripts\tinymce\skins\lightgray\fonts\readme.md" />
     <Content Include="Scripts\tinymce\langs\readme.md" />
-    <Content Include="Views\Account\_LocalLoginPartial.cshtml" />
-    <Content Include="Views\Shared\Error.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -633,6 +645,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201702081240209_GenericRepository.resx">
       <DependentUpon>201702081240209_GenericRepository.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201702151605223_AddIndexToPostUrl.resx">
+      <DependentUpon>201702151605223_AddIndexToPostUrl.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

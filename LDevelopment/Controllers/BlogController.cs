@@ -3,12 +3,15 @@ using System.Configuration;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
+using System.ServiceModel.Syndication;
 using System.Web.Mvc;
+using LDevelopment.ActionResults;
 using LDevelopment.Helpers;
 using LDevelopment.Models;
 using LDevelopment.ViewModels;
 using Microsoft.AspNet.Identity;
 using PagedList;
+using WebGrease.Css.Extensions;
 
 namespace LDevelopment.Controllers
 {
@@ -20,13 +23,13 @@ namespace LDevelopment.Controllers
         {
             var search = searchViewModel.SearchString;
 
-            var posts = GetPosts()
-                .Where(x => search == null || x.Title.ToLower().Contains(search.ToLower()) || x.Text.ToLower().Contains(search.ToLower()));
+            var posts = GetPosts(searchText: search);
+            var tags = GetTags();
 
             var result = new BlogViewModel
             {
-                Posts = posts.Select(GetPostViewModel).Select(HasReadMoreLink).ToPagedList(pageNumber, _pageSize),
-                Tags = GetTags().ToList(),
+                Posts = posts.Select(GetPostViewModel).Select(BlogHelper.HasReadMoreLink).ToPagedList(pageNumber, _pageSize),
+                Tags = BlogHelper.GetTagsList(tags),
                 Search = new SearchViewModel
                 {
                     SearchString = search,
@@ -41,13 +44,13 @@ namespace LDevelopment.Controllers
         {
             var id = int.Parse(tag);
 
-            var posts = GetPosts()
-                .Where(x => x.PostTags.Any(t => t.Id == id));
+            var posts = GetPosts().Where(x => x.PostTags.Any(t => t.Id == id));
+            var tags = GetTags();
 
             var blogViewModel = new BlogViewModel
             {
-                Posts = posts.Select(GetPostViewModel).Select(HasReadMoreLink).ToPagedList(pageNumber, _pageSize),
-                Tags = GetTags().ToList(),
+                Posts = posts.Select(GetPostViewModel).Select(BlogHelper.HasReadMoreLink).ToPagedList(pageNumber, _pageSize),
+                Tags = BlogHelper.GetTagsList(tags),
                 Search = new SearchViewModel
                 {
                     Tag = tag,
@@ -62,16 +65,9 @@ namespace LDevelopment.Controllers
         {
             int id;
 
-            var post = int.TryParse(url, out id) ? 
-                Repository.Find<PostModel>(id, x => x.PostTags, x => x.Comments) : 
-                Repository.Find<PostModel>(x => x.Url == url, x => x.PostTags, x => x.Comments);
-
-            var tags = new MultiSelectList(post.PostTags.Select(x => new SelectListItem
-            {
-                Value = x.Id.ToString(),
-                Text = x.Title
-            })
-            .ToList());
+            var post = int.TryParse(url, out id)
+                ? Repository.Find<PostModel>(id, x => x.PostTags, x => x.Comments)
+                : Repository.Find<PostModel>(x => x.Url == url, x => x.PostTags, x => x.Comments);
 
             var readMore = ConfigurationManager.AppSettings["ReadMore"];
 
@@ -81,7 +77,7 @@ namespace LDevelopment.Controllers
                 Title = post.Title,
                 Text = post.Text.Replace(readMore, ""),
                 ReleaseDate = post.ReleaseDate,
-                Tags = tags,
+                Tags = BlogHelper.GetTagsList(post.PostTags),
                 ImageUrl = post.Image,
                 Comments = post.Comments.Select(c => new CommentViewModel
                 {
@@ -110,12 +106,11 @@ namespace LDevelopment.Controllers
         {
             var search = searchViewModel.SearchString;
 
-            var posts = GetPosts()
-                .Where(x => search == null || x.Title.Contains(search) || x.Text.Contains(search));
+            var posts = GetPosts(showAll: true, searchText: search);
 
             var blogViewModel = new BlogViewModel
             {
-                Posts = posts.Select(GetPostViewModel).Select(HasReadMoreLink).ToPagedList(pageNumber, _pageSize),
+                Posts = posts.Select(GetPostViewModel).Select(BlogHelper.HasReadMoreLink).ToPagedList(pageNumber, _pageSize),
                 Search = new SearchViewModel
                 {
                     SearchString = search,
@@ -129,17 +124,11 @@ namespace LDevelopment.Controllers
         [Authorize(Roles = "Admin")]
         public ActionResult Create()
         {
-            var tags = Repository.All<TagModel>()
-                .Select(tag => new SelectListItem
-                {
-                    Value = tag.Id.ToString(),
-                    Text = tag.Title
-                })
-                .ToList();
+            var tags = Repository.All<TagModel>();
 
             var postViewModel = new PostViewModel
             {
-                Tags = new MultiSelectList(tags.OrderBy(x => x.Text), "Value", "Text")
+                Tags = BlogHelper.GetTagsList(tags)
             };
 
             return View(postViewModel);
@@ -187,19 +176,12 @@ namespace LDevelopment.Controllers
             return RedirectToAction("Index");
         }
 
-        // GET: Blog/Edit/5
         [Authorize(Roles = "Admin")]
         public ActionResult Edit(int id)
         {
             var post = Repository.Find<PostModel>(id, x => x.PostTags);
 
-            var tags = Repository.All<TagModel>()
-                .Select(tag => new SelectListItem
-                {
-                    Value = tag.Id.ToString(),
-                    Text = tag.Title
-                })
-                .ToList();
+            var tags = Repository.All<TagModel>();
 
             var postViewModel = new PostViewModel
             {
@@ -209,7 +191,7 @@ namespace LDevelopment.Controllers
                 ReleaseDate = post.ReleaseDate,
                 IsReleased = post.IsReleased,
                 TagsIds = post.PostTags.Select(x => x.Id.ToString()).ToList(),
-                Tags = new MultiSelectList(tags.OrderBy(x => x.Text), "Value", "Text")
+                Tags = BlogHelper.GetTagsList(tags)
             };
 
             return View(postViewModel);
@@ -277,7 +259,6 @@ namespace LDevelopment.Controllers
             return View(postViewModel);
         }
 
-        // GET: Blog/Delete/5
         [Authorize(Roles = "Admin")]
         public ActionResult Delete(int id)
         {
@@ -295,7 +276,6 @@ namespace LDevelopment.Controllers
             return View(postViewModel);
         }
 
-        // POST: Blog/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         [Authorize(Roles = "Admin")]
@@ -333,7 +313,7 @@ namespace LDevelopment.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [Authorize]
-        public ActionResult Comment([Bind(Include = "Text, PostId")] CommentViewModel commentViewModel)
+        public ActionResult Comment(CommentViewModel commentViewModel)
         {
             var post = Repository.Find<PostModel>(commentViewModel.PostId, x => x.Comments);
 
@@ -357,47 +337,49 @@ namespace LDevelopment.Controllers
             return RedirectToAction("Details", new { url = post.Url });
         }
 
+        public ActionResult Feed()
+        {
+            if (Request.Url == null)
+            {
+                return null;
+            }
+
+            var items = new List<SyndicationItem>();
+
+            Repository
+                .All<PostModel>(x => x.IsReleased)
+                .OrderByDescending(x => x.ReleaseDate)
+                .ThenBy(x => x.Title)
+                .Take(_pageSize)
+                .ForEach(x => items.Add(new SyndicationItem(x.Title, x.Text, new Uri($"https://{Request.Url.Host}{Url.Action("Details")}?url={x.Url}"), x.Url, x.ReleaseDate)));
+
+            var feed = new SyndicationFeed(Resources.Resources.SiteName, Resources.Resources.SiteDescription, new Uri($"https://{Request.Url.Host}"), items);
+
+            return new FeedResult(feed);
+        }
+
         private static PostViewModel GetPostViewModel(PostModel postModel)
         {
-            var tags = new MultiSelectList(postModel.PostTags.Select(x => new SelectListItem
-            {
-                Value = x.Id.ToString(),
-                Text = x.Title
-            })
-            .ToList());
-
             return new PostViewModel
             {
                 Id = postModel.Id,
                 Title = postModel.Title,
                 Text = postModel.Text,
                 ReleaseDate = postModel.ReleaseDate,
-                Tags = tags,
+                Tags = BlogHelper.GetTagsList(postModel.PostTags),
                 ImageUrl = postModel.Image,
                 Url = postModel.Url,
                 Comments = postModel.Comments.Select(c => new CommentViewModel()).ToList()
             };
         }
 
-        private static PostViewModel HasReadMoreLink(PostViewModel postViewModel)
+        private IEnumerable<PostModel> GetPosts(bool showAll = false, string searchText = "")
         {
-            var readMore = ConfigurationManager.AppSettings["ReadMore"];
+            var text = string.IsNullOrWhiteSpace(searchText) ? null : searchText.ToLower();
 
-            if (postViewModel.Text.Contains(readMore))
-            {
-                var position = postViewModel.Text.IndexOf(readMore, StringComparison.Ordinal);
-
-                postViewModel.Text = postViewModel.Text.Substring(0, position);
-                postViewModel.HasReadMoreLink = true;
-            }
-
-            return postViewModel;
-        }
-
-        private IEnumerable<PostModel> GetPosts()
-        {
             var posts = Repository
-                .All<PostModel>(x => x.IsReleased)
+                .All<PostModel>(x => x.IsReleased || showAll)
+                .Where(x => text == null || x.Title.ToLower().Contains(text) || x.Text.ToLower().Contains(text))
                 .OrderByDescending(x => x.ReleaseDate)
                 .ThenBy(x => x.Title)
                 .Include(x => x.PostTags)
@@ -409,13 +391,11 @@ namespace LDevelopment.Controllers
 
         private IEnumerable<TagModel> GetTags()
         {
-            var posts = GetPosts();
-
-            var tags = posts
-                .SelectMany(x => x.PostTags)
-                .Distinct()
-                .OrderByDescending(t => t.TagPosts.Count)
-                .ThenBy(t => t.Title)
+            var tags = Repository
+                .All<TagModel>()
+                .Where(x => x.TagPosts.Any(p => p.IsReleased))
+                .OrderByDescending(x => x.TagPosts.Count)
+                .ThenBy(x => x.Title)
                 .ToList();
 
             return tags;
