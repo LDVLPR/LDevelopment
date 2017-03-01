@@ -24,6 +24,14 @@ namespace LDevelopment.Helpers
             return postViewModel;
         }
 
+        public static string GetFirstParagraph(string text)
+        {
+            var paragraph = new Regex(@"<p>\s*(.+?)\s*</p>");
+            var result = paragraph.Match(text);
+
+            return result.Success ? result.Groups[1].Value : text;
+        }
+
         public static string GeneratePostUrl(string title)
         {
             var result = title.Trim();

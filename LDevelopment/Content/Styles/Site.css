@@ -154,7 +154,15 @@
       border: none;
       text-decoration: none; }
     body .site .main .last .short p, body .site .main .popular .short p {
-      margin: 10px 0; }
+      margin: 10px 0;
+      display: -webkit-box;
+      -webkit-line-clamp: 4;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      text-align: left;
+      max-height: 104px;
+      /* line-clamp * line-height */ }
     body .site .main .last .short .more, body .site .main .popular .short .more {
       margin: 20px 0 0;
       text-align: center; }
