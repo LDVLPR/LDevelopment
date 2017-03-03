@@ -48,11 +48,11 @@
                             @Html.ActionLink(tag.Text, "Tag", new { tag = tag.Value }, new { @class = "tag-small" })
                         }
                     </div>
-                    <div class="entity">
-                        <h2 class="entity-title text-uppercase">
+                    <div class="post">
+                        <h2 class="post-title text-uppercase">
                             @Html.ActionLink(item.Title, "Details", new { url = item.Url })
                         </h2>
-                        <div class="entity-header">
+                        <div class="post-header">
                             <span class="glyphicon glyphicon-time"></span>
                             <span class="release-date">@Html.DisplayFor(modelItem => item.ReleaseDate)</span>
                             <span class="glyphicon glyphicon-comment"></span>
@@ -61,7 +61,7 @@
                                     "Blog", null, null, "comments", new { url = item.Url }, null)
                             </span>
                         </div>
-                        <div class="content">
+                        <div class="post-content">
                             @{
                                 var text = HttpUtility.HtmlDecode(Html.DisplayFor(modelItem => item.Text).ToString());
 

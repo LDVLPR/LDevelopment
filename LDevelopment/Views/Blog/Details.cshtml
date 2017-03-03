@@ -5,7 +5,7 @@
     ViewBag.Title = Model.Title;
 }
 
-<div class="post">
+<div class="post-details">
     <div class="container body-content">
         <div class="col-md-offset-1 col-md-10">
             @if (!string.IsNullOrEmpty(Model.ImageUrl))
@@ -19,13 +19,13 @@
                 }
             </div>
             <h1 class="text-uppercase">@Html.DisplayFor(model => model.Title)</h1>
-            <div class="entity-header">
+            <div class="post-header">
                 <span class="glyphicon glyphicon-time"></span>
                 <span class="release-date">@Html.DisplayFor(model => model.ReleaseDate)</span>
                 <span class="glyphicon glyphicon-comment"></span>
                 <span class="comments-info">@Resources.Comments: @Html.DisplayFor(model => model.Comments.Count)</span>
             </div>
-            <div>
+            <div class="post-content">
                 @Html.Raw(HttpUtility.HtmlDecode(Html.DisplayFor(model => model.Text).ToString()))
             </div>
 

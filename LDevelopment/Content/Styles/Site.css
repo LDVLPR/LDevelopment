@@ -214,10 +214,10 @@
       opacity: 1; }
   body .site .contact {
     background-image: url("/Content/Images/contact_header.jpg"); }
-  body .site .posts .entity .entity-title a {
+  body .site .posts .post .post-title a {
     color: #212427;
     text-decoration: none; }
-  body .site .posts .entity .more {
+  body .site .posts .post .more {
     margin: 20px 0 0; }
   body .site .posts .pagination li {
     text-align: center; }
@@ -232,41 +232,43 @@
       height: 40px;
       line-height: 28px;
       padding: 6px; }
-  body .site .post img {
+  body .site .post-details img {
     margin: 20px 0 0; }
-  body .site .post .login {
+  body .site .post-details .login {
     overflow: hidden; }
-  body .site .post .new-comment {
+  body .site .post-details .new-comment {
     border-radius: 25px;
     padding: 10px;
     width: 100%;
     max-width: 100%;
     max-height: 300px; }
-  body .site .post .comments .comment {
+  body .site .post-details .comments .comment {
     padding: 10px 0; }
-    body .site .post .comments .comment .date {
+    body .site .post-details .comments .comment .date {
       font-size: small;
       color: #949596; }
-  body .site .posts .tags .tag, body .site .posts .tags .tag-small, body .site .post .tags .tag, body .site .post .tags .tag-small {
+  body .site .posts .tags h3, body .site .post-details .tags h3 {
+    margin: 0; }
+  body .site .posts .tags .tag, body .site .posts .tags .tag-small, body .site .post-details .tags .tag, body .site .post-details .tags .tag-small {
     border: 1px solid #949596;
     border-radius: 25px;
     padding: 2px 10px;
-    margin: 20px 10px 0 0;
+    margin: 10px 10px 0 0;
     font-size: 13pt;
     display: inline-block;
     text-decoration: none; }
-    body .site .posts .tags .tag:before, body .site .posts .tags .tag-small:before, body .site .post .tags .tag:before, body .site .post .tags .tag-small:before {
-      content: "# "; }
-  body .site .posts .tags .tag-small, body .site .post .tags .tag-small {
+  body .site .posts .tags .tag-small, body .site .post-details .tags .tag-small {
     font-size: 10pt; }
-  body .site .posts .entity-header, body .site .post .entity-header {
+  body .site .posts .post-header, body .site .post-details .post-header {
     padding: 0 0 10px 0; }
-    body .site .posts .entity-header span, body .site .posts .entity-header a, body .site .post .entity-header span, body .site .post .entity-header a {
+    body .site .posts .post-header span, body .site .posts .post-header a, body .site .post-details .post-header span, body .site .post-details .post-header a {
       color: #949596;
       font-size: 16px;
       margin: 0 3px 0 0; }
-    body .site .posts .entity-header .glyphicon-comment, body .site .post .entity-header .glyphicon-comment {
+    body .site .posts .post-header .glyphicon-comment, body .site .post-details .post-header .glyphicon-comment {
       margin: 0 3px 0 10px; }
+  body .site .posts .post-content pre code, body .site .post-details .post-content pre code {
+    font-size: 90%; }
   body .site .login h2 {
     padding: 15vh 0 2vh; }
   body .site .login .social-login-buttons {

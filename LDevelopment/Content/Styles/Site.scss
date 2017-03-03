@@ -412,9 +412,9 @@ body {
 
         .posts {
 
-            .entity {
+            .post {
 
-                .entity-title a {
+                .post-title a {
                     color: $color-black;
                     text-decoration: none;
                 }
@@ -449,7 +449,7 @@ body {
             }
         }
 
-        .post {
+        .post-details {
 
             img {
                 margin: 20px 0 0;
@@ -480,22 +480,22 @@ body {
             }
         }
 
-        .posts, .post {
+        .posts, .post-details {
 
             .tags {
+
+                h3 {
+                    margin: 0;
+                }
 
                 .tag {
                     border: 1px solid $color-gray;
                     border-radius: 25px;
                     padding: 2px 10px;
-                    margin: 20px 10px 0 0;
+                    margin: 10px 10px 0 0;
                     font-size: 13pt;
                     display: inline-block;
                     text-decoration: none;
-
-                    &:before {
-                        content: "# ";
-                    }
                 }
 
                 .tag-small {
@@ -504,7 +504,7 @@ body {
                 }
             }
 
-            .entity-header {
+            .post-header {
                 padding: 0 0 10px 0;
 
                 span, a {
@@ -515,6 +515,13 @@ body {
 
                 .glyphicon-comment {
                     margin: 0 3px 0 10px;
+                }
+            }
+
+            .post-content {
+
+                pre code {
+                    font-size: 90%
                 }
             }
         }
