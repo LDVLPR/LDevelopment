@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Web.Mvc;
 using LDevelopment.Models;
+using LDevelopment.Repositories;
 using Microsoft.ApplicationInsights;
 
 namespace LDevelopment.Controllers

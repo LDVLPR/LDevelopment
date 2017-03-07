@@ -75,7 +75,7 @@ namespace LDevelopment.Controllers
             {
                 Id = post.Id,
                 Title = post.Title,
-                Text = post.Text.Replace(readMore, ""),
+                Text = post.Text.Replace(readMore, string.Empty),
                 ReleaseDate = post.ReleaseDate,
                 Tags = BlogHelper.GetTagsList(post.PostTags),
                 ImageUrl = post.Image,
@@ -89,11 +89,6 @@ namespace LDevelopment.Controllers
                 })
                 .ToList()
             };
-
-            foreach (var comment in post.Comments)
-            {
-                Repository.Context.Entry(comment).Reference(x => x.Author).Load();
-            }
 
             Repository.Context.Entry(post).Entity.ViewsCount++;
             Repository.Save();
@@ -146,7 +141,7 @@ namespace LDevelopment.Controllers
                     Title = postViewModel.Title,
                     Text = postViewModel.Text,
                     ReleaseDate = DateTime.UtcNow,
-                    IsReleased = true,
+                    IsReleased = postViewModel.IsReleased,
                     Url = BlogHelper.GeneratePostUrl(postViewModel.Title)
                 };
 
