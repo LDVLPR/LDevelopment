@@ -159,7 +159,9 @@ namespace LDevelopment.Controllers
 
                 if (postViewModel.Image != null && postViewModel.Image.ContentLength > 0)
                 {
-                    post.Image = AzureBlobHelper.UploadPhoto(postViewModel.Image);
+                    var azureHelper = new AzureHelper();
+
+                    post.Image = azureHelper.UploadPhoto(postViewModel.Image);
                 }
 
                 Repository.Add(post);
@@ -242,7 +244,9 @@ namespace LDevelopment.Controllers
                     //postViewModel.Image.SaveAs(path);
                     //post.Image = url;
 
-                    post.Image = AzureBlobHelper.UploadPhoto(postViewModel.Image);
+                    var azureHelper = new AzureHelper();
+
+                    post.Image = azureHelper.UploadPhoto(postViewModel.Image);
                 }
 
                 Repository.Update(post);
