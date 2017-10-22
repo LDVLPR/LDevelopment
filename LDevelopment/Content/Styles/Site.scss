@@ -12,6 +12,10 @@ body {
     height: 100%;
     letter-spacing: 0.05em;
 
+    a, input[type=submit] {
+        transition: 0.2s;
+    }
+
     .navbar {
         background-color: $color-white;
         border-color: $color-pale;
@@ -221,7 +225,6 @@ body {
             color: $color-dark;
             background-color: $color-white;
             padding: 10px 40px;
-            transition: 0.2s;
 
             &:hover {
                 color: $color-white;

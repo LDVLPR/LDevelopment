@@ -2,6 +2,8 @@
   font-family: 'Roboto', sans-serif;
   height: 100%;
   letter-spacing: 0.05em; }
+  body a, body input[type=submit] {
+    transition: 0.2s; }
   body .navbar {
     background-color: #ffffff;
     border-color: #dddddd; }
@@ -113,8 +115,7 @@
     border-radius: 25px;
     color: #0a365d;
     background-color: #ffffff;
-    padding: 10px 40px;
-    transition: 0.2s; }
+    padding: 10px 40px; }
     body .site .link:hover {
       color: #ffffff;
       background-color: #0a365d;
