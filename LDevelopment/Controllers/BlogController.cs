@@ -17,7 +17,7 @@ namespace LDevelopment.Controllers
 {
     public class BlogController : BaseController
     {
-        private readonly int _pageSize = int.Parse(ConfigurationManager.AppSettings["PageSize"]);
+        private readonly int _pageSize = int.Parse(ConfigurationHelper.PageSize);
 
         public ActionResult Index(SearchViewModel searchViewModel, int pageNumber = 1)
         {
@@ -66,10 +66,10 @@ namespace LDevelopment.Controllers
             int id;
 
             var post = int.TryParse(url, out id)
-                ? Repository.Find<PostModel>(id, x => x.PostTags, x => x.Comments)
-                : Repository.Find<PostModel>(x => x.Url == url, x => x.PostTags, x => x.Comments);
+                ? Repository.Find<Post>(id, x => x.PostTags, x => x.Comments)
+                : Repository.Find<Post>(x => x.Url == url, x => x.PostTags, x => x.Comments);
 
-            var readMore = ConfigurationManager.AppSettings["ReadMore"];
+            var readMore = ConfigurationHelper.ReadMore;
 
             var postViewModel = new PostViewModel
             {
@@ -119,7 +119,7 @@ namespace LDevelopment.Controllers
         [Authorize(Roles = "Admin")]
         public ActionResult Create()
         {
-            var tags = Repository.All<TagModel>();
+            var tags = Repository.All<Tag>();
 
             var postViewModel = new PostViewModel
             {
@@ -136,7 +136,7 @@ namespace LDevelopment.Controllers
         {
             if (ModelState.IsValid)
             {
-                var post = new PostModel
+                var post = new Post
                 {
                     Title = postViewModel.Title,
                     Text = postViewModel.Text,
@@ -151,7 +151,7 @@ namespace LDevelopment.Controllers
 
                     foreach (var id in tagsIds)
                     {
-                        var tag = Repository.Find<TagModel>(id);
+                        var tag = Repository.Find<Tag>(id);
 
                         post.PostTags.Add(tag);
                     }
@@ -176,9 +176,9 @@ namespace LDevelopment.Controllers
         [Authorize(Roles = "Admin")]
         public ActionResult Edit(int id)
         {
-            var post = Repository.Find<PostModel>(id, x => x.PostTags);
+            var post = Repository.Find<Post>(id, x => x.PostTags);
 
-            var tags = Repository.All<TagModel>();
+            var tags = Repository.All<Tag>();
 
             var postViewModel = new PostViewModel
             {
@@ -201,7 +201,7 @@ namespace LDevelopment.Controllers
         {
             if (ModelState.IsValid)
             {
-                var post = Repository.Find<PostModel>(postViewModel.Id, x => x.PostTags);
+                var post = Repository.Find<Post>(postViewModel.Id, x => x.PostTags);
 
                 post.Title = postViewModel.Title;
                 post.Text = postViewModel.Text;
@@ -219,7 +219,7 @@ namespace LDevelopment.Controllers
                 {
                     foreach (var id in tagsToAdd)
                     {
-                        var tag = Repository.Find<TagModel>(id);
+                        var tag = Repository.Find<Tag>(id);
 
                         post.PostTags.Add(tag);
                     }
@@ -229,7 +229,7 @@ namespace LDevelopment.Controllers
                 {
                     foreach (var id in tagsToRemove)
                     {
-                        var tag = Repository.Find<TagModel>(id);
+                        var tag = Repository.Find<Tag>(id);
 
                         post.PostTags.Remove(tag);
                     }
@@ -261,7 +261,7 @@ namespace LDevelopment.Controllers
         [Authorize(Roles = "Admin")]
         public ActionResult Delete(int id)
         {
-            var post = Repository.Find<PostModel>(id);
+            var post = Repository.Find<Post>(id);
 
             var postViewModel = new PostViewModel
             {
@@ -280,17 +280,17 @@ namespace LDevelopment.Controllers
         [Authorize(Roles = "Admin")]
         public ActionResult DeleteConfirmed(int id)
         {
-            var post = Repository.Find<PostModel>(id, x => x.Comments);
+            var post = Repository.Find<Post>(id, x => x.Comments);
 
             if (post.Comments.Any())
             {
                 foreach (var comment in post.Comments)
                 {
-                    Repository.Delete<CommentModel>(comment.Id);
+                    Repository.Delete<Comment>(comment.Id);
                 }
             }
 
-            Repository.Delete<PostModel>(post.Id);
+            Repository.Delete<Post>(post.Id);
             Repository.Save();
 
             return RedirectToAction("Index");
@@ -299,7 +299,7 @@ namespace LDevelopment.Controllers
         [Authorize]
         public ActionResult Comment(int id)
         {
-            var post = Repository.Find<PostModel>(id);
+            var post = Repository.Find<Post>(id);
 
             var comment = new CommentViewModel
             {
@@ -314,13 +314,13 @@ namespace LDevelopment.Controllers
         [Authorize]
         public ActionResult Comment(CommentViewModel commentViewModel)
         {
-            var post = Repository.Find<PostModel>(commentViewModel.PostId, x => x.Comments);
+            var post = Repository.Find<Post>(commentViewModel.PostId, x => x.Comments);
 
             if (ModelState.IsValid)
             {
                 var username = HttpContext.User.Identity.GetUserId();
 
-                var comment = new CommentModel()
+                var comment = new Comment()
                 {
                     Text = commentViewModel.Text,
                     ReleaseDate = DateTime.UtcNow,
@@ -346,7 +346,7 @@ namespace LDevelopment.Controllers
             var items = new List<SyndicationItem>();
 
             Repository
-                .All<PostModel>(x => x.IsReleased)
+                .All<Post>(x => x.IsReleased)
                 .OrderByDescending(x => x.ReleaseDate)
                 .ThenBy(x => x.Title)
                 .Take(_pageSize)
@@ -357,27 +357,27 @@ namespace LDevelopment.Controllers
             return new FeedResult(feed);
         }
 
-        private static PostViewModel GetPostViewModel(PostModel postModel)
+        private static PostViewModel GetPostViewModel(Post post)
         {
             return new PostViewModel
             {
-                Id = postModel.Id,
-                Title = postModel.Title,
-                Text = postModel.Text,
-                ReleaseDate = postModel.ReleaseDate,
-                Tags = BlogHelper.GetTagsList(postModel.PostTags),
-                ImageUrl = postModel.Image,
-                Url = postModel.Url,
-                Comments = postModel.Comments.Select(c => new CommentViewModel()).ToList()
+                Id = post.Id,
+                Title = post.Title,
+                Text = post.Text,
+                ReleaseDate = post.ReleaseDate,
+                Tags = BlogHelper.GetTagsList(post.PostTags),
+                ImageUrl = post.Image,
+                Url = post.Url,
+                Comments = post.Comments.Select(c => new CommentViewModel()).ToList()
             };
         }
 
-        private IEnumerable<PostModel> GetPosts(bool showAll = false, string searchText = "")
+        private IEnumerable<Post> GetPosts(bool showAll = false, string searchText = "")
         {
             var text = string.IsNullOrWhiteSpace(searchText) ? null : searchText.ToLower();
 
             var posts = Repository
-                .All<PostModel>(x => x.IsReleased || showAll)
+                .All<Post>(x => x.IsReleased || showAll)
                 .Where(x => text == null || x.Title.ToLower().Contains(text) || x.Text.ToLower().Contains(text))
                 .OrderByDescending(x => x.ReleaseDate)
                 .ThenBy(x => x.Title)
@@ -388,12 +388,12 @@ namespace LDevelopment.Controllers
             return posts;
         }
 
-        private IEnumerable<TagModel> GetTags()
+        private IEnumerable<Tag> GetTags()
         {
             var tags = Repository
-                .All<TagModel>()
-                .Where(x => x.TagPosts.Any(p => p.IsReleased))
-                .OrderByDescending(x => x.TagPosts.Count)
+                .All<Tag>()
+                .Where(x => x.TaggedPosts.Any(p => p.IsReleased))
+                .OrderByDescending(x => x.TaggedPosts.Count)
                 .ThenBy(x => x.Title)
                 .ToList();
 

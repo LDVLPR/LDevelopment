@@ -13,13 +13,13 @@ namespace LDevelopment.Controllers
             var result = new HomeViewModel
             {
                 LastPosts = Repository
-                    .All<PostModel>(x => x.IsReleased)
+                    .All<Post>(x => x.IsReleased)
                     .OrderByDescending(x => x.ReleaseDate)
                     .Take(3)
                     .Select(GetPostViewModel),
 
                 PopularPosts = Repository
-                    .All<PostModel>(x => x.IsReleased)
+                    .All<Post>(x => x.IsReleased)
                     .OrderByDescending(x => x.ViewsCount)
                     .Take(3)
                     .Select(GetPostViewModel)
@@ -38,16 +38,16 @@ namespace LDevelopment.Controllers
             return View();
         }
 
-        private static PostViewModel GetPostViewModel(PostModel postModel)
+        private static PostViewModel GetPostViewModel(Post post)
         {
             return new PostViewModel
             {
-                Id = postModel.Id,
-                Title = postModel.Title,
-                Text = BlogHelper.GetFirstParagraph(postModel.Text),
-                ReleaseDate = postModel.ReleaseDate,
-                ImageUrl = postModel.Image,
-                Url = postModel.Url
+                Id = post.Id,
+                Title = post.Title,
+                Text = BlogHelper.GetFirstParagraph(post.Text),
+                ReleaseDate = post.ReleaseDate,
+                ImageUrl = post.Image,
+                Url = post.Url
             };
         }
     }

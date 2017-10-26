@@ -4,7 +4,7 @@ using LDevelopment.Interfaces;
 
 namespace LDevelopment.Models
 {
-    public class CommentModel : IModel
+    public class Comment : IModel
     {
         [Key]
         public int Id { get; set; }
@@ -17,14 +17,16 @@ namespace LDevelopment.Models
 
         [Required]
         public string AuthorId { get; set; }
-        public virtual ApplicationUser Author { get; set; }
 
         [Required]
         public int PostId { get; set; }
-        public virtual PostModel Post { get; set; }
 
         public bool? IsDeleted { get; set; }
 
         public DateTime? DeletedDate { get; set; }
+
+        public virtual ApplicationUser Author { get; set; }
+
+        public virtual Post Post { get; set; }
     }
 }

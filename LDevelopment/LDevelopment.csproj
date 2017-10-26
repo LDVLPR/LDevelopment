@@ -246,6 +246,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Context\ApplicationDbContext.cs" />
     <Compile Include="Controllers\TagsController.cs" />
     <Compile Include="Controllers\UsersController.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
@@ -263,6 +264,7 @@
     </Compile>
     <Compile Include="Helpers\AzureHelper.cs" />
     <Compile Include="Helpers\BlogHelper.cs" />
+    <Compile Include="Helpers\ConfigurationHelper.cs" />
     <Compile Include="Interfaces\IModel.cs" />
     <Compile Include="Migrations\201609141933300_InitialCreate.cs" />
     <Compile Include="Migrations\201609141933300_InitialCreate.Designer.cs">
@@ -288,16 +290,20 @@
     <Compile Include="Migrations\201702151605223_AddIndexToPostUrl.Designer.cs">
       <DependentUpon>201702151605223_AddIndexToPostUrl.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201710261849218_NamingConventionChanges.cs" />
+    <Compile Include="Migrations\201710261849218_NamingConventionChanges.Designer.cs">
+      <DependentUpon>201710261849218_NamingConventionChanges.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
-    <Compile Include="Models\CommentModel.cs" />
+    <Compile Include="Models\Comment.cs" />
     <Compile Include="ActionResults\FeedResult.cs" />
-    <Compile Include="Models\LogModel.cs" />
-    <Compile Include="Models\PostModel.cs" />
-    <Compile Include="Models\TagModel.cs" />
+    <Compile Include="Models\Log.cs" />
+    <Compile Include="Models\Post.cs" />
+    <Compile Include="Models\Tag.cs" />
     <Compile Include="Interfaces\IRepository.cs" />
     <Compile Include="Repositories\Repository.cs" />
     <Compile Include="ViewModels\AccountViewModels.cs" />
-    <Compile Include="Models\IdentityModel.cs" />
+    <Compile Include="Models\ApplicationUser.cs" />
     <Compile Include="ViewModels\BlogViewModel.cs" />
     <Compile Include="ViewModels\CommentViewModel.cs" />
     <Compile Include="ViewModels\HomeViewModel.cs" />
@@ -312,6 +318,7 @@
     <Content Include="Content\Icons\spinner.svg" />
     <Content Include="Content\Images\logo_footer.png" />
     <Content Include="Content\Images\logo_header.png" />
+    <Content Include="Content\Images\photo.jpg" />
     <Content Include="Content\Styles\bootstrap-multiselect.css" />
     <Content Include="Content\Styles\bootstrap-theme.css" />
     <Content Include="Content\Styles\bootstrap-theme.min.css" />
@@ -628,6 +635,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201702151605223_AddIndexToPostUrl.resx">
       <DependentUpon>201702151605223_AddIndexToPostUrl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201710261849218_NamingConventionChanges.resx">
+      <DependentUpon>201710261849218_NamingConventionChanges.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

@@ -7,11 +7,11 @@ using LDevelopment.Interfaces;
 
 namespace LDevelopment.Models
 {
-    public class PostModel : IModel
+    public class Post : IModel
     {
-        public PostModel()
+        public Post()
         {
-            PostTags = new List<TagModel>();
+            this.PostTags = new List<Tag>();
         }
 
         [Key]
@@ -34,16 +34,15 @@ namespace LDevelopment.Models
         public string Image { get; set; }
 
         [MaxLength(200)]
-        [Index(IsUnique = true)]
         [Required]
         public string Url { get; set; }
-
-        public ICollection<TagModel> PostTags { get; set; }
-
-        public ICollection<CommentModel> Comments { get; set; }
 
         public bool? IsDeleted { get; set; }
 
         public DateTime? DeletedDate { get; set; }
+
+        public ICollection<Tag> PostTags { get; set; }
+
+        public ICollection<Comment> Comments { get; set; }
     }
 }

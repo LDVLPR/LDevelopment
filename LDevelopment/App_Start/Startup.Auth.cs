@@ -7,6 +7,7 @@ using Microsoft.Owin.Security.Cookies;
 using Microsoft.Owin.Security.Google;
 using Owin;
 using LDevelopment.Models;
+using LDevelopment.Context;
 
 namespace LDevelopment
 {

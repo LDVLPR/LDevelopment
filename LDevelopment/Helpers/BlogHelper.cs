@@ -45,7 +45,7 @@ namespace LDevelopment.Helpers
             return result.ToLower();
         }
 
-        public static MultiSelectList GetTagsList(IEnumerable<TagModel> tags)
+        public static MultiSelectList GetTagsList(IEnumerable<Tag> tags)
         {
             var list = tags
                 .Select(x => new SelectListItem

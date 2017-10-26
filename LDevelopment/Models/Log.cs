@@ -4,7 +4,7 @@ using LDevelopment.Interfaces;
 
 namespace LDevelopment.Models
 {
-    public class LogModel : IModel
+    public class Log : IModel
     {
         [Key]
         public int Id { get; set; }

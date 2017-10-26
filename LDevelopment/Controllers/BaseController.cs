@@ -30,7 +30,7 @@ namespace LDevelopment.Controllers
                 filterContext.ExceptionHandled = true;
                 filterContext.Result = View("Error");
 
-                var logModel = new LogModel
+                var log = new Log
                 {
                     Message = filterContext.Exception.InnerException?.Message ?? filterContext.Exception.Message,
                     StackTrace = filterContext.Exception.StackTrace.Trim(),
@@ -40,7 +40,7 @@ namespace LDevelopment.Controllers
                     CreatedDate = DateTime.UtcNow
                 };
 
-                Repository.Add(logModel);
+                Repository.Add(log);
                 Repository.Save();
             }
 

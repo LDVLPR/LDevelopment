@@ -10,7 +10,7 @@ namespace LDevelopment.Controllers
         // GET: Tags
         public ActionResult Index()
         {
-            var tags = Repository.All<TagModel>().ToList();
+            var tags = Repository.All<Tag>().ToList();
 
             return View(tags);
         }
@@ -18,9 +18,9 @@ namespace LDevelopment.Controllers
         // GET: Tags/Details/5
         public ActionResult Details(int id)
         {
-            var tagModel = Repository.Find<TagModel>(id);
+            var tag = Repository.Find<Tag>(id);
 
-            return View(tagModel);
+            return View(tag);
         }
 
         // GET: Tags/Create
@@ -34,25 +34,25 @@ namespace LDevelopment.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Title")] TagModel tagModel)
+        public ActionResult Create([Bind(Include = "Id,Title")] Tag tag)
         {
             if (ModelState.IsValid)
             {
-                Repository.Add(tagModel);
+                Repository.Add(tag);
                 Repository.Save();
 
                 return RedirectToAction("Index");
             }
 
-            return View(tagModel);
+            return View(tag);
         }
 
         // GET: Tags/Edit/5
         public ActionResult Edit(int id)
         {
-            var tagModel = Repository.Find<TagModel>(id);
+            var tag = Repository.Find<Tag>(id);
 
-            return View(tagModel);
+            return View(tag);
         }
 
         // POST: Tags/Edit/5
@@ -60,25 +60,25 @@ namespace LDevelopment.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Title")] TagModel tagModel)
+        public ActionResult Edit([Bind(Include = "Id,Title")] Tag tag)
         {
             if (ModelState.IsValid)
             {
-                Repository.Update(tagModel);
+                Repository.Update(tag);
                 Repository.Save();
 
                 return RedirectToAction("Index");
             }
 
-            return View(tagModel);
+            return View(tag);
         }
 
         // GET: Tags/Delete/5
         public ActionResult Delete(int id)
         {
-            var tagModel = Repository.Find<TagModel>(id);
+            var tag = Repository.Find<Tag>(id);
 
-            return View(tagModel);
+            return View(tag);
         }
 
         // POST: Tags/Delete/5
@@ -86,7 +86,7 @@ namespace LDevelopment.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Repository.Delete<TagModel>(id);
+            Repository.Delete<Tag>(id);
             Repository.Save();
 
             return RedirectToAction("Index");

@@ -5,11 +5,11 @@ using LDevelopment.Interfaces;
 
 namespace LDevelopment.Models
 {
-    public class TagModel : IModel
+    public class Tag : IModel
     {
-        public TagModel()
+        public Tag()
         {
-            TagPosts = new List<PostModel>();
+            this.TaggedPosts = new List<Post>();
         }
 
         [Key]
@@ -18,7 +18,7 @@ namespace LDevelopment.Models
         [Required]
         public string Title { get; set; }
 
-        public ICollection<PostModel> TagPosts { get; set; }
+        public ICollection<Post> TaggedPosts { get; set; }
 
         public bool? IsDeleted { get; set; }
 
